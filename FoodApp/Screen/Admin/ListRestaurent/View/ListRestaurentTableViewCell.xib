@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="114" id="KGk-i7-Jjw" customClass="ListRestaurentTableViewCell" customModule="FoodApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comtam" translatesAutoresizingMaskIntoConstraints="NO" id="R2Q-BS-uoY">
+                        <rect key="frame" x="10" y="10" width="94" height="94"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="R2Q-BS-uoY" secondAttribute="height" id="5ts-iw-HRi"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bXj-pu-bJk">
+                        <rect key="frame" x="114" y="10" width="218" height="94"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Rice Restaurent Nguyen Thi Thap" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILC-87-nPK">
+                                <rect key="frame" x="0.0" y="0.0" width="218" height="57"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Com suon, thit kho, ca kho…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-H8-D8J">
+                                <rect key="frame" x="0.0" y="61" width="218" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM3-q9-m9V">
+                                <rect key="frame" x="0.0" y="79.5" width="218" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="R2Q-BS-uoY" secondAttribute="bottom" constant="10" id="5rG-Zh-PBY"/>
+                    <constraint firstAttribute="trailing" secondItem="bXj-pu-bJk" secondAttribute="trailing" constant="10" id="EMk-Fg-YUM"/>
+                    <constraint firstItem="bXj-pu-bJk" firstAttribute="leading" secondItem="R2Q-BS-uoY" secondAttribute="trailing" constant="10" id="IFM-sV-HYY"/>
+                    <constraint firstItem="R2Q-BS-uoY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QQ0-du-s8e"/>
+                    <constraint firstItem="bXj-pu-bJk" firstAttribute="top" secondItem="R2Q-BS-uoY" secondAttribute="top" id="TwZ-jG-KiH"/>
+                    <constraint firstItem="R2Q-BS-uoY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Uge-BZ-Iv2"/>
+                    <constraint firstItem="bXj-pu-bJk" firstAttribute="bottom" secondItem="R2Q-BS-uoY" secondAttribute="bottom" id="oma-pg-S7H"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="-365.21739130434787" y="-80.357142857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="comtam" width="660" height="496"/>
+    </resources>
+</document>
