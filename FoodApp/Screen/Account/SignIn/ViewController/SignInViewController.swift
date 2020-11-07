@@ -26,7 +26,7 @@ class SignInViewController: UIViewController {
     }
     
     @objc func checkAccount(sender : UITapGestureRecognizer) {
-        let vc = AdminHomeViewController()
+        let vc = RestaurentHomeViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

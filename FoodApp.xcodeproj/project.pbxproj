@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */; };
+		2A15B9782556A2A700CF0238 /* StatisticallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */; };
+		2A15B9832556A8C500CF0238 /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B9812556A8C500CF0238 /* DishViewController.swift */; };
+		2A15B9842556A8C500CF0238 /* DishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A15B9822556A8C500CF0238 /* DishViewController.xib */; };
 		2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A280C76255398BF005EDDDC /* ListRestaurentViewController.swift */; };
 		2A280C79255398BF005EDDDC /* ListRestaurentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A280C77255398BF005EDDDC /* ListRestaurentViewController.xib */; };
 		2A280C8325539965005EDDDC /* ListRestaurentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A280C8125539965005EDDDC /* ListRestaurentTableViewCell.swift */; };
@@ -34,6 +38,12 @@
 		2A3C637B2552E1B800996077 /* TypeRestaurentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63792552E1B800996077 /* TypeRestaurentCollectionViewCell.swift */; };
 		2A3C637C2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C637A2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib */; };
 		2A3C63822552E37400996077 /* InfoRestaurentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63812552E37400996077 /* InfoRestaurentModel.swift */; };
+		2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E134255645CF00C1647F /* RestaurentHomeViewController.swift */; };
+		2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E135255645CF00C1647F /* RestaurentHomeViewController.xib */; };
+		2A86E14125564B4200C1647F /* RestaurentCatagoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E13F25564B4200C1647F /* RestaurentCatagoryTableViewCell.swift */; };
+		2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */; };
+		2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */; };
+		2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticallViewController.swift; sourceTree = "<group>"; };
+		2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticallViewController.xib; sourceTree = "<group>"; };
+		2A15B9812556A8C500CF0238 /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		2A15B9822556A8C500CF0238 /* DishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishViewController.xib; sourceTree = "<group>"; };
 		2A280C76255398BF005EDDDC /* ListRestaurentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRestaurentViewController.swift; sourceTree = "<group>"; };
 		2A280C77255398BF005EDDDC /* ListRestaurentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListRestaurentViewController.xib; sourceTree = "<group>"; };
 		2A280C8125539965005EDDDC /* ListRestaurentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRestaurentTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +101,12 @@
 		2A3C63792552E1B800996077 /* TypeRestaurentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRestaurentCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A3C637A2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeRestaurentCollectionViewCell.xib; sourceTree = "<group>"; };
 		2A3C63812552E37400996077 /* InfoRestaurentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRestaurentModel.swift; sourceTree = "<group>"; };
+		2A86E134255645CF00C1647F /* RestaurentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentHomeViewController.swift; sourceTree = "<group>"; };
+		2A86E135255645CF00C1647F /* RestaurentHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentHomeViewController.xib; sourceTree = "<group>"; };
+		2A86E13F25564B4200C1647F /* RestaurentCatagoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentCatagoryTableViewCell.swift; sourceTree = "<group>"; };
+		2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentCatagoryTableViewCell.xib; sourceTree = "<group>"; };
+		2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
+		2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCatagoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +134,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A15B97F2556A87F00CF0238 /* Dish */ = {
+			isa = PBXGroup;
+			children = (
+				2A15B9802556A8AD00CF0238 /* ViewController */,
+			);
+			path = Dish;
+			sourceTree = "<group>";
+		};
+		2A15B9802556A8AD00CF0238 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A15B9812556A8C500CF0238 /* DishViewController.swift */,
+				2A15B9822556A8C500CF0238 /* DishViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2A280C7425539888005EDDDC /* ListRestaurent */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +287,7 @@
 		2A3C634B2552CFF100996077 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				2A86E1312556456900C1647F /* Restaurent */,
 				2A3C63682552DC0C00996077 /* Admin */,
 				2A3C634C2552CFFA00996077 /* Account */,
 			);
@@ -343,6 +381,62 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2A86E1312556456900C1647F /* Restaurent */ = {
+			isa = PBXGroup;
+			children = (
+				2A15B97F2556A87F00CF0238 /* Dish */,
+				2A86E1492556531900C1647F /* PopView */,
+				2A86E1322556457F00C1647F /* Home */,
+			);
+			path = Restaurent;
+			sourceTree = "<group>";
+		};
+		2A86E1322556457F00C1647F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2A86E13E25564AF800C1647F /* View */,
+				2A86E1332556459100C1647F /* ViewController */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2A86E1332556459100C1647F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A86E134255645CF00C1647F /* RestaurentHomeViewController.swift */,
+				2A86E135255645CF00C1647F /* RestaurentHomeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2A86E13E25564AF800C1647F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A86E13F25564B4200C1647F /* RestaurentCatagoryTableViewCell.swift */,
+				2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A86E1492556531900C1647F /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				2A86E14A2556535F00C1647F /* ViewController */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		2A86E14A2556535F00C1647F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */,
+				2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */,
+				2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */,
+				2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,15 +545,20 @@
 				2A3C63222552CF8D00996077 /* LaunchScreen.storyboard in Resources */,
 				2A3C637C2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib in Resources */,
 				2A280CBB2553AE88005EDDDC /* PopAddPromoViewController.xib in Resources */,
+				2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */,
 				2A280CAF2553AADE005EDDDC /* PopSaveRestaurentViewController.xib in Resources */,
 				2A3C63532552D1CC00996077 /* SignInViewController.xib in Resources */,
 				2A3C63612552D81B00996077 /* SignUpViewController.xib in Resources */,
 				2A280C8425539965005EDDDC /* ListRestaurentTableViewCell.xib in Resources */,
+				2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */,
 				2A280CA22553A465005EDDDC /* PromosTableViewCell.xib in Resources */,
 				2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */,
+				2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */,
 				2A3C636E2552DC4D00996077 /* AdminHomeViewController.xib in Resources */,
 				2A280C982553A0EC005EDDDC /* DetailsRestaurentViewController.xib in Resources */,
 				2A280C79255398BF005EDDDC /* ListRestaurentViewController.xib in Resources */,
+				2A15B9782556A2A700CF0238 /* StatisticallViewController.xib in Resources */,
+				2A15B9842556A8C500CF0238 /* DishViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +585,8 @@
 			files = (
 				2A280CBA2553AE88005EDDDC /* PopAddPromoViewController.swift in Sources */,
 				2A3C63162552CF8C00996077 /* AppDelegate.swift in Sources */,
+				2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */,
+				2A86E14125564B4200C1647F /* RestaurentCatagoryTableViewCell.swift in Sources */,
 				2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */,
 				2A280CAE2553AADE005EDDDC /* PopSaveRestaurentViewController.swift in Sources */,
 				2A3C637B2552E1B800996077 /* TypeRestaurentCollectionViewCell.swift in Sources */,
@@ -494,9 +595,12 @@
 				2A3C63182552CF8C00996077 /* SceneDelegate.swift in Sources */,
 				2A280CA12553A465005EDDDC /* PromosTableViewCell.swift in Sources */,
 				2A280C972553A0EC005EDDDC /* DetailsRestaurentViewController.swift in Sources */,
+				2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */,
 				2A3C63602552D81B00996077 /* SignUpViewController.swift in Sources */,
+				2A15B9832556A8C500CF0238 /* DishViewController.swift in Sources */,
 				2A3C63522552D1CC00996077 /* SignInViewController.swift in Sources */,
 				2A3C636D2552DC4D00996077 /* AdminHomeViewController.swift in Sources */,
+				2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
