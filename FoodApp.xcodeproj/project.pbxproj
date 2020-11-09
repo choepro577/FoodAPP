@@ -38,6 +38,14 @@
 		2A3C637B2552E1B800996077 /* TypeRestaurentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63792552E1B800996077 /* TypeRestaurentCollectionViewCell.swift */; };
 		2A3C637C2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C637A2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib */; };
 		2A3C63822552E37400996077 /* InfoRestaurentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63812552E37400996077 /* InfoRestaurentModel.swift */; };
+		2A78784E2559733C00EE7391 /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78784C2559733C00EE7391 /* DishTableViewCell.swift */; };
+		2A78784F2559733C00EE7391 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A78784D2559733C00EE7391 /* DishTableViewCell.xib */; };
+		2A78785825597A1200EE7391 /* AddDishsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78785625597A1200EE7391 /* AddDishsViewController.swift */; };
+		2A78785925597A1200EE7391 /* AddDishsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A78785725597A1200EE7391 /* AddDishsViewController.xib */; };
+		2A78785F25597F6C00EE7391 /* StatusDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78785D25597F6C00EE7391 /* StatusDishViewController.swift */; };
+		2A78786025597F6C00EE7391 /* StatusDishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */; };
+		2A78786925598D6600EE7391 /* UsersHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78786725598D6600EE7391 /* UsersHomeViewController.swift */; };
+		2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A78786825598D6600EE7391 /* UsersHomeViewController.xib */; };
 		2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E134255645CF00C1647F /* RestaurentHomeViewController.swift */; };
 		2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E135255645CF00C1647F /* RestaurentHomeViewController.xib */; };
 		2A86E14125564B4200C1647F /* RestaurentCatagoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E13F25564B4200C1647F /* RestaurentCatagoryTableViewCell.swift */; };
@@ -101,6 +109,14 @@
 		2A3C63792552E1B800996077 /* TypeRestaurentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRestaurentCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A3C637A2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeRestaurentCollectionViewCell.xib; sourceTree = "<group>"; };
 		2A3C63812552E37400996077 /* InfoRestaurentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRestaurentModel.swift; sourceTree = "<group>"; };
+		2A78784C2559733C00EE7391 /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
+		2A78784D2559733C00EE7391 /* DishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
+		2A78785625597A1200EE7391 /* AddDishsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishsViewController.swift; sourceTree = "<group>"; };
+		2A78785725597A1200EE7391 /* AddDishsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDishsViewController.xib; sourceTree = "<group>"; };
+		2A78785D25597F6C00EE7391 /* StatusDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDishViewController.swift; sourceTree = "<group>"; };
+		2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusDishViewController.xib; sourceTree = "<group>"; };
+		2A78786725598D6600EE7391 /* UsersHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersHomeViewController.swift; sourceTree = "<group>"; };
+		2A78786825598D6600EE7391 /* UsersHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersHomeViewController.xib; sourceTree = "<group>"; };
 		2A86E134255645CF00C1647F /* RestaurentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentHomeViewController.swift; sourceTree = "<group>"; };
 		2A86E135255645CF00C1647F /* RestaurentHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentHomeViewController.xib; sourceTree = "<group>"; };
 		2A86E13F25564B4200C1647F /* RestaurentCatagoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentCatagoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,6 +153,7 @@
 		2A15B97F2556A87F00CF0238 /* Dish */ = {
 			isa = PBXGroup;
 			children = (
+				2A78784B255972F900EE7391 /* View */,
 				2A15B9802556A8AD00CF0238 /* ViewController */,
 			);
 			path = Dish;
@@ -287,6 +304,7 @@
 		2A3C634B2552CFF100996077 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				2A78786425598CEC00EE7391 /* Users */,
 				2A86E1312556456900C1647F /* Restaurent */,
 				2A3C63682552DC0C00996077 /* Admin */,
 				2A3C634C2552CFFA00996077 /* Account */,
@@ -383,6 +401,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2A78784B255972F900EE7391 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A78784C2559733C00EE7391 /* DishTableViewCell.swift */,
+				2A78784D2559733C00EE7391 /* DishTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A78786425598CEC00EE7391 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				2A78786525598CF600EE7391 /* Home */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		2A78786525598CF600EE7391 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2A78786625598CFC00EE7391 /* ViewController */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2A78786625598CFC00EE7391 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A78786725598D6600EE7391 /* UsersHomeViewController.swift */,
+				2A78786825598D6600EE7391 /* UsersHomeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2A86E1312556456900C1647F /* Restaurent */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +487,10 @@
 				2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */,
 				2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */,
 				2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */,
+				2A78785625597A1200EE7391 /* AddDishsViewController.swift */,
+				2A78785725597A1200EE7391 /* AddDishsViewController.xib */,
+				2A78785D25597F6C00EE7391 /* StatusDishViewController.swift */,
+				2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -543,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3C63222552CF8D00996077 /* LaunchScreen.storyboard in Resources */,
+				2A78785925597A1200EE7391 /* AddDishsViewController.xib in Resources */,
 				2A3C637C2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib in Resources */,
 				2A280CBB2553AE88005EDDDC /* PopAddPromoViewController.xib in Resources */,
 				2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */,
@@ -551,8 +608,11 @@
 				2A3C63612552D81B00996077 /* SignUpViewController.xib in Resources */,
 				2A280C8425539965005EDDDC /* ListRestaurentTableViewCell.xib in Resources */,
 				2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */,
+				2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */,
 				2A280CA22553A465005EDDDC /* PromosTableViewCell.xib in Resources */,
 				2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */,
+				2A78786025597F6C00EE7391 /* StatusDishViewController.xib in Resources */,
+				2A78784F2559733C00EE7391 /* DishTableViewCell.xib in Resources */,
 				2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */,
 				2A3C636E2552DC4D00996077 /* AdminHomeViewController.xib in Resources */,
 				2A280C982553A0EC005EDDDC /* DetailsRestaurentViewController.xib in Resources */,
@@ -583,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A78786925598D6600EE7391 /* UsersHomeViewController.swift in Sources */,
 				2A280CBA2553AE88005EDDDC /* PopAddPromoViewController.swift in Sources */,
 				2A3C63162552CF8C00996077 /* AppDelegate.swift in Sources */,
 				2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */,
@@ -593,6 +654,7 @@
 				2A3C63822552E37400996077 /* InfoRestaurentModel.swift in Sources */,
 				2A280C8325539965005EDDDC /* ListRestaurentTableViewCell.swift in Sources */,
 				2A3C63182552CF8C00996077 /* SceneDelegate.swift in Sources */,
+				2A78784E2559733C00EE7391 /* DishTableViewCell.swift in Sources */,
 				2A280CA12553A465005EDDDC /* PromosTableViewCell.swift in Sources */,
 				2A280C972553A0EC005EDDDC /* DetailsRestaurentViewController.swift in Sources */,
 				2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */,
@@ -600,6 +662,8 @@
 				2A15B9832556A8C500CF0238 /* DishViewController.swift in Sources */,
 				2A3C63522552D1CC00996077 /* SignInViewController.swift in Sources */,
 				2A3C636D2552DC4D00996077 /* AdminHomeViewController.swift in Sources */,
+				2A78785F25597F6C00EE7391 /* StatusDishViewController.swift in Sources */,
+				2A78785825597A1200EE7391 /* AddDishsViewController.swift in Sources */,
 				2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

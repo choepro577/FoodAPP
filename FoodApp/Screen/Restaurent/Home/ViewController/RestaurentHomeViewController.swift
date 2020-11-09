@@ -53,6 +53,11 @@ extension RestaurentHomeViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DishViewController()
+        self.present(vc, animated: true)
+    }
+    
 }
 
 extension RestaurentHomeViewController: UITableViewDataSource {
