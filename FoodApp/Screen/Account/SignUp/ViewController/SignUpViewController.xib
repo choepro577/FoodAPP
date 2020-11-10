@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="AJK-LB-OVA" id="MFO-dq-Nbv"/>
+                <outlet property="passwordTextField" destination="yK1-uA-PVh" id="iLN-WF-bf3"/>
+                <outlet property="signUpView" destination="SYS-bQ-BtV" id="EXC-OF-y8Y"/>
                 <outlet property="view" destination="PTl-ZH-E0e" id="T6F-Bj-zYR"/>
             </connections>
         </placeholder>
@@ -52,11 +56,11 @@
                     <color key="textColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYS-bQ-BtV">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYS-bQ-BtV" userLabel="SignUpView">
                     <rect key="frame" x="90" y="416" width="234" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfY-G7-OCF">
-                            <rect key="frame" x="89.5" y="10" width="55.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfY-G7-OCF">
+                            <rect key="frame" x="85.5" y="10" width="63.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" red="0.97647327179999999" green="0.97647052999999995" blue="0.97646230460000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>

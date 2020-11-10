@@ -8,6 +8,7 @@
 import UIKit
 
 class TypeRestaurentCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var restaurentImage: UIImageView!
     
     override func awakeFromNib() {

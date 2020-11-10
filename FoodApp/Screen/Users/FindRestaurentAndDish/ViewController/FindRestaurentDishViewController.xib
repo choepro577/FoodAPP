@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FindRestaurentDishViewController" customModule="FoodApp" customModuleProvider="target">
+            <connections>
+                <outlet property="dishAndRestaurentSearchBar" destination="5rD-q0-1wn" id="76j-zG-BQ5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5rD-q0-1wn">
+                    <rect key="frame" x="0.0" y="44" width="349" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oe-0E-WXy">
+                    <rect key="frame" x="349" y="52" width="55" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="TDD-Kb-L5g"/>
+                        <constraint firstAttribute="width" constant="55" id="q0v-Ga-lnS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelActionButton:" destination="-1" eventType="touchUpInside" id="Wkp-kX-ess"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="2oe-0E-WXy" firstAttribute="leading" secondItem="5rD-q0-1wn" secondAttribute="trailing" id="D9X-8l-aR3"/>
+                <constraint firstItem="2oe-0E-WXy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-10" id="glM-ue-3hL"/>
+                <constraint firstItem="5rD-q0-1wn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="imi-oq-KC5"/>
+                <constraint firstItem="2oe-0E-WXy" firstAttribute="centerY" secondItem="5rD-q0-1wn" secondAttribute="centerY" id="nr1-F8-xfw"/>
+                <constraint firstItem="5rD-q0-1wn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zIk-aj-xCv"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

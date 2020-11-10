@@ -14,13 +14,16 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        setUpAction()
     }
 
     func setUpUI() {
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
         let underlineAttributedString = NSAttributedString(string: "Forgot your password?", attributes: underlineAttribute)
         forgotPassWordLabel.attributedText = underlineAttributedString
-        
+    }
+    
+    func setUpAction() {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.checkAccount))
         self.signInView.addGestureRecognizer(gesture)
     }
