@@ -66,6 +66,7 @@
 		2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */; };
 		2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */; };
 		2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */; };
+		2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB43472255BBE42003D9DA4 /* UserModel.swift */; };
 		5C744FD04A7C29E46D5045F8 /* Pods_FoodApp_FoodAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4E73176A3B0C66FDF5BCDC /* Pods_FoodApp_FoodAppUITests.framework */; };
 		B123625ED13BB99CD56425F1 /* Pods_FoodAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B4C9D9656A1B5858EF4910 /* Pods_FoodAppTests.framework */; };
 		D4A1F5DB91C9C9B871B86D0F /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D114FEF414314563CF0E6 /* Pods_FoodApp.framework */; };
@@ -156,6 +157,7 @@
 		2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentCatagoryTableViewCell.xib; sourceTree = "<group>"; };
 		2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCatagoryViewController.xib; sourceTree = "<group>"; };
+		2AB43472255BBE42003D9DA4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5547B312FD4CA74D65EBAC54 /* Pods-FoodApp-FoodAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp-FoodAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4496086233536BD81A215B1 /* Pods-FoodApp-FoodAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp-FoodAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AAB1C1CC3215982EB02E9FBB /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 		2A3C634D2552D19100996077 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				2AB43471255BBE2A003D9DA4 /* Model */,
 				2A3C634F2552D1A500996077 /* ViewController */,
 			);
 			path = SignIn;
@@ -624,6 +627,14 @@
 				2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2AB43471255BBE2A003D9DA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2AB43472255BBE42003D9DA4 /* UserModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		57A0DB5F2176A9A0D1FFE541 /* Pods */ = {
@@ -940,6 +951,7 @@
 				2A78785F25597F6C00EE7391 /* StatusDishViewController.swift in Sources */,
 				2A78785825597A1200EE7391 /* AddDishsViewController.swift in Sources */,
 				2A340034255A757F0059418E /* DetailUserViewController.swift in Sources */,
+				2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */,
 				2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
