@@ -34,28 +34,29 @@ class SignInViewController: UIViewController {
     }
     
     @objc func checkAccount(sender : UITapGestureRecognizer) {
-        SVProgressHUD.show()
+        
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         FirebaseManager.shared.signIn(email: email, pass: password) {[weak self] (success, error) in
             guard let `self` = self else { return }
             var message: String = ""
             if (success) {
+                SVProgressHUD.show()
                 if Auth.auth().currentUser != nil {
                     guard let uid = Auth.auth().currentUser?.uid else { return }
-                    Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+                    Database.database().reference().child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
                         guard let dict = snapshot.value as? [String: Any] else { return }
                         let user = CurrentUser (uid: uid, dictionary: dict)
-                        if user.permission == "1" {
+                        if user.rule == "Admin" {
                             let vc = AdminHomeViewController()
                             self.navigationController?.pushViewController(vc, animated: true)
                             SVProgressHUD.dismiss()
                         }
-                        if user.permission == "2" {
+                        if user.rule == "Restaurant" {
                             let vc = RestaurentHomeViewController()
                             self.navigationController?.pushViewController(vc, animated: true)
                             SVProgressHUD.dismiss()
                         }
-                        if user.permission == "3" {
+                        if user.rule == "User" {
                             let vc = UsersHomeViewController()
                             self.navigationController?.pushViewController(vc, animated: true)
                             SVProgressHUD.dismiss()

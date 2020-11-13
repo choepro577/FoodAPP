@@ -11,11 +11,11 @@ import Foundation
 struct CurrentUser {
     let uid: String
     let name: String
-    let permission: String
+    let rule: String
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
         self.name = dictionary["name"] as? String ?? ""
-        self.permission = dictionary["permission"] as? String ?? ""
+        self.rule = dictionary["rule"] as? String ?? ""
     }
 }

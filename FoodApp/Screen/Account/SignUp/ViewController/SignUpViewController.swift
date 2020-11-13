@@ -10,14 +10,15 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var rolePickerView: UIPickerView!
+    @IBOutlet weak var ruleTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpView: UIView!
     
-    let listChoose: [String] = ["User",
-                                "Restaurent"]
+    var pickerView = UIPickerView()
+    let listChooserule: [String] = ["User",
+                                    "Restaurant"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,31 +32,41 @@ class SignUpViewController: UIViewController {
     }
     
     func setUpPickerView() {
-        rolePickerView.delegate = self
-        rolePickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        ruleTextField.inputView = pickerView
+        ruleTextField.placeholder = "Select rule"
+        ruleTextField.textAlignment = .center
+    }
+    
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func creatAccount(sender : UITapGestureRecognizer) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            FirebaseManager.shared.createUser(email: email, password: password) {[weak self] (success, error, user)  in
-                guard let `self` = self else { return }
-                var message: String = ""
-                if (success) {
-                    let ref = FirebaseDatabase.Database.database().reference()
-                    let usersReference = ref.child("users")
-                    guard let user = user else { return }
-                    let uid = user.uid
-                    let newUsersReference = usersReference.child(uid)
-                    newUsersReference.setValue(["username": self.nameTextField.text, "email": self.emailTextField.text])
-                    message = "User was sucessfully created."
-                } else {
-                    guard let error = error else { return }
-                    message = "\(error.localizedDescription)"
-                }
-                let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+        guard let email = emailTextField.text, let password = passwordTextField.text,  let username = nameTextField.text, let rule = ruleTextField.text, !email.isEmpty, !password.isEmpty, !username.isEmpty, !rule.isEmpty else {
+            showAlert("Error", "Please enter your full infomation")
+            return
+        }
+        FirebaseManager.shared.createUser(email: email, password: password) {[weak self] (success, error, user)  in
+            guard let `self` = self else { return }
+            var message: String = ""
+            if (success) {
+                let ref = FirebaseDatabase.Database.database().reference()
+                let usersReference = ref.child("admin").child("allUser")
+                guard let user = user else { return }
+                let uid = user.uid
+                let newUsersReference = usersReference.child(uid)
+                newUsersReference.setValue(["username": self.nameTextField.text, "email": self.emailTextField.text, "rule": self.ruleTextField.text])
+                message = "User was sucessfully created."
+            } else {
+                guard let error = error else { return }
+                message = "\(error.localizedDescription)"
             }
+            self.showAlert("Notification", "\(message)")
         }
     }
 }
@@ -66,15 +77,20 @@ extension SignUpViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        listChoose.count
+        listChooserule.count
     }
-
+    
 }
 
 extension SignUpViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listChoose[row]
+        return listChooserule[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        ruleTextField.text = listChooserule[row]
+        ruleTextField.resignFirstResponder()
     }
     
 }
