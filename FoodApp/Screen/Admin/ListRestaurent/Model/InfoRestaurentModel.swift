@@ -7,15 +7,17 @@
 
 import Foundation
 
-class InfoRestaurent {
-    var image: String
-    var name: String
-    var title: String
-    var address: String
-    init(image: String, name: String, title: String, address: String) {
-        self.image = image
-        self.name = name
-        self.title = name
-        self.address = address
+struct InfoRestaurant {
+    let uid: String
+    let imageLink: String
+    let name: String
+    let title: String
+    let address: String
+    init(uid: String, dictionary: [String: Any]) {
+        self.uid = uid
+        self.imageLink = dictionary["imageLink"] as? String ?? ""
+        self.name = dictionary["name"] as? String ?? ""
+        self.title = dictionary["title"] as? String ?? ""
+        self.address = dictionary["address"] as? String ?? ""
     }
 }

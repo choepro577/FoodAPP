@@ -9,6 +9,7 @@ import UIKit
 
 class RestaurentHomeViewController: UIViewController {
     
+    @IBOutlet weak var infomationRestaurantView: UIView!
     @IBOutlet weak var restaurentCatagoryTableViewCell: UITableView!
     @IBOutlet weak var catagoryView: UIView!
     
@@ -28,6 +29,14 @@ class RestaurentHomeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.addRestaurent))
         self.catagoryView.addGestureRecognizer(gesture)
+        
+        let infomationRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.setUpFullInfoRestaurant))
+        self.infomationRestaurantView.addGestureRecognizer(infomationRestaurantGesture)
+    }
+    
+    @objc func setUpFullInfoRestaurant(sender : UITapGestureRecognizer) {
+        let vc = AddInfoRestaurantViewController()
+        self.present(vc, animated: true)
     }
     
     @objc func addRestaurent(sender : UITapGestureRecognizer) {

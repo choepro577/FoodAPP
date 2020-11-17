@@ -6,19 +6,33 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ListRestaurentViewController: UIViewController {
 
     @IBOutlet weak var restaurentSearchBar: UISearchBar!
     @IBOutlet weak var listRestaurentTableView: UITableView!
+    
+    var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoadRestaurants()
         setUpRestaurentTableView()
         setUpUI()
     }
-
+    
+    func LoadRestaurants() {
+        FirebaseManager.shared.getListRestaunt() { (InfoRestaurent) in
+            self.listRestaurant = InfoRestaurent
+            DispatchQueue.main.async {
+                self.listRestaurentTableView.reloadData()
+            }
+        }
+        
+    }
+    
     func setUpRestaurentTableView() {
         listRestaurentTableView.delegate = self
         listRestaurentTableView.dataSource = self
@@ -63,11 +77,15 @@ extension ListRestaurentViewController: UITableViewDelegate {
 extension ListRestaurentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return listRestaurant.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? ListRestaurentTableViewCell else { return ListRestaurentTableViewCell() }
+        cell.setUpInfoCell(infoRestaurant: listRestaurant[indexPath.row])
+        let resource = ImageResource(downloadURL: URL(string: listRestaurant[indexPath.row].imageLink)!, cacheKey: listRestaurant[indexPath.row].imageLink)
+        cell.imageRestaurant.kf.setImage(with: resource)
+        print(listRestaurant)
         return cell
     }
     

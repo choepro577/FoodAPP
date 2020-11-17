@@ -10,7 +10,9 @@ target 'FoodApp' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
+	pod 'Firebase/Storage'
 	pod 'SVProgressHUD'
+	pod 'Kingfisher', '~> 4.0'
 
   target 'FoodAppTests' do
     inherit! :search_paths

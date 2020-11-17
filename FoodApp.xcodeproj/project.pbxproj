@@ -67,6 +67,8 @@
 		2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */; };
 		2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */; };
 		2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB43472255BBE42003D9DA4 /* UserModel.swift */; };
+		2ADA49762563C4B500AA85DA /* AddInfoRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */; };
+		2ADA49772563C4B500AA85DA /* AddInfoRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */; };
 		5C744FD04A7C29E46D5045F8 /* Pods_FoodApp_FoodAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4E73176A3B0C66FDF5BCDC /* Pods_FoodApp_FoodAppUITests.framework */; };
 		B123625ED13BB99CD56425F1 /* Pods_FoodAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B4C9D9656A1B5858EF4910 /* Pods_FoodAppTests.framework */; };
 		D4A1F5DB91C9C9B871B86D0F /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D114FEF414314563CF0E6 /* Pods_FoodApp.framework */; };
@@ -158,6 +160,9 @@
 		2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCatagoryViewController.xib; sourceTree = "<group>"; };
 		2AB43472255BBE42003D9DA4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2ADA49702563B59C00AA85DA /* FoodApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodApp.entitlements; sourceTree = "<group>"; };
+		2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoRestaurantViewController.swift; sourceTree = "<group>"; };
+		2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInfoRestaurantViewController.xib; sourceTree = "<group>"; };
 		5547B312FD4CA74D65EBAC54 /* Pods-FoodApp-FoodAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp-FoodAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4496086233536BD81A215B1 /* Pods-FoodApp-FoodAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp-FoodAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AAB1C1CC3215982EB02E9FBB /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +405,7 @@
 		2A3C63142552CF8C00996077 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				2ADA49702563B59C00AA85DA /* FoodApp.entitlements */,
 				2A34007D255A9B6D0059418E /* FireBaseManager */,
 				2A340056255A897B0059418E /* GoogleService-Info.plist */,
 				2A3C634B2552CFF100996077 /* Screen */,
@@ -625,6 +631,8 @@
 				2A78785725597A1200EE7391 /* AddDishsViewController.xib */,
 				2A78785D25597F6C00EE7391 /* StatusDishViewController.swift */,
 				2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */,
+				2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */,
+				2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -785,6 +793,7 @@
 				2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */,
 				2A280CA22553A465005EDDDC /* PromosTableViewCell.xib in Resources */,
 				2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */,
+				2ADA49772563C4B500AA85DA /* AddInfoRestaurantViewController.xib in Resources */,
 				2A78786025597F6C00EE7391 /* StatusDishViewController.xib in Resources */,
 				2A340015255A43560059418E /* RestaurentsTableViewCell.xib in Resources */,
 				2A78784F2559733C00EE7391 /* DishTableViewCell.xib in Resources */,
@@ -944,6 +953,7 @@
 				2A340014255A43560059418E /* RestaurentsTableViewCell.swift in Sources */,
 				2A340080255A9BB50059418E /* FirebaseManager.swift in Sources */,
 				2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */,
+				2ADA49762563C4B500AA85DA /* AddInfoRestaurantViewController.swift in Sources */,
 				2A3C63602552D81B00996077 /* SignUpViewController.swift in Sources */,
 				2A15B9832556A8C500CF0238 /* DishViewController.swift in Sources */,
 				2A3C63522552D1CC00996077 /* SignInViewController.swift in Sources */,
@@ -1121,6 +1131,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodApp/FoodApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HJXQ99M5K4;
 				INFOPLIST_FILE = FoodApp/Info.plist;
@@ -1142,6 +1153,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodApp/FoodApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HJXQ99M5K4;
 				INFOPLIST_FILE = FoodApp/Info.plist;
