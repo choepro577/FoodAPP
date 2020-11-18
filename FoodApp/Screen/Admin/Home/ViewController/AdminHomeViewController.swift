@@ -10,7 +10,7 @@ import UIKit
 class AdminHomeViewController: UIViewController {
    
     @IBOutlet weak var typeRestaurentCollectionView: UICollectionView!
-    let typeRestaurentImage: [String] = ["restaurant","ice-tea","noodles","fried-chicken","diet","popcorn"]
+    let typeRestaurentImage: [String] = ["ricerestaurant","milktea","noodles","friedchicken","healthy","snacks"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,7 @@ extension AdminHomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = ListRestaurentViewController()
+        vc.LoadRestaurants(typeRestaurant: typeRestaurentImage[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -70,20 +70,20 @@ class PopSaveRestaurentViewController: UIViewController {
     }
     
     @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {
-        guard let name = nameRestaurantTextField.text, let title = titleRestaurentTextField.text,  let address = addressTextField.text,!name.isEmpty, !title.isEmpty, !address.isEmpty else {
-            showAlert("Error", "Please enter your full infomation")
-            return
-        }
-        FirebaseManager.shared.addRestaurant(name: name, title: title, address: address, imageLink: "hongco") { (success, error)  in
-            var message: String = ""
-            if (success) {
-                message = "added successfully"
-                self.showAlert("Notification", message)
-            } else {
-                guard let error = error else { return }
-                message = "\(error.localizedDescription)"
-            }
-        }
+//        guard let name = nameRestaurantTextField.text, let title = titleRestaurentTextField.text,  let address = addressTextField.text,!name.isEmpty, !title.isEmpty, !address.isEmpty else {
+//            showAlert("Error", "Please enter your full infomation")
+//            return
+//        }
+//        FirebaseManager.shared.addRestaurant(name: name, title: title, address: address, imageLink: "hongco", typeRestaurant: <#T##String#>) { (success, error)  in
+//            var message: String = ""
+//            if (success) {
+//                message = "added successfully"
+//                self.showAlert("Notification", message)
+//            } else {
+//                guard let error = error else { return }
+//                message = "\(error.localizedDescription)"
+//            }
+//        }
     }
 }
 

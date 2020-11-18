@@ -17,8 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpView: UIView!
     
     var pickerView = UIPickerView()
-    let listChooserule: [String] = ["User",
-                                    "Restaurant"]
+    let listChooserule: [String] = ["user", "restaurant"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,7 @@ class SignUpViewController: UIViewController {
                 guard let user = user else { return }
                 let uid = user.uid
                 let newUsersReference = usersReference.child(uid)
-                newUsersReference.setValue(["username": self.nameTextField.text, "email": self.emailTextField.text, "rule": self.ruleTextField.text])
+                newUsersReference.setValue(["username": username, "email": email, "rule": rule, "typeRestaurant": rule])
                 message = "User was sucessfully created."
             } else {
                 guard let error = error else { return }

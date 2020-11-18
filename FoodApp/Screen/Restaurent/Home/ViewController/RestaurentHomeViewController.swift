@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RestaurentHomeViewController: UIViewController {
     
+    @IBOutlet weak var addressRestaurantLabel: UILabel!
+    @IBOutlet weak var titleRestaurantLabel: UILabel!
+    @IBOutlet weak var nameRestaurantLabel: UILabel!
+    @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var infomationRestaurantView: UIView!
     @IBOutlet weak var restaurentCatagoryTableViewCell: UITableView!
     @IBOutlet weak var catagoryView: UIView!
+    
+    var listRestaurant: InfoRestaurant?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +39,21 @@ class RestaurentHomeViewController: UIViewController {
         
         let infomationRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.setUpFullInfoRestaurant))
         self.infomationRestaurantView.addGestureRecognizer(infomationRestaurantGesture)
+        getInfoRestaurant()
+    }
+    
+    func getInfoRestaurant() {
+        FirebaseManager.shared.getInfoRestaurant() { (infoResutl) in
+            self.listRestaurant = infoResutl
+            print(infoResutl)
+            guard let listRestaurant = self.listRestaurant else { return }
+            let resource = ImageResource(downloadURL: URL(string: listRestaurant.imageLink)!, cacheKey: listRestaurant.imageLink)
+            print(resource)
+            self.restaurantImageView.kf.setImage(with: resource)
+            self.nameRestaurantLabel.text = listRestaurant.name
+            self.titleRestaurantLabel.text = listRestaurant.title
+            self.addressRestaurantLabel.text = listRestaurant.address
+        }
     }
     
     @objc func setUpFullInfoRestaurant(sender : UITapGestureRecognizer) {

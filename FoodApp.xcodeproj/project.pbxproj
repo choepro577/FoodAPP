@@ -66,6 +66,7 @@
 		2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */; };
 		2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */; };
 		2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */; };
+		2AB3123C2564D33800A9824E /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3123B2564D33800A9824E /* ExtensionString.swift */; };
 		2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB43472255BBE42003D9DA4 /* UserModel.swift */; };
 		2ADA49762563C4B500AA85DA /* AddInfoRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */; };
 		2ADA49772563C4B500AA85DA /* AddInfoRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */; };
@@ -159,6 +160,7 @@
 		2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentCatagoryTableViewCell.xib; sourceTree = "<group>"; };
 		2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCatagoryViewController.xib; sourceTree = "<group>"; };
+		2AB3123B2564D33800A9824E /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		2AB43472255BBE42003D9DA4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2ADA49702563B59C00AA85DA /* FoodApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodApp.entitlements; sourceTree = "<group>"; };
 		2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 		2A34007D255A9B6D0059418E /* FireBaseManager */ = {
 			isa = PBXGroup;
 			children = (
+				2A340056255A897B0059418E /* GoogleService-Info.plist */,
 				2A34007F255A9BB50059418E /* FirebaseManager.swift */,
 			);
 			path = FireBaseManager;
@@ -405,9 +408,9 @@
 		2A3C63142552CF8C00996077 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				2AB3123A2564D31800A9824E /* Extension */,
 				2ADA49702563B59C00AA85DA /* FoodApp.entitlements */,
 				2A34007D255A9B6D0059418E /* FireBaseManager */,
-				2A340056255A897B0059418E /* GoogleService-Info.plist */,
 				2A3C634B2552CFF100996077 /* Screen */,
 				2A3C63152552CF8C00996077 /* AppDelegate.swift */,
 				2A3C63172552CF8C00996077 /* SceneDelegate.swift */,
@@ -635,6 +638,14 @@
 				2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2AB3123A2564D31800A9824E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2AB3123B2564D33800A9824E /* ExtensionString.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		2AB43471255BBE2A003D9DA4 /* Model */ = {
@@ -936,6 +947,7 @@
 				2A280CBA2553AE88005EDDDC /* PopAddPromoViewController.swift in Sources */,
 				2A3C63162552CF8C00996077 /* AppDelegate.swift in Sources */,
 				2A340029255A549A0059418E /* InfomationUserViewController.swift in Sources */,
+				2AB3123C2564D33800A9824E /* ExtensionString.swift in Sources */,
 				2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */,
 				2A86E14125564B4200C1647F /* RestaurentCatagoryTableViewCell.swift in Sources */,
 				2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */,

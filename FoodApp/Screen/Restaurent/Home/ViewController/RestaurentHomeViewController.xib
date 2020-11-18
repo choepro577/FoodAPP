@@ -10,9 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurentHomeViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
+                <outlet property="addressRestaurantLabel" destination="1EA-hm-OSu" id="3ES-B1-oHq"/>
                 <outlet property="catagoryView" destination="360-2O-cT7" id="3QB-hl-rmF"/>
                 <outlet property="infomationRestaurantView" destination="ud7-WW-liq" id="vEz-AY-R2E"/>
+                <outlet property="nameRestaurantLabel" destination="W0a-KO-jpQ" id="GeH-8f-sXc"/>
+                <outlet property="restaurantImageView" destination="EO9-br-194" id="Iai-ag-cKD"/>
                 <outlet property="restaurentCatagoryTableViewCell" destination="OFb-b9-KaP" id="o8B-N4-fHX"/>
+                <outlet property="titleRestaurantLabel" destination="qTy-xw-HGC" id="c3b-kf-ySc"/>
                 <outlet property="view" destination="CQ5-7X-rpC" id="aFI-HF-LH7"/>
             </connections>
         </placeholder>

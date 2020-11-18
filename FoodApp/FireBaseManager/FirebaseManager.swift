@@ -10,9 +10,128 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
+// MARK: FirebaseDatabase Update, Delete, Insert
+
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
+    
+    func addRestaurant(name: String, title: String, address: String, imageLink: String, typeRestaurantInput: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        let ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            let newUsersType = ref.child("admin").child("restaurant").child(typeRestaurantInput).child(uid)
+            let addInfomationRestaurant = newUsersType.child("infomation")
+            let object = ["name": name, "title": title, "addressLocation": address, "imageLink": imageLink] as [String:Any]
+            addInfomationRestaurant.setValue(object, withCompletionBlock: { error, ref in
+                if error == nil {
+                    completionBlock(true, nil)
+                    self.updateInfoUserTypeRestaurant(typeRestaurant: typeRestaurantInput) { (success, error) in
+                        if error != nil {
+                            return
+                        } else {
+                            self.deleteRestaurant(typeRestaurant: user.typeRestaurant)
+                        }
+                    }
+                } else {
+                    completionBlock(false, error)
+                }
+            })
+        })
+    }
+    
+    func deleteRestaurant(typeRestaurant: String) {
+        guard let user = Auth.auth().currentUser else { return }
+        Database.database().reference().child("admin")
+            .child("restaurant")
+            .child(typeRestaurant)
+            .child(user.uid).removeValue() { (error, _ ) in
+                if error == nil {
+                    print("deleted")
+                }
+            }
+    }
+    
+    
+    
+    func getListRestaunt(typeRestaurant: String, completionBlock: @escaping (_ infoRestaurent: [InfoRestaurant]) -> Void) {
+        Database.database().reference().child("admin").child("restaurant").child(typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
+            var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
+            let userEnumerator = usersSnapshot.children
+            while let users = userEnumerator.nextObject() as? DataSnapshot {
+                let uid = users.key
+                let todoEnumerator = users.children
+                while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                    print(todoItem)
+                    guard let dict = todoItem.value as? [String: Any] else { return }
+                    let user = InfoRestaurant(uid: uid, dictionary: dict)
+                    listRestaurant.append(user)
+                }
+            }
+            completionBlock(listRestaurant)
+        })
+    }
+    
+    func checkTypeRestaurant (completionBlock: @escaping (_ typeRestaurant: String) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("admin").child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            completionBlock(user.typeRestaurant)
+        })
+    }
+    
+    func getInfoRestaurant(completionBlock: @escaping (_ infoRestaurent: InfoRestaurant) -> Void) {
+        guard let user = Auth.auth().currentUser else { return }
+        self.checkTypeRestaurant() { (typeRestaurant) in
+            Database.database().reference().child("admin").child("restaurant").child(typeRestaurant).child(user.uid).child("infomation").observe(DataEventType.value, with: {(snapshot) in
+                guard let dict = snapshot.value as? [String: Any] else { return }
+                print(dict)
+                let info = InfoRestaurant(uid: user.uid, dictionary: dict)
+                print(info)
+                completionBlock(info)
+            })
+        }
+    }
+    
+    func updateInfoUserTypeRestaurant(typeRestaurant: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void ) {
+        guard let user = Auth.auth().currentUser else { return }
+        let object = ["typeRestaurant": typeRestaurant] as [String:Any]
+        Database.database().reference().child("admin").child("allUser").child(user.uid).updateChildValues(object, withCompletionBlock: { error, ref in
+            if error == nil {
+                completionBlock(true, nil)
+            } else {
+                completionBlock(false, error)
+            }
+        })
+    }
+    
+    func addCatagory(nameCatagory: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        
+        let ref = Database.database().reference().child("admin")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+    
+        ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            let object = ["nameCatagory": nameCatagory] as [String:Any]
+            ref.child("restaurant").child(user.typeRestaurant).child(uid).child("catagory").setValue(object, withCompletionBlock: { error, ref in
+                if error == nil {
+                    completionBlock(true, nil)
+                } else {
+                    completionBlock(false, error)
+                }
+            })
+        })
+    }
+    
+    
+}
+
+// MARK: FirebaseAuth
+extension FirebaseManager {
     
     func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool, _ error: Error?, _ user: User?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
@@ -36,41 +155,12 @@ class FirebaseManager {
         }
     }
     
-    func addRestaurant(name: String, title: String, address: String, imageLink: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        let ref = Database.database().reference()
-        guard let user = Auth.auth().currentUser else { return }
-        let newUsersType = ref.child("admin").child("restaurant").child(user.uid)
-        let addInfomationRestaurant = newUsersType.child("infomation")
-        let object = ["name": name, "title": title, "addressLocation": address, "imageLink": imageLink] as [String:Any]
-        addInfomationRestaurant.setValue(object, withCompletionBlock: { error, ref in
-            if error == nil {
-                completionBlock(true, nil)
-            } else {
-                completionBlock(false, error)
-            }
-        })
-    }
+}
+
+// MARK: FirebaseStorage
+extension FirebaseManager {
     
-    func getListRestaunt(completionBlock: @escaping (_ InfoRestaurent: [InfoRestaurant]) -> Void) {
-        Database.database().reference().child("admin").child("restaurant").observe(DataEventType.value, with: { (usersSnapshot) in
-            var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
-            let userEnumerator = usersSnapshot.children
-            while let users = userEnumerator.nextObject() as? DataSnapshot {
-                let uid = users.key
-                let todoEnumerator = users.children
-                while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                    print(todoItem)
-                    guard let dict = todoItem.value as? [String: Any] else { return }
-                    let user = InfoRestaurant(uid: uid, dictionary: dict)
-                    listRestaurant.append(user)
-                }
-            }
-            completionBlock(listRestaurant)
-        })
-    }
-    
-    func getImageFromFireBaseStorage(completionBlock: @escaping (_ urlImage: String) -> Void) {
-        
+    func getImageURLFromFireBaseStorage(completionBlock: @escaping (_ urlImage: String) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
         Storage.storage().reference().child("imageRestaurant").child(user.uid).child("file.png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
@@ -83,17 +173,13 @@ class FirebaseManager {
     }
     
     func uploadImagetoFireBaseStorage(imageData: Data, completionBlock: @escaping (_ urlImage: String) -> Void) {
-        
         guard let user = Auth.auth().currentUser else { return }
         Storage.storage().reference().child("imageRestaurant").child(user.uid).child("file.png").putData(imageData, metadata: nil, completion: { _, error in
             if error == nil {
                 var urlString: String?
-                self.getImageFromFireBaseStorage() { (url) in
+                self.getImageURLFromFireBaseStorage() { (url) in
                     urlString = url
                     guard let urlString = urlString else { return }
-                    let ref = Database.database().reference()
-                    let newUsersType = ref.child("admin").child("restaurant").child(user.uid).child("infomation").child("imageLink")
-                    newUsersType.setValue(urlString)
                     completionBlock(urlString)
                 }
             }

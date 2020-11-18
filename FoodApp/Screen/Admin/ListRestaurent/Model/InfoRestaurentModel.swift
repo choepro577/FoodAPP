@@ -18,6 +18,6 @@ struct InfoRestaurant {
         self.imageLink = dictionary["imageLink"] as? String ?? ""
         self.name = dictionary["name"] as? String ?? ""
         self.title = dictionary["title"] as? String ?? ""
-        self.address = dictionary["address"] as? String ?? ""
+        self.address = dictionary["addressLocation"] as? String ?? ""
     }
 }

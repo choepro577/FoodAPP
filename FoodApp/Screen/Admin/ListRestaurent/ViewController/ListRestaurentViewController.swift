@@ -18,14 +18,13 @@ class ListRestaurentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadRestaurants()
         setUpRestaurentTableView()
         setUpUI()
     }
     
-    func LoadRestaurants() {
-        FirebaseManager.shared.getListRestaunt() { (InfoRestaurent) in
-            self.listRestaurant = InfoRestaurent
+    func LoadRestaurants(typeRestaurant: String) {
+        FirebaseManager.shared.getListRestaunt(typeRestaurant: typeRestaurant) { (infoRestaurant) in
+            self.listRestaurant = infoRestaurant
             DispatchQueue.main.async {
                 self.listRestaurentTableView.reloadData()
             }
