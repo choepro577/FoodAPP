@@ -22,10 +22,9 @@ class FirebaseManager {
         ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let user = CurrentUser (uid: uid, dictionary: dict)
-            let newUsersType = ref.child("admin").child("restaurant").child(typeRestaurantInput).child(uid)
-            let addInfomationRestaurant = newUsersType.child("infomation")
+            let newUsersType = ref.child("admin").child("restaurant").child(typeRestaurantInput).child(uid).child("infomation")
             let object = ["name": name, "title": title, "addressLocation": address, "imageLink": imageLink] as [String:Any]
-            addInfomationRestaurant.setValue(object, withCompletionBlock: { error, ref in
+            newUsersType.setValue(object, withCompletionBlock: { error, ref in
                 if error == nil {
                     completionBlock(true, nil)
                     self.updateInfoUserTypeRestaurant(typeRestaurant: typeRestaurantInput) { (success, error) in
@@ -35,6 +34,24 @@ class FirebaseManager {
                             self.deleteRestaurant(typeRestaurant: user.typeRestaurant)
                         }
                     }
+                } else {
+                    completionBlock(false, error)
+                }
+            })
+        })
+    }
+    
+    func addCatagory(nameCatagory: String, imageLink: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        
+        let ref = Database.database().reference().child("admin")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            let object = ["nameCatagory": nameCatagory, "imagelink": imageLink] as [String:Any]
+            ref.child("restaurant").child(user.typeRestaurant).child(uid).child("catagory").setValue(object, withCompletionBlock: { error, ref in
+                if error == nil {
+                    completionBlock(true, nil)
                 } else {
                     completionBlock(false, error)
                 }
@@ -53,8 +70,6 @@ class FirebaseManager {
                 }
             }
     }
-    
-    
     
     func getListRestaunt(typeRestaurant: String, completionBlock: @escaping (_ infoRestaurent: [InfoRestaurant]) -> Void) {
         Database.database().reference().child("admin").child("restaurant").child(typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
@@ -108,26 +123,6 @@ class FirebaseManager {
         })
     }
     
-    func addCatagory(nameCatagory: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        
-        let ref = Database.database().reference().child("admin")
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-    
-        ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
-            guard let dict = snapshot.value as? [String: Any] else { return }
-            let user = CurrentUser (uid: uid, dictionary: dict)
-            let object = ["nameCatagory": nameCatagory] as [String:Any]
-            ref.child("restaurant").child(user.typeRestaurant).child(uid).child("catagory").setValue(object, withCompletionBlock: { error, ref in
-                if error == nil {
-                    completionBlock(true, nil)
-                } else {
-                    completionBlock(false, error)
-                }
-            })
-        })
-    }
-    
-    
 }
 
 // MARK: FirebaseAuth
@@ -160,9 +155,9 @@ extension FirebaseManager {
 // MARK: FirebaseStorage
 extension FirebaseManager {
     
-    func getImageURLFromFireBaseStorage(completionBlock: @escaping (_ urlImage: String) -> Void) {
+    func getImageURLFromFireBaseStorage(typeImage: String, completionBlock: @escaping (_ urlImage: String) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        Storage.storage().reference().child("imageRestaurant").child(user.uid).child("file.png").downloadURL(completion: { url, error in
+        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child("file.png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }
@@ -172,12 +167,12 @@ extension FirebaseManager {
         })
     }
     
-    func uploadImagetoFireBaseStorage(imageData: Data, completionBlock: @escaping (_ urlImage: String) -> Void) {
+    func uploadImagetoFireBaseStorage(imageData: Data, typeImage: String, completionBlock: @escaping (_ urlImage: String) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        Storage.storage().reference().child("imageRestaurant").child(user.uid).child("file.png").putData(imageData, metadata: nil, completion: { _, error in
+        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child("file.png").putData(imageData, metadata: nil, completion: { _, error in
             if error == nil {
                 var urlString: String?
-                self.getImageURLFromFireBaseStorage() { (url) in
+                self.getImageURLFromFireBaseStorage(typeImage: typeImage) { (url) in
                     urlString = url
                     guard let urlString = urlString else { return }
                     completionBlock(urlString)

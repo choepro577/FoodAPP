@@ -117,7 +117,7 @@ extension AddInfoRestaurantViewController: UIImagePickerControllerDelegate, UINa
         
         guard let imageData = image.pngData() else { return  }
         SVProgressHUD.show()
-        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData) { (url) in
+        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData, typeImage: "avataRestaurant") { (url) in
             self.urlImage = url
             print(url)
             guard let imageUrl = self.urlImage else { return }

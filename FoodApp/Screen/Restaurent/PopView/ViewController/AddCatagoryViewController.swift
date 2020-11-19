@@ -7,12 +7,15 @@
 
 import UIKit
 import SVProgressHUD
+import Kingfisher
 
 class AddCatagoryViewController: UIViewController {
     
     @IBOutlet weak var catagoryImageView: UIImageView!
     @IBOutlet weak var catagoryTextField: UITextField!
     @IBOutlet weak var saveCatagoryView: UIView!
+    
+    var urlImage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +40,15 @@ class AddCatagoryViewController: UIViewController {
     @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {
         
         guard let name = catagoryTextField.text,
-              !name.isEmpty
+              let imageLink = urlImage,
+              !name.isEmpty,
+              !imageLink.isEmpty
         else {
             self.showAlert("Error", "Please enter your full infomation")
             return
         }
         
-        FirebaseManager.shared.addCatagory(nameCatagory: name) { (success,error) in
+        FirebaseManager.shared.addCatagory(nameCatagory: name, imageLink: imageLink) { (success,error) in
             var message: String = ""
             if (success) {
                 message = "added successfully"
@@ -72,13 +77,13 @@ extension AddCatagoryViewController: UIImagePickerControllerDelegate, UINavigati
         
         guard let imageData = image.pngData() else { return  }
         SVProgressHUD.show()
-        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData) { (url) in
-//            self.urlImage = url
-//            print(url)
-//            guard let imageUrl = self.urlImage else { return }
-//            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
-//            self.restaurantImageView.kf.setImage(with: resource)
-//            SVProgressHUD.dismiss()
+        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData, typeImage: "imageCatagory") { (url) in
+            self.urlImage = url
+            print(url)
+            guard let imageUrl = self.urlImage else { return }
+            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
+            self.catagoryImageView.kf.setImage(with: resource)
+            SVProgressHUD.dismiss()
         }
         
         picker.dismiss(animated: true, completion: nil)
