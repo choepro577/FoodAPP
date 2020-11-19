@@ -21,3 +21,13 @@ struct InfoRestaurant {
         self.address = dictionary["addressLocation"] as? String ?? ""
     }
 }
+
+struct InfoDish {
+    let nameDish: String
+    let imageLink: String
+    
+    init(nameDish: String, dictionary: [String: Any]) {
+        self.nameDish = nameDish
+        self.imageLink = dictionary["imagelink"] as? String ?? ""
+    }
+}

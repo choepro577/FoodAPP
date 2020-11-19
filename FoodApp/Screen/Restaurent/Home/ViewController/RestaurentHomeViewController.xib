@@ -15,7 +15,7 @@
                 <outlet property="infomationRestaurantView" destination="ud7-WW-liq" id="vEz-AY-R2E"/>
                 <outlet property="nameRestaurantLabel" destination="W0a-KO-jpQ" id="GeH-8f-sXc"/>
                 <outlet property="restaurantImageView" destination="EO9-br-194" id="Iai-ag-cKD"/>
-                <outlet property="restaurentCatagoryTableViewCell" destination="OFb-b9-KaP" id="o8B-N4-fHX"/>
+                <outlet property="restaurentCatagoryTableView" destination="OFb-b9-KaP" id="vJ3-t1-FhM"/>
                 <outlet property="titleRestaurantLabel" destination="qTy-xw-HGC" id="c3b-kf-ySc"/>
                 <outlet property="view" destination="CQ5-7X-rpC" id="aFI-HF-LH7"/>
             </connections>

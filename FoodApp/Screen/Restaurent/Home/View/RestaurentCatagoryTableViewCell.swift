@@ -9,9 +9,15 @@ import UIKit
 
 class RestaurentCatagoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameDishLabel: UILabel!
+    @IBOutlet weak var dishImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setUpInfoCell(infoDish: InfoDish) {
+        nameDishLabel.text = infoDish.nameDish
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

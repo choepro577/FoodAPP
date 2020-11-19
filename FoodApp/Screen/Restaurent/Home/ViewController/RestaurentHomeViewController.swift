@@ -15,9 +15,10 @@ class RestaurentHomeViewController: UIViewController {
     @IBOutlet weak var nameRestaurantLabel: UILabel!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var infomationRestaurantView: UIView!
-    @IBOutlet weak var restaurentCatagoryTableViewCell: UITableView!
+    @IBOutlet weak var restaurentCatagoryTableView: UITableView!
     @IBOutlet weak var catagoryView: UIView!
     
+    var listDish: [InfoDish] = [InfoDish]()
     var listRestaurant: InfoRestaurant?
     
     override func viewDidLoad() {
@@ -27,9 +28,9 @@ class RestaurentHomeViewController: UIViewController {
     }
     
     func setUpTableViewCell() {
-        restaurentCatagoryTableViewCell.delegate = self
-        restaurentCatagoryTableViewCell.dataSource = self
-        restaurentCatagoryTableViewCell.register(UINib(nibName: "RestaurentCatagoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")
+        restaurentCatagoryTableView.delegate = self
+        restaurentCatagoryTableView.dataSource = self
+        restaurentCatagoryTableView.register(UINib(nibName: "RestaurentCatagoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")
     }
     
     func setUpUI() {
@@ -45,14 +46,20 @@ class RestaurentHomeViewController: UIViewController {
     func getInfoRestaurant() {
         FirebaseManager.shared.getInfoRestaurant() { (infoResutl) in
             self.listRestaurant = infoResutl
-            print(infoResutl)
             guard let listRestaurant = self.listRestaurant else { return }
             let resource = ImageResource(downloadURL: URL(string: listRestaurant.imageLink)!, cacheKey: listRestaurant.imageLink)
-            print(resource)
             self.restaurantImageView.kf.setImage(with: resource)
             self.nameRestaurantLabel.text = listRestaurant.name
             self.titleRestaurantLabel.text = listRestaurant.title
             self.addressRestaurantLabel.text = listRestaurant.address
+        }
+        
+        FirebaseManager.shared.getListDishRestaurant(){ (listDishResult) in
+            self.listDish = listDishResult
+            print(self.listDish)
+            DispatchQueue.main.async {
+                self.restaurentCatagoryTableView.reloadData()
+            }
         }
     }
     
@@ -94,11 +101,14 @@ extension RestaurentHomeViewController: UITableViewDelegate {
 extension RestaurentHomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return listDish.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? RestaurentCatagoryTableViewCell else { return RestaurentCatagoryTableViewCell() }
+        cell.setUpInfoCell(infoDish: listDish[indexPath.row])
+        let resource = ImageResource(downloadURL: URL(string: listDish[indexPath.row].imageLink)!, cacheKey: listDish[indexPath.row].imageLink)
+        cell.dishImageView.kf.setImage(with: resource)
         return cell
     }
     

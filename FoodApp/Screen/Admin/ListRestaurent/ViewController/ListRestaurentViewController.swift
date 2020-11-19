@@ -29,7 +29,6 @@ class ListRestaurentViewController: UIViewController {
                 self.listRestaurentTableView.reloadData()
             }
         }
-        
     }
     
     func setUpRestaurentTableView() {
