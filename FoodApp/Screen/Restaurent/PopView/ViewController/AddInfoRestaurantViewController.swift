@@ -77,28 +77,38 @@ class AddInfoRestaurantViewController: UIViewController {
         guard let name = nameTextField.text,
               let title = titleTextField.text,
               let address = addressTextField.text,
-              let imageLink = urlImage,
               let typeRestaurant = typeRestaurantTextField.text?.removeWhitespace(),
               !name.isEmpty,
               !title.isEmpty,
               !address.isEmpty,
-              !imageLink.isEmpty,
               !typeRestaurant.isEmpty else {
             showAlert("Error", "Please enter your full infomation")
             return
         }
         
-        FirebaseManager.shared.addRestaurant(name: name, title: title, address: address, imageLink: imageLink, typeRestaurantInput: typeRestaurant) { (success, error)  in
-            var message: String = ""
-            if (success) {
-                message = "added successfully"
-                self.showAlert("Notification", message)
-            } else {
-                guard let error = error else { return }
-                message = "\(error.localizedDescription)"
+        guard let imageData = self.restaurantImageView.image?.pngData() else { return  }
+        SVProgressHUD.show()
+        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData, typeImage: "avataRestaurant") { (url, error) in
+            self.urlImage = url
+            print(url)
+            guard let imageUrl = self.urlImage else { return }
+            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
+            self.restaurantImageView.kf.setImage(with: resource)
+            SVProgressHUD.dismiss()
+            if error == nil {
+                FirebaseManager.shared.addRestaurant(name: name, title: title, address: address, imageLink: url, typeRestaurantInput: typeRestaurant) { (success, error)  in
+                    var message: String = ""
+                    if (success) {
+                        message = "added successfully"
+                        SVProgressHUD.dismiss()
+                        self.showAlert("Notification", message)
+                    } else {
+                        guard let error = error else { return }
+                        message = "\(error.localizedDescription)"
+                    }
+                }
             }
         }
-        
     }
 }
 
@@ -115,16 +125,10 @@ extension AddInfoRestaurantViewController: UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
         
-        guard let imageData = image.pngData() else { return  }
-        SVProgressHUD.show()
-        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData, typeImage: "avataRestaurant") { (url) in
-            self.urlImage = url
-            print(url)
-            guard let imageUrl = self.urlImage else { return }
-            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
-            self.restaurantImageView.kf.setImage(with: resource)
-            SVProgressHUD.dismiss()
+        DispatchQueue.main.async {
+            self.restaurantImageView.image = image
         }
+        
         
         picker.dismiss(animated: true, completion: nil)
     }

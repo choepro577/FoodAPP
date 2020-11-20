@@ -31,3 +31,15 @@ struct InfoDish {
         self.imageLink = dictionary["imagelink"] as? String ?? ""
     }
 }
+
+struct InfoDishDetail {
+    let nameDishDetail: String
+    let imageLink: String
+    let price: String
+    
+    init(nameDishDetail: String, dictionary: [String: Any]) {
+        self.nameDishDetail = nameDishDetail
+        self.imageLink = dictionary["imagelink"] as? String ?? ""
+        self.price = dictionary["price"] as? String ?? ""
+    }
+}

@@ -40,26 +40,37 @@ class AddCatagoryViewController: UIViewController {
     @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {
         
         guard let name = catagoryTextField.text,
-              let imageLink = urlImage,
-              !name.isEmpty,
-              !imageLink.isEmpty
+              !name.isEmpty
         else {
             self.showAlert("Error", "Please enter your full infomation")
             return
         }
         
-        FirebaseManager.shared.addCatagory(nameCatagory: name, imageLink: imageLink) { (success,error) in
-            var message: String = ""
-            if (success) {
-                message = "added successfully"
-                self.showAlert("Notification", message)
-            } else {
-                guard let error = error else { return }
-                message = "\(error.localizedDescription)"
+        guard let imageData = self.catagoryImageView.image?.pngData() else { return  }
+        SVProgressHUD.show()
+        FirebaseManager.shared.uploadImageDish(imageData: imageData, typeImage: "imageCatagory", nameImageCatagory: name) { (url, error) in
+            self.urlImage = url
+            print(url)
+            guard let imageUrl = self.urlImage else { return }
+            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
+            self.catagoryImageView.kf.setImage(with: resource)
+            SVProgressHUD.dismiss()
+            
+            if error == nil {
+                FirebaseManager.shared.addCatagory(nameCatagory: name, imageLink: url) { (success, error)  in
+                    var message: String = ""
+                    if (success) {
+                        message = "added successfully"
+                        SVProgressHUD.dismiss()
+                        self.showAlert("Notification", message)
+                    } else {
+                        guard let error = error else { return }
+                        message = "\(error.localizedDescription)"
+                    }
+                }
             }
         }
     }
-    
 }
 
 extension AddCatagoryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -75,17 +86,9 @@ extension AddCatagoryViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
         
-        guard let imageData = image.pngData() else { return  }
-        SVProgressHUD.show()
-        FirebaseManager.shared.uploadImagetoFireBaseStorage(imageData: imageData, typeImage: "imageCatagory") { (url) in
-            self.urlImage = url
-            print(url)
-            guard let imageUrl = self.urlImage else { return }
-            let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
-            self.catagoryImageView.kf.setImage(with: resource)
-            SVProgressHUD.dismiss()
+        DispatchQueue.main.async {
+            self.catagoryImageView.image = image
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     

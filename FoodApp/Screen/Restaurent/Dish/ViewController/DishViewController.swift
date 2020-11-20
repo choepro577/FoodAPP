@@ -9,10 +9,19 @@ import UIKit
 
 class DishViewController: UIViewController {
 
+    @IBOutlet weak var nameDishLabel: UILabel!
     @IBOutlet weak var dishsTableView: UITableView!
+    
+    var listDishDetails: [InfoDishDetail] = [InfoDishDetail]()
+    
+    var nameDish: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDishTableViewCell()
+        setUpUI()
+        getlistDishDetails()
     }
     
     func setUpDishTableViewCell() {
@@ -21,8 +30,24 @@ class DishViewController: UIViewController {
         dishsTableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")
     }
     
+    func getlistDishDetails() {
+        guard let nameDish = nameDish else { return }
+        FirebaseManager.shared.getListDishDetails(nameDish: nameDish){ (listDishDetailResult) in
+            self.listDishDetails = listDishDetailResult
+            print(self.listDishDetails)
+            DispatchQueue.main.async {
+                self.dishsTableView.reloadData()
+            }
+        }
+    }
+    
+    func setUpUI() {
+        nameDishLabel.text = nameDish
+    }
+    
     @IBAction func addDishActionButton(_ sender: Any) {
         let vc = AddDishsViewController()
+        vc.nameImageCatagory = nameDish
         self.present(vc, animated: true)
     }
     
@@ -42,6 +67,8 @@ extension DishViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = StatusDishViewController()
+        vc.nameDish = nameDish
+        vc.nameDishDetail = listDishDetails[indexPath.row].nameDishDetail
         self.present(vc, animated: true)
     }
     
@@ -50,11 +77,12 @@ extension DishViewController: UITableViewDelegate {
 extension DishViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return listDishDetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? DishTableViewCell else { return DishTableViewCell() }
+        cell.setUpCell(infoDishDetail: listDishDetails[indexPath.row])
         return cell
     }
     

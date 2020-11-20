@@ -63,6 +63,12 @@ class RestaurentHomeViewController: UIViewController {
         }
     }
     
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func setUpFullInfoRestaurant(sender : UITapGestureRecognizer) {
         let vc = AddInfoRestaurantViewController()
         self.present(vc, animated: true)
@@ -87,12 +93,19 @@ extension RestaurentHomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
+            FirebaseManager.shared.deleteCatagory(nameDish: listDish[indexPath.row].nameDish) { (success, error) in
+                if (success) {
+                    self.showAlert("Notification", "Deleted")
+                } else {
+                    return
+                }
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DishViewController()
+        vc.nameDish = listDish[indexPath.row].nameDish
         self.present(vc, animated: true)
     }
     
