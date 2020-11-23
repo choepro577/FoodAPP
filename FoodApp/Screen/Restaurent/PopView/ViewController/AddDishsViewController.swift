@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class AddDishsViewController: UIViewController {
     
+    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var priceDishTextField: UITextField!
     @IBOutlet weak var namDishDetailsTextField: UITextField!
@@ -22,13 +23,16 @@ class AddDishsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpAction()
-        print(nameImageCatagory)
     }
     
     func setUpAction() {
         let imageRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.choseImage))
         dishImageView.isUserInteractionEnabled = true
         self.dishImageView.addGestureRecognizer(imageRestaurantGesture)
+        
+        let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
+        dismissImageView.isUserInteractionEnabled = true
+        self.dismissImageView.addGestureRecognizer(imageDismissRestaurantGesture)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveDishAction))
         self.saveView.addGestureRecognizer(gesture)
@@ -40,9 +44,11 @@ class AddDishsViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func saveDishAction(sender : UITapGestureRecognizer) {
-        
+    @objc func dismissAction(sender : UITapGestureRecognizer) {
+        self.dismiss(animated: true)
+    }
     
+    @objc func saveDishAction(sender : UITapGestureRecognizer) {
         guard let nameDishDetail = namDishDetailsTextField.text,
               let price = priceDishTextField.text,
               let nameImageCatagory = nameImageCatagory,

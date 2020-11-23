@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatusDishViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="choseStatusDropDown" destination="pdz-Xw-gkh" id="To2-ge-ykW"/>
+                <outlet property="dismissImageView" destination="Cda-pF-0SD" id="CSM-RP-l19"/>
                 <outlet property="saveView" destination="x7M-EC-KO7" id="0As-pI-Y5Y"/>
                 <outlet property="view" destination="rof-7j-de7" id="JkZ-Dl-lx1"/>
             </connections>
@@ -24,7 +25,7 @@
                     <rect key="frame" x="40" y="328" width="334" height="250"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyk-8V-ZrW">
-                            <rect key="frame" x="20" y="70" width="54" height="21"/>
+                            <rect key="frame" x="20" y="100" width="54" height="21"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -49,20 +50,30 @@
                             </constraints>
                         </view>
                         <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-Xw-gkh">
-                            <rect key="frame" x="84" y="5.5" width="240" height="150"/>
+                            <rect key="frame" x="84" y="45.5" width="240" height="130"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="150" id="0Dr-K4-wnd"/>
+                                <constraint firstAttribute="height" constant="130" id="0Dr-K4-wnd"/>
                             </constraints>
                         </pickerView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cda-pF-0SD">
+                            <rect key="frame" x="299" y="13" width="25" height="18.5"/>
+                            <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="P0E-oG-7Ok"/>
+                                <constraint firstAttribute="height" constant="25" id="ol5-k3-Oft"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstItem="pdz-Xw-gkh" firstAttribute="leading" secondItem="Nyk-8V-ZrW" secondAttribute="trailing" constant="10" id="DOl-Yq-Kj9"/>
                         <constraint firstAttribute="trailing" secondItem="x7M-EC-KO7" secondAttribute="trailing" constant="100" id="KZn-6j-FOV"/>
-                        <constraint firstItem="Nyk-8V-ZrW" firstAttribute="top" secondItem="kea-U0-F1u" secondAttribute="top" constant="70" id="Z33-6h-8SH"/>
+                        <constraint firstAttribute="trailing" secondItem="Cda-pF-0SD" secondAttribute="trailing" constant="10" id="Y9l-qj-rAA"/>
+                        <constraint firstItem="Nyk-8V-ZrW" firstAttribute="top" secondItem="kea-U0-F1u" secondAttribute="top" constant="100" id="Z33-6h-8SH"/>
                         <constraint firstAttribute="trailing" secondItem="pdz-Xw-gkh" secondAttribute="trailing" constant="10" id="aBO-iJ-b3z"/>
                         <constraint firstItem="pdz-Xw-gkh" firstAttribute="centerY" secondItem="Nyk-8V-ZrW" secondAttribute="centerY" id="adR-Zr-u3K"/>
                         <constraint firstAttribute="height" constant="250" id="cPy-em-SGg"/>
+                        <constraint firstItem="Cda-pF-0SD" firstAttribute="top" secondItem="kea-U0-F1u" secondAttribute="top" constant="10" id="ckk-V2-5dx"/>
                         <constraint firstItem="Nyk-8V-ZrW" firstAttribute="leading" secondItem="kea-U0-F1u" secondAttribute="leading" constant="20" id="e0w-aZ-a8u"/>
                         <constraint firstItem="x7M-EC-KO7" firstAttribute="leading" secondItem="kea-U0-F1u" secondAttribute="leading" constant="100" id="gRf-h6-JpW"/>
                         <constraint firstAttribute="bottom" secondItem="x7M-EC-KO7" secondAttribute="bottom" constant="30" id="mfO-hd-qOK"/>
@@ -79,4 +90,7 @@
             <point key="canvasLocation" x="140.57971014492756" y="120.53571428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="multiply" catalog="system" width="128" height="111"/>
+    </resources>
 </document>

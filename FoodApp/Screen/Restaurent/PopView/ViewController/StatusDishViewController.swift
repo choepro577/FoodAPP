@@ -10,6 +10,7 @@ import SVProgressHUD
 
 class StatusDishViewController: UIViewController {
     
+    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var choseStatusDropDown: UIPickerView!
     
@@ -33,12 +34,20 @@ class StatusDishViewController: UIViewController {
     func setUpAction() {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveStatusAction))
         self.saveView.addGestureRecognizer(gesture)
+        
+        let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
+        dismissImageView.isUserInteractionEnabled = true
+        self.dismissImageView.addGestureRecognizer(imageDismissRestaurantGesture)
     }
     
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func dismissAction(sender : UITapGestureRecognizer) {
+        self.dismiss(animated: true)
     }
     
     @objc func saveStatusAction(sender : UITapGestureRecognizer) {
@@ -61,6 +70,7 @@ class StatusDishViewController: UIViewController {
                 message = "Update successfully"
                 SVProgressHUD.dismiss()
                 self.showAlert("Notification", message)
+                
             } else {
                 guard let error = error else { return }
                 message = "\(error.localizedDescription)"

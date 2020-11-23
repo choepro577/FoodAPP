@@ -11,6 +11,7 @@ import Kingfisher
 
 class AddCatagoryViewController: UIViewController {
     
+    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var catagoryImageView: UIImageView!
     @IBOutlet weak var catagoryTextField: UITextField!
     @IBOutlet weak var saveCatagoryView: UIView!
@@ -29,12 +30,20 @@ class AddCatagoryViewController: UIViewController {
         let imageRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.choseImage))
         catagoryImageView.isUserInteractionEnabled = true
         self.catagoryImageView.addGestureRecognizer(imageRestaurantGesture)
+        
+        let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
+        dismissImageView.isUserInteractionEnabled = true
+        self.dismissImageView.addGestureRecognizer(imageDismissRestaurantGesture)
     }
     
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func dismissAction(sender : UITapGestureRecognizer) {
+        self.dismiss(animated: true)
     }
     
     @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {

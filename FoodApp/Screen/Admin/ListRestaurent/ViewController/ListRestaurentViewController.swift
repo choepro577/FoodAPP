@@ -13,13 +13,15 @@ class ListRestaurentViewController: UIViewController {
     @IBOutlet weak var restaurentSearchBar: UISearchBar!
     @IBOutlet weak var listRestaurentTableView: UITableView!
     
+    var typeRestaurant: String?
     var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let typeRestaurant = typeRestaurant else { return }
+        LoadRestaurants(typeRestaurant: typeRestaurant)
         setUpRestaurentTableView()
-        setUpUI()
     }
     
     func LoadRestaurants(typeRestaurant: String) {
@@ -37,20 +39,6 @@ class ListRestaurentViewController: UIViewController {
         listRestaurentTableView.register(UINib(nibName: "ListRestaurentTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")
     }
     
-    func setUpUI() {
-        let icon = UIImage(systemName: "plus.circle")
-        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
-        let iconButton = UIButton(frame: iconSize)
-        iconButton.setBackgroundImage(icon, for: .normal)
-        let barButton = UIBarButtonItem(customView: iconButton)
-        iconButton.addTarget(self, action: #selector(addRestaurent), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = barButton
-    }
-    
-    @objc func addRestaurent(sender : UITapGestureRecognizer) {
-        let vc = PopSaveRestaurentViewController ()
-        self.present(vc, animated: true)
-    }
 }
 
 extension ListRestaurentViewController: UITableViewDelegate {

@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PopAddPromoViewController: UIViewController {
 
+    @IBOutlet weak var discountTextField: UITextField!
+    @IBOutlet weak var codePromoTextField: UITextField!
+    @IBOutlet weak var namePromoTextField: UITextField!
     @IBOutlet weak var addPromoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -21,8 +26,36 @@ class PopAddPromoViewController: UIViewController {
         self.addPromoView.addGestureRecognizer(gesture)
     }
     
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {
-        self.dismiss(animated: true)
+        SVProgressHUD.show()
+        guard let namePromo = namePromoTextField.text,
+              let codePromo = codePromoTextField.text,
+              let discount = discountTextField.text,
+              !namePromo.isEmpty,
+              !codePromo.isEmpty,
+              !discount.isEmpty else {
+            self.showAlert("Error", "Please enter your full infomation")
+            SVProgressHUD.dismiss()
+            return
+        }
+        
+        FirebaseManager.shared.addPromo(namePromo: namePromo, codePromo: codePromo, discount: discount) { (success, error) in
+            var message: String = ""
+            if (success) {
+                message = "added successfully"
+                SVProgressHUD.dismiss()
+                self.showAlert("Notification", message)
+            } else {
+                guard let error = error else { return }
+                message = "\(error.localizedDescription)"
+            }
+        }
     }
 
 }

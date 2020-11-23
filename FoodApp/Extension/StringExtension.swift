@@ -16,3 +16,4 @@ extension String {
        return self.replace(string: " ", replacement: "")
    }
  }
+

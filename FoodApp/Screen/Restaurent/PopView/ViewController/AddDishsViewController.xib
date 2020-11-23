@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDishsViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="dishImageView" destination="aAh-gg-szM" id="OeU-tO-qcE"/>
+                <outlet property="dismissImageView" destination="bfK-8O-xp3" id="nPY-xX-nQ7"/>
                 <outlet property="namDishDetailsTextField" destination="iXG-G7-CW4" id="yGa-Xs-UYb"/>
                 <outlet property="priceDishTextField" destination="o5x-Mv-KLk" id="wNd-Tr-5on"/>
                 <outlet property="saveView" destination="lOH-QO-AgC" id="5b4-s2-lMn"/>
@@ -75,9 +76,18 @@
                                 <constraint firstAttribute="bottom" secondItem="5FU-CA-oXf" secondAttribute="bottom" id="xwB-bh-onq"/>
                             </constraints>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bfK-8O-xp3">
+                            <rect key="frame" x="319" y="13" width="25" height="18.5"/>
+                            <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="Ivu-bR-RWf"/>
+                                <constraint firstAttribute="width" constant="25" id="tJp-pP-XeD"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bfK-8O-xp3" secondAttribute="trailing" constant="10" id="3as-fD-JrM"/>
                         <constraint firstAttribute="height" constant="350" id="3n5-aG-XWd"/>
                         <constraint firstItem="lOH-QO-AgC" firstAttribute="leading" secondItem="cyP-hA-vCD" secondAttribute="leading" constant="100" id="4vc-1W-FxE"/>
                         <constraint firstItem="7Hn-kV-snE" firstAttribute="leading" secondItem="cyP-hA-vCD" secondAttribute="leading" constant="10" id="BVe-yw-27p"/>
@@ -91,6 +101,7 @@
                         <constraint firstItem="FIP-rp-H4Q" firstAttribute="leading" secondItem="7Hn-kV-snE" secondAttribute="leading" id="ias-gu-rGA"/>
                         <constraint firstItem="o5x-Mv-KLk" firstAttribute="centerY" secondItem="FIP-rp-H4Q" secondAttribute="centerY" id="kSJ-nI-6xb"/>
                         <constraint firstAttribute="bottom" secondItem="lOH-QO-AgC" secondAttribute="bottom" constant="30" id="pCn-C2-mkY"/>
+                        <constraint firstItem="bfK-8O-xp3" firstAttribute="top" secondItem="cyP-hA-vCD" secondAttribute="top" constant="10" id="tcg-o1-iZ9"/>
                         <constraint firstItem="o5x-Mv-KLk" firstAttribute="trailing" secondItem="iXG-G7-CW4" secondAttribute="trailing" id="ve2-dZ-MPB"/>
                         <constraint firstItem="aAh-gg-szM" firstAttribute="centerX" secondItem="cyP-hA-vCD" secondAttribute="centerX" id="yco-3u-NEJ"/>
                         <constraint firstItem="iXG-G7-CW4" firstAttribute="leading" secondItem="7Hn-kV-snE" secondAttribute="trailing" constant="30" id="zF4-gJ-IjI"/>
@@ -104,11 +115,12 @@
                 <constraint firstItem="cyP-hA-vCD" firstAttribute="leading" secondItem="4is-e3-XGb" secondAttribute="leading" constant="30" id="aP5-Qn-WbK"/>
                 <constraint firstItem="4is-e3-XGb" firstAttribute="trailing" secondItem="cyP-hA-vCD" secondAttribute="trailing" constant="30" id="vGE-6J-Y1R"/>
             </constraints>
-            <point key="canvasLocation" x="140.57971014492756" y="120.53571428571428"/>
+            <point key="canvasLocation" x="72.463768115942031" y="107.8125"/>
         </view>
     </objects>
     <resources>
         <image name="camera.on.rectangle.fill" catalog="system" width="128" height="96"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

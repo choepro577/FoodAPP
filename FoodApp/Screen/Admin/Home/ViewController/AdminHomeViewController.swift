@@ -29,7 +29,7 @@ extension AdminHomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = ListRestaurentViewController()
-        vc.LoadRestaurants(typeRestaurant: typeRestaurentImage[indexPath.row])
+        vc.typeRestaurant = typeRestaurentImage[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

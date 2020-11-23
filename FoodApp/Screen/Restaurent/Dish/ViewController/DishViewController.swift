@@ -51,6 +51,12 @@ class DishViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension DishViewController: UITableViewDelegate {
@@ -61,7 +67,14 @@ extension DishViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
+            guard let nameDish = nameDish else { return }
+            FirebaseManager.shared.deleteDish(nameDish: nameDish, nameDetailDish: listDishDetails[indexPath.row].nameDishDetail) { (success, error) in
+                if (success) {
+                    self.showAlert("Notification", "Deleted")
+                } else {
+                    return
+                }
+            }
         }
     }
     

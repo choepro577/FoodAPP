@@ -89,11 +89,12 @@
                                 <constraint firstItem="aNZ-iv-u6g" firstAttribute="top" secondItem="6U9-f5-zkA" secondAttribute="top" id="twp-9e-2rr"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dissmiss" translatesAutoresizingMaskIntoConstraints="NO" id="db9-eo-Oi5">
-                            <rect key="frame" x="314" y="10" width="30" height="30"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="db9-eo-Oi5">
+                            <rect key="frame" x="319" y="13" width="25" height="18.5"/>
+                            <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="CJE-ur-K4J"/>
-                                <constraint firstAttribute="height" constant="30" id="I8k-gn-uXP"/>
+                                <constraint firstAttribute="width" constant="25" id="CJE-ur-K4J"/>
+                                <constraint firstAttribute="height" constant="25" id="I8k-gn-uXP"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efJ-yx-hAx">
@@ -153,7 +154,7 @@
     </objects>
     <resources>
         <image name="camera.on.rectangle.fill" catalog="system" width="128" height="96"/>
-        <image name="dissmiss" width="512" height="512"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
