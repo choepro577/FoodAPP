@@ -150,31 +150,6 @@ class FirebaseManager {
         })
     }
     
-    func getListPromoRestaurant(uid: String, completionBlock: @escaping (_ infoPromoRestaurent: [InfoPromo]) -> Void) {
-        let ref = Database.database().reference().child("admin")
-        ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
-            guard let dict = snapshot.value as? [String: Any] else { return }
-            let user = CurrentUser (uid: uid, dictionary: dict)
-            ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
-                var listPromo: [InfoPromo] = [InfoPromo]()
-                let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
-                while let users = userEnumerator.nextObject() as? DataSnapshot {
-                    let todoEnumerator = users.childSnapshot(forPath: "sale").children
-                    while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                        let todoEnumerator = todoItem.children
-                        while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                            let codePromo = todoItem.key
-                            guard let dict = todoItem.value as? [String: Any] else { return }
-                            let user = InfoPromo(codePromo: codePromo, dictionary: dict)
-                            listPromo.append(user)
-                        }
-                    }
-                }
-                completionBlock(listPromo)
-            })
-        })
-    }
-    
     func getListDishDetails(nameDish: String, completionBlock: @escaping (_ InfoDishDetail: [InfoDishDetail]) -> Void) {
         let ref = Database.database().reference().child("admin")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -203,38 +178,39 @@ class FirebaseManager {
         })
     }
     
-    func getListDishDetailsForUser(uid: String, nameDish: String, completionBlock: @escaping (_ InfoDishDetail: [InfoDishDetail]) -> Void) {
+    func getListPromoRestaurant(uid: String, completionBlock: @escaping (_ infoPromoRestaurent: [InfoPromo]) -> Void) {
         let ref = Database.database().reference().child("admin")
         ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let user = CurrentUser (uid: uid, dictionary: dict)
             ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
-                var listDishDetail: [InfoDishDetail] = [InfoDishDetail]()
+                var listPromo: [InfoPromo] = [InfoPromo]()
                 let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
                 while let users = userEnumerator.nextObject() as? DataSnapshot {
-                    let todoEnumerator = users.childSnapshot(forPath: "catagory").children
+                    let todoEnumerator = users.childSnapshot(forPath: "sale").children
                     while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                        let todoEnumerator = todoItem.childSnapshot(forPath: nameDish).childSnapshot(forPath: "detailDish").children
+                        let todoEnumerator = todoItem.children
                         while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                            let nameDishDetail = todoItem.key
+                            let codePromo = todoItem.key
                             guard let dict = todoItem.value as? [String: Any] else { return }
-                            let user = InfoDishDetail(nameDishDetail: nameDishDetail, dictionary: dict)
-                            listDishDetail.append(user)
+                            let user = InfoPromo(codePromo: codePromo, dictionary: dict)
+                            listPromo.append(user)
                         }
                     }
                 }
-                completionBlock(listDishDetail)
+                completionBlock(listPromo)
             })
         })
     }
     
-    func getListDishRestaurantForUser(uid: String, completionBlock: @escaping (_ infoRestaurent: [InfoDish]) -> Void) {
+    func getListDishRestaurantForUser(uid: String, completionBlock: @escaping (_ infoDish: [InfoDish], _ infoDishDetail: [[InfoDishDetail]]) -> Void) {
         let ref = Database.database().reference().child("admin")
         ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let user = CurrentUser (uid: uid, dictionary: dict)
             ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
                 var listDish: [InfoDish] = [InfoDish]()
+                var listDishDetails: [[InfoDishDetail]] = [[InfoDishDetail]]()
                 let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
                 while let users = userEnumerator.nextObject() as? DataSnapshot {
                     let todoEnumerator = users.childSnapshot(forPath: "catagory").children
@@ -245,10 +221,19 @@ class FirebaseManager {
                             guard let dict = todoItem.value as? [String: Any] else { return }
                             let user = InfoDish(nameDish: nameDish, dictionary: dict)
                             listDish.append(user)
+                            let todoEnumerator = todoItem.childSnapshot(forPath: "detailDish").children
+                            var listDishDetail: [InfoDishDetail] = [InfoDishDetail]()
+                            while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                                let nameDishDetail = todoItem.key
+                                guard let dict = todoItem.value as? [String: Any] else { return }
+                                let user = InfoDishDetail(nameDishDetail: nameDishDetail, dictionary: dict)
+                                listDishDetail.append(user)
+                            }
+                            listDishDetails.append(listDishDetail)
                         }
                     }
                 }
-                completionBlock(listDish)
+                completionBlock(listDish, listDishDetails)
             })
         })
     }

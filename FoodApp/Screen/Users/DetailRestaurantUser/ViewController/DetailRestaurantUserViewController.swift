@@ -40,36 +40,15 @@ class DetailRestaurantUserViewController: UIViewController {
     
     func getListDish() {
         guard let uid = infoRestaurant?.uid else { return }
-        FirebaseManager.shared.getListDishRestaurantForUser(uid: uid) { (infoDish) in
-            self.listDish = infoDish
-            self.getListDetail(listDish: infoDish) {(resutl) in
-                print("srssssssss",resutl)
+        FirebaseManager.shared.getListDishRestaurantForUser(uid: uid) { (listDish, listDishDetail) in
+            self.listDish = listDish
+            self.listDishDetail = listDishDetail
+            DispatchQueue.main.async {
+                self.lishDishTableView.reloadData()
             }
-            for infoDish in self.listDish {
-                FirebaseManager.shared.getListDishDetailsForUser(uid: uid,nameDish: infoDish.nameDish) { (dishDetail) in
-                    self.listDishDetail.append(dishDetail)
-                    //print(self.listDishDetail)
-                    DispatchQueue.main.async {
-                        self.lishDishTableView.reloadData()
-                    }
-                }
-            }
-           // print(self.listDishDetail)
         }
     }
     
-    func getListDetail(listDish: [InfoDish], completionBlock: @escaping (_ InfoDishDetail: [[InfoDishDetail]]) -> Void) {
-        guard let uid = infoRestaurant?.uid else { return }
-        var distDetails: [[InfoDishDetail]] = [[InfoDishDetail]]()
-        for infoDish in listDish {
-            FirebaseManager.shared.getListDishDetailsForUser(uid: uid,nameDish: infoDish.nameDish) { (dishDetail) in
-                distDetails.append(dishDetail)
-                completionBlock(distDetails)
-            }
-        }
-        
-    }
-
 }
 
 extension DetailRestaurantUserViewController: UITableViewDelegate {
@@ -78,8 +57,35 @@ extension DetailRestaurantUserViewController: UITableViewDelegate {
 
 extension DetailRestaurantUserViewController: UITableViewDataSource {
     
+ 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 0 {
+            let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 250))
+            header.backgroundColor = .systemGray2
+            let imageView = UIImageView(image: UIImage(named: "comtam"))
+            imageView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200)
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            let infoRestaurantView = UIView(frame: CGRect(x: imageView.frame.size.width/2 - 150/2, y: imageView.frame.size.height/1.5, width: 150, height: 100))
+            infoRestaurantView.backgroundColor = .white
+            //imageView.addSubview(infoRestaurantView)
+            header.addSubview(imageView)
+            header.addSubview(infoRestaurantView)
+            return header
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "\(listDish[section].nameDish)"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 250
+        }
+        return 30
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

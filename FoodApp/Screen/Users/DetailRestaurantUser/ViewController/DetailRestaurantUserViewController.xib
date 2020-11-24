@@ -21,47 +21,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaP-8S-epm">
-                    <rect key="frame" x="0.0" y="44" width="414" height="70"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dissmiss" translatesAutoresizingMaskIntoConstraints="NO" id="pGR-Ut-r9E">
-                            <rect key="frame" x="20" y="20" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="CTL-YN-Gwd"/>
-                                <constraint firstAttribute="width" constant="30" id="YdD-vu-ENx"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSr-pn-1s6">
-                            <rect key="frame" x="136" y="24.5" width="142" height="21"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="TSr-pn-1s6" firstAttribute="centerX" secondItem="xaP-8S-epm" secondAttribute="centerX" id="QaK-8s-z9k"/>
-                        <constraint firstItem="pGR-Ut-r9E" firstAttribute="centerY" secondItem="xaP-8S-epm" secondAttribute="centerY" id="nl3-dY-gi9"/>
-                        <constraint firstItem="pGR-Ut-r9E" firstAttribute="leading" secondItem="xaP-8S-epm" secondAttribute="leading" constant="20" id="qrS-6X-Gcl"/>
-                        <constraint firstAttribute="height" constant="70" id="siI-yc-ohj"/>
-                        <constraint firstItem="TSr-pn-1s6" firstAttribute="centerY" secondItem="xaP-8S-epm" secondAttribute="centerY" id="wH6-oS-vZq"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UNY-Qn-G8i">
-                    <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dissmiss" translatesAutoresizingMaskIntoConstraints="NO" id="pGR-Ut-r9E">
+                    <rect key="frame" x="10" y="54" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="fbA-ma-qAk"/>
+                        <constraint firstAttribute="height" constant="30" id="w2P-jk-bW5"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="UNY-Qn-G8i" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="D4m-Kk-0OU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UNY-Qn-G8i" secondAttribute="trailing" id="Egy-Ri-jv9"/>
-                <constraint firstItem="xaP-8S-epm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SSI-rK-hmc"/>
+                <constraint firstItem="pGR-Ut-r9E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="F6H-pI-9GY"/>
                 <constraint firstItem="UNY-Qn-G8i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="X2p-On-7RI"/>
-                <constraint firstItem="xaP-8S-epm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XzN-rM-Zol"/>
-                <constraint firstItem="xaP-8S-epm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Y11-GH-eOi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UNY-Qn-G8i" secondAttribute="bottom" id="dvB-en-Nce"/>
-                <constraint firstItem="UNY-Qn-G8i" firstAttribute="top" secondItem="xaP-8S-epm" secondAttribute="bottom" id="fba-Ct-c2b"/>
+                <constraint firstItem="pGR-Ut-r9E" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ioG-he-8cN"/>
             </constraints>
             <point key="canvasLocation" x="142" y="84"/>
         </view>
