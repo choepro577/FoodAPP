@@ -43,3 +43,15 @@ struct InfoDishDetail {
         self.price = dictionary["price"] as? String ?? ""
     }
 }
+
+struct InfoPromo {
+    let codePromo: String
+    let namePromo: String
+    let discount: String
+    
+    init(codePromo: String, dictionary: [String: Any]) {
+        self.codePromo = codePromo
+        self.namePromo = dictionary["namePromo"] as? String ?? ""
+        self.discount = dictionary["discount"] as? String ?? ""
+    }
+}

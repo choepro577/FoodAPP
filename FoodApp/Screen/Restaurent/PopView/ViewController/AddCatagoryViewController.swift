@@ -64,7 +64,6 @@ class AddCatagoryViewController: UIViewController {
             let resource = ImageResource(downloadURL: URL(string: imageUrl)!, cacheKey: imageUrl)
             self.catagoryImageView.kf.setImage(with: resource)
             SVProgressHUD.dismiss()
-            
             if error == nil {
                 FirebaseManager.shared.addCatagory(nameCatagory: name, imageLink: url) { (success, error)  in
                     var message: String = ""

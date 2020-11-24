@@ -19,12 +19,18 @@ class ListRestaurentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let typeRestaurant = typeRestaurant else { return }
-        LoadRestaurants(typeRestaurant: typeRestaurant)
+        LoadRestaurants()
         setUpRestaurentTableView()
     }
     
-    func LoadRestaurants(typeRestaurant: String) {
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func LoadRestaurants() {
+        guard let typeRestaurant = typeRestaurant else { return }
         FirebaseManager.shared.getListRestaunt(typeRestaurant: typeRestaurant) { (infoRestaurant) in
             self.listRestaurant = infoRestaurant
             DispatchQueue.main.async {
@@ -45,6 +51,8 @@ extension ListRestaurentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsRestaurentViewController()
+        vc.typeRestaurant = typeRestaurant
+        vc.infoRestaurant = listRestaurant[indexPath.row]
         self.present(vc, animated: true)
     }
     
@@ -54,7 +62,14 @@ extension ListRestaurentViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
+            guard let typeRestaurant = typeRestaurant else { return }
+            FirebaseManager.shared.deleteRestaurant(typeRestaurant: typeRestaurant, uid: listRestaurant[indexPath.row].uid) { (success, error) in
+                if (success) {
+                    self.showAlert("Notification", "Deleted")
+                } else {
+                    return
+                }
+            }
         }
     }
     
@@ -71,7 +86,6 @@ extension ListRestaurentViewController: UITableViewDataSource {
         cell.setUpInfoCell(infoRestaurant: listRestaurant[indexPath.row])
         let resource = ImageResource(downloadURL: URL(string: listRestaurant[indexPath.row].imageLink)!, cacheKey: listRestaurant[indexPath.row].imageLink)
         cell.imageRestaurant.kf.setImage(with: resource)
-        print(listRestaurant)
         return cell
     }
     

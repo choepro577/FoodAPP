@@ -38,7 +38,7 @@ class FirebaseManager {
                         if error != nil {
                             return
                         } else {
-                            self.deleteRestaurant(typeRestaurant: user.typeRestaurant, typeCheckRestaurant: typeRestaurantInput)
+                            self.autoDeletetheSameRestaurant(typeRestaurant: user.typeRestaurant, typeCheckRestaurant: typeRestaurantInput)
                         }
                     }
                 } else {
@@ -96,10 +96,8 @@ class FirebaseManager {
         ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let user = CurrentUser (uid: uid, dictionary: dict)
-            let object = ["namePromo": namePromo, "codePromo": codePromo, "discount": discount] as [String:Any]
-            print("kieu nha hang\(user.typeRestaurant)")
-            print(uid)
-            ref.child("restaurant").child(user.typeRestaurant).child(uid).child("allInfoRestaurant").child("promos").child("listPromo").setValue(object, withCompletionBlock: { error, ref in
+            let object = ["namePromo": namePromo, "discount": discount] as [String:Any]
+            ref.child("restaurant").child(user.typeRestaurant).child(uid).child("allInfoRestaurant").child("sale").child("listPromo").child(codePromo).setValue(object, withCompletionBlock: { error, ref in
                 if error == nil {
                     completionBlock(true, nil)
                 } else {
@@ -112,17 +110,12 @@ class FirebaseManager {
     func getListRestaunt(typeRestaurant: String, completionBlock: @escaping (_ infoRestaurent: [InfoRestaurant]) -> Void) {
         Database.database().reference().child("admin").child("restaurant").child(typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
             var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
-            print(usersSnapshot)
             let userEnumerator = usersSnapshot.children
             while let users = userEnumerator.nextObject() as? DataSnapshot {
                 let uid = users.key
-                print(uid)
                 let todoEnumerator = users.childSnapshot(forPath: "allInfoRestaurant").childSnapshot(forPath: "infomation").children
-                print("sss\(users)")
                 while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                    print("todo item \(todoItem)")
                     guard let dict = todoItem.value as? [String: Any] else { return }
-                    print(dict)
                     let user = InfoRestaurant(uid: uid, dictionary: dict)
                     listRestaurant.append(user)
                 }
@@ -157,6 +150,31 @@ class FirebaseManager {
         })
     }
     
+    func getListPromoRestaurant(uid: String, completionBlock: @escaping (_ infoPromoRestaurent: [InfoPromo]) -> Void) {
+        let ref = Database.database().reference().child("admin")
+        ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
+                var listPromo: [InfoPromo] = [InfoPromo]()
+                let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
+                while let users = userEnumerator.nextObject() as? DataSnapshot {
+                    let todoEnumerator = users.childSnapshot(forPath: "sale").children
+                    while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                        let todoEnumerator = todoItem.children
+                        while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                            let codePromo = todoItem.key
+                            guard let dict = todoItem.value as? [String: Any] else { return }
+                            let user = InfoPromo(codePromo: codePromo, dictionary: dict)
+                            listPromo.append(user)
+                        }
+                    }
+                }
+                completionBlock(listPromo)
+            })
+        })
+    }
+    
     func getListDishDetails(nameDish: String, completionBlock: @escaping (_ InfoDishDetail: [InfoDishDetail]) -> Void) {
         let ref = Database.database().reference().child("admin")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -181,6 +199,56 @@ class FirebaseManager {
                     }
                 }
                 completionBlock(listDishDetail)
+            })
+        })
+    }
+    
+    func getListDishDetailsForUser(uid: String, nameDish: String, completionBlock: @escaping (_ InfoDishDetail: [InfoDishDetail]) -> Void) {
+        let ref = Database.database().reference().child("admin")
+        ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
+                var listDishDetail: [InfoDishDetail] = [InfoDishDetail]()
+                let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
+                while let users = userEnumerator.nextObject() as? DataSnapshot {
+                    let todoEnumerator = users.childSnapshot(forPath: "catagory").children
+                    while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                        let todoEnumerator = todoItem.childSnapshot(forPath: nameDish).childSnapshot(forPath: "detailDish").children
+                        while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                            let nameDishDetail = todoItem.key
+                            guard let dict = todoItem.value as? [String: Any] else { return }
+                            let user = InfoDishDetail(nameDishDetail: nameDishDetail, dictionary: dict)
+                            listDishDetail.append(user)
+                        }
+                    }
+                }
+                completionBlock(listDishDetail)
+            })
+        })
+    }
+    
+    func getListDishRestaurantForUser(uid: String, completionBlock: @escaping (_ infoRestaurent: [InfoDish]) -> Void) {
+        let ref = Database.database().reference().child("admin")
+        ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            ref.child("restaurant").child(user.typeRestaurant).observe(DataEventType.value, with: { (usersSnapshot) in
+                var listDish: [InfoDish] = [InfoDish]()
+                let userEnumerator = usersSnapshot.childSnapshot(forPath: uid).children
+                while let users = userEnumerator.nextObject() as? DataSnapshot {
+                    let todoEnumerator = users.childSnapshot(forPath: "catagory").children
+                    while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                        let todoEnumerator = todoItem.children
+                        while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                            let nameDish = todoItem.key
+                            guard let dict = todoItem.value as? [String: Any] else { return }
+                            let user = InfoDish(nameDish: nameDish, dictionary: dict)
+                            listDish.append(user)
+                        }
+                    }
+                }
+                completionBlock(listDish)
             })
         })
     }
@@ -258,7 +326,7 @@ class FirebaseManager {
         })
     }
     
-    func deleteRestaurant(typeRestaurant: String, typeCheckRestaurant: String) {
+    func autoDeletetheSameRestaurant(typeRestaurant: String, typeCheckRestaurant: String) {
         if typeRestaurant == typeCheckRestaurant {
             return
         } else {
@@ -270,6 +338,33 @@ class FirebaseManager {
                     if error == nil {
                         print("deleted")
                     }
+                }
+        }
+    }
+    
+    func deleteRestaurant(typeRestaurant: String, uid: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        Database.database().reference().child("admin")
+            .child("restaurant")
+            .child(typeRestaurant)
+            .child(uid).removeValue() { (error, _ ) in
+                if error == nil {
+                    print("deleted")
+                    completionBlock(true, error)
+                }
+            }
+    }
+    
+    func deletePromo(codePromo: String, typeRestaurant: String, uid: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        Database.database().reference().child("admin")
+                .child("restaurant")
+                .child(typeRestaurant)
+                .child(uid)
+                .child("allInfoRestaurant")
+                .child("sale")
+                .child("listPromo")
+                .child(codePromo).removeValue() { (error, _ ) in
+                    if error == nil {
+                        completionBlock(true, error)
                 }
         }
     }

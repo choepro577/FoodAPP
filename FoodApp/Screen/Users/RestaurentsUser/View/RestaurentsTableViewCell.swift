@@ -6,18 +6,25 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RestaurentsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var addressRestaurantLabel: UILabel!
+    @IBOutlet weak var titleRestaurantLabel: UILabel!
+    @IBOutlet weak var nameRestaurantLabel: UILabel!
+    @IBOutlet weak var restaurantImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setUpCell(infoRestaurant: InfoRestaurant) {
+        nameRestaurantLabel.text = infoRestaurant.name
+        titleRestaurantLabel.text = infoRestaurant.title
+        addressRestaurantLabel.text = infoRestaurant.address
+        let resource = ImageResource(downloadURL: URL(string: infoRestaurant.imageLink)!, cacheKey: infoRestaurant.imageLink)
+        restaurantImageView.kf.setImage(with: resource)
     }
     
 }

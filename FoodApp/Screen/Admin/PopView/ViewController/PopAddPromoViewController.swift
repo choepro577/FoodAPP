@@ -15,6 +15,8 @@ class PopAddPromoViewController: UIViewController {
     @IBOutlet weak var namePromoTextField: UITextField!
     @IBOutlet weak var addPromoView: UIView!
     
+    var infoRestaurant: InfoRestaurant?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -22,7 +24,7 @@ class PopAddPromoViewController: UIViewController {
 
 
     func setUpUI() {
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveRestaurentAction))
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.savePromoAction))
         self.addPromoView.addGestureRecognizer(gesture)
     }
     
@@ -32,11 +34,12 @@ class PopAddPromoViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func saveRestaurentAction(sender : UITapGestureRecognizer) {
+    @objc func savePromoAction(sender : UITapGestureRecognizer) {
         SVProgressHUD.show()
         guard let namePromo = namePromoTextField.text,
               let codePromo = codePromoTextField.text,
               let discount = discountTextField.text,
+              let uid = infoRestaurant?.uid,
               !namePromo.isEmpty,
               !codePromo.isEmpty,
               !discount.isEmpty else {
@@ -45,7 +48,7 @@ class PopAddPromoViewController: UIViewController {
             return
         }
         
-        FirebaseManager.shared.addPromo(namePromo: namePromo, codePromo: codePromo, discount: discount) { (success, error) in
+        FirebaseManager.shared.addPromo(uid: uid, namePromo: namePromo, codePromo: codePromo, discount: discount) { (success, error) in
             var message: String = ""
             if (success) {
                 message = "added successfully"

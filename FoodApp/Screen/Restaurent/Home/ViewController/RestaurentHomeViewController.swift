@@ -56,7 +56,6 @@ class RestaurentHomeViewController: UIViewController {
         
         FirebaseManager.shared.getListDishRestaurant(){ (listDishResult) in
             self.listDish = listDishResult
-            print(self.listDish)
             DispatchQueue.main.async {
                 self.restaurentCatagoryTableView.reloadData()
             }

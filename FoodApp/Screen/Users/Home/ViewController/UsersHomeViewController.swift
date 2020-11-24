@@ -12,7 +12,7 @@ class UsersHomeViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var infomationImageView: UIImageView!
     @IBOutlet weak var typeRestaurentColectionViewCell: UICollectionView!
-    let typeRestaurentImage: [String] = ["restaurant","ice-tea","noodles","fried-chicken","diet","popcorn"]
+    let typeRestaurentImage: [String] = ["ricerestaurant","milktea","noodles","friedchicken","healthy","snacks"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,8 @@ class UsersHomeViewController: UIViewController {
 
 extension UsersHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailRestaurentUserViewController()
+        let vc = ListRestaurentUserViewController()
+        vc.typeRestaurant = typeRestaurentImage[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
