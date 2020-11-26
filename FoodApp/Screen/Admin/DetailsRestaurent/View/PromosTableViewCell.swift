@@ -21,7 +21,7 @@ class PromosTableViewCell: UITableViewCell {
     func setUpCell(infoPromo: InfoPromo) {
         self.namePromoLabel.text = infoPromo.namePromo
         self.codePromoLabel.text = infoPromo.codePromo
-        self.discountLabel.text = infoPromo.discount
+        self.discountLabel.text = "\(infoPromo.discount)"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

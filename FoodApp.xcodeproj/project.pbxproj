@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A02240A256F5E23000B093B /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A022408256F5E23000B093B /* DishCollectionViewCell.swift */; };
+		2A02240B256F5E23000B093B /* DishCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A022409256F5E23000B093B /* DishCollectionViewCell.xib */; };
+		2A022411256F5E6F000B093B /* CouponsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02240F256F5E6F000B093B /* CouponsCollectionViewCell.swift */; };
+		2A022412256F5E6F000B093B /* CouponsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A022410256F5E6F000B093B /* CouponsCollectionViewCell.xib */; };
 		2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */; };
 		2A15B9782556A2A700CF0238 /* StatisticallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */; };
 		2A15B9832556A8C500CF0238 /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B9812556A8C500CF0238 /* DishViewController.swift */; };
@@ -37,6 +41,8 @@
 		2A340035255A757F0059418E /* DetailUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A340033255A757F0059418E /* DetailUserViewController.xib */; };
 		2A340057255A897B0059418E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A340056255A897B0059418E /* GoogleService-Info.plist */; };
 		2A340080255A9BB50059418E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A34007F255A9BB50059418E /* FirebaseManager.swift */; };
+		2A3BB8FC256EA251008533A6 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BB8FA256EA251008533A6 /* CartViewController.swift */; };
+		2A3BB8FD256EA251008533A6 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BB8FB256EA251008533A6 /* CartViewController.xib */; };
 		2A3C63162552CF8C00996077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63152552CF8C00996077 /* AppDelegate.swift */; };
 		2A3C63182552CF8C00996077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C63172552CF8C00996077 /* SceneDelegate.swift */; };
 		2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C631E2552CF8D00996077 /* Assets.xcassets */; };
@@ -70,6 +76,8 @@
 		2A86E14225564B4200C1647F /* RestaurentCatagoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */; };
 		2A86E14D255653A700C1647F /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */; };
 		2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */; };
+		2AA4DA67256E10CE0029EC68 /* AddToCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4DA65256E10CE0029EC68 /* AddToCardViewController.swift */; };
+		2AA4DA68256E10CE0029EC68 /* AddToCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */; };
 		2AB3123C2564D33800A9824E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3123B2564D33800A9824E /* StringExtension.swift */; };
 		2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB43472255BBE42003D9DA4 /* UserModel.swift */; };
 		2ADA49762563C4B500AA85DA /* AddInfoRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */; };
@@ -99,6 +107,10 @@
 /* Begin PBXFileReference section */
 		1C4E73176A3B0C66FDF5BCDC /* Pods_FoodApp_FoodAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp_FoodAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B4C9D9656A1B5858EF4910 /* Pods_FoodAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A022408256F5E23000B093B /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A022409256F5E23000B093B /* DishCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCollectionViewCell.xib; sourceTree = "<group>"; };
+		2A02240F256F5E6F000B093B /* CouponsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A022410256F5E6F000B093B /* CouponsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponsCollectionViewCell.xib; sourceTree = "<group>"; };
 		2A15B9752556A2A700CF0238 /* StatisticallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticallViewController.swift; sourceTree = "<group>"; };
 		2A15B9762556A2A700CF0238 /* StatisticallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticallViewController.xib; sourceTree = "<group>"; };
 		2A15B9812556A8C500CF0238 /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +141,8 @@
 		2A34007F255A9BB50059418E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2A34FFFE255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typeRestaurentUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A34FFFF255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = typeRestaurentUserCollectionViewCell.xib; sourceTree = "<group>"; };
+		2A3BB8FA256EA251008533A6 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		2A3BB8FB256EA251008533A6 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		2A3C63122552CF8C00996077 /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A3C63152552CF8C00996077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A3C63172552CF8C00996077 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +182,8 @@
 		2A86E14025564B4200C1647F /* RestaurentCatagoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurentCatagoryTableViewCell.xib; sourceTree = "<group>"; };
 		2A86E14B255653A700C1647F /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		2A86E14C255653A700C1647F /* AddCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCatagoryViewController.xib; sourceTree = "<group>"; };
+		2AA4DA65256E10CE0029EC68 /* AddToCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCardViewController.swift; sourceTree = "<group>"; };
+		2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToCardViewController.xib; sourceTree = "<group>"; };
 		2AB3123B2564D33800A9824E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2AB43472255BBE42003D9DA4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2ADA49702563B59C00AA85DA /* FoodApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodApp.entitlements; sourceTree = "<group>"; };
@@ -310,13 +326,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		2A340005255A3F650059418E /* RestaurentsUser */ = {
+		2A340005255A3F650059418E /* ListRestaurentsUser */ = {
 			isa = PBXGroup;
 			children = (
 				2A340011255A43300059418E /* View */,
 				2A340006255A3F800059418E /* ViewController */,
 			);
-			path = RestaurentsUser;
+			path = ListRestaurentsUser;
 			sourceTree = "<group>";
 		};
 		2A340006255A3F800059418E /* ViewController */ = {
@@ -387,6 +403,35 @@
 			children = (
 				2A34FFFE255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift */,
 				2A34FFFF255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A3BB8F4256EA190008533A6 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BB8F6256EA1A9008533A6 /* View */,
+				2A3BB8F5256EA1A1008533A6 /* ViewController */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		2A3BB8F5256EA1A1008533A6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BB8FA256EA251008533A6 /* CartViewController.swift */,
+				2A3BB8FB256EA251008533A6 /* CartViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2A3BB8F6256EA1A9008533A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A022408256F5E23000B093B /* DishCollectionViewCell.swift */,
+				2A022409256F5E23000B093B /* DishCollectionViewCell.xib */,
+				2A02240F256F5E6F000B093B /* CouponsCollectionViewCell.swift */,
+				2A022410256F5E6F000B093B /* CouponsCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -587,10 +632,12 @@
 		2A78786425598CEC00EE7391 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				2A65D2B5256CE67B00D973A8 /* DetailRestaurantUser */,
+				2A3BB8F4256EA190008533A6 /* Cart */,
+				2AA4DA63256E101C0029EC68 /* AddToCart */,
 				2A340025255A53FD0059418E /* InfomationUser */,
 				2A34001C255A48B60059418E /* FindRestaurentAndDish */,
-				2A340005255A3F650059418E /* RestaurentsUser */,
+				2A65D2B5256CE67B00D973A8 /* DetailRestaurantUser */,
+				2A340005255A3F650059418E /* ListRestaurentsUser */,
 				2A78786525598CF600EE7391 /* Home */,
 			);
 			path = Users;
@@ -672,6 +719,23 @@
 				2A78785E25597F6C00EE7391 /* StatusDishViewController.xib */,
 				2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */,
 				2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2AA4DA63256E101C0029EC68 /* AddToCart */ = {
+			isa = PBXGroup;
+			children = (
+				2AA4DA64256E10A60029EC68 /* ViewController */,
+			);
+			path = AddToCart;
+			sourceTree = "<group>";
+		};
+		2AA4DA64256E10A60029EC68 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2AA4DA65256E10CE0029EC68 /* AddToCardViewController.swift */,
+				2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -824,6 +888,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3C63222552CF8D00996077 /* LaunchScreen.storyboard in Resources */,
+				2A022412256F5E6F000B093B /* CouponsCollectionViewCell.xib in Resources */,
+				2A3BB8FD256EA251008533A6 /* CartViewController.xib in Resources */,
 				2A78785925597A1200EE7391 /* AddDishsViewController.xib in Resources */,
 				2A65D2CC256CF57600D973A8 /* ListDishTableViewCell.xib in Resources */,
 				2A3C637C2552E1B800996077 /* TypeRestaurentCollectionViewCell.xib in Resources */,
@@ -840,6 +906,8 @@
 				2A340057255A897B0059418E /* GoogleService-Info.plist in Resources */,
 				2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */,
 				2A280CA22553A465005EDDDC /* PromosTableViewCell.xib in Resources */,
+				2A02240B256F5E23000B093B /* DishCollectionViewCell.xib in Resources */,
+				2AA4DA68256E10CE0029EC68 /* AddToCardViewController.xib in Resources */,
 				2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */,
 				2ADA49772563C4B500AA85DA /* AddInfoRestaurantViewController.xib in Resources */,
 				2A78786025597F6C00EE7391 /* StatusDishViewController.xib in Resources */,
@@ -988,14 +1056,17 @@
 				2AB3123C2564D33800A9824E /* StringExtension.swift in Sources */,
 				2A86E136255645CF00C1647F /* RestaurentHomeViewController.swift in Sources */,
 				2A86E14125564B4200C1647F /* RestaurentCatagoryTableViewCell.swift in Sources */,
+				2AA4DA67256E10CE0029EC68 /* AddToCardViewController.swift in Sources */,
 				2A65D2B9256CE6D800D973A8 /* DetailRestaurantUserViewController.swift in Sources */,
 				2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */,
 				2A340020255A493E0059418E /* FindRestaurentDishViewController.swift in Sources */,
+				2A02240A256F5E23000B093B /* DishCollectionViewCell.swift in Sources */,
 				2A280CAE2553AADE005EDDDC /* PopSaveRestaurentViewController.swift in Sources */,
 				2A3C637B2552E1B800996077 /* TypeRestaurentCollectionViewCell.swift in Sources */,
 				2A3C63822552E37400996077 /* InfoRestaurentModel.swift in Sources */,
 				2A340009255A3FB10059418E /* ListRestaurentUserViewController.swift in Sources */,
 				2A280C8325539965005EDDDC /* ListRestaurentTableViewCell.swift in Sources */,
+				2A3BB8FC256EA251008533A6 /* CartViewController.swift in Sources */,
 				2A340000255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift in Sources */,
 				2A3C63182552CF8C00996077 /* SceneDelegate.swift in Sources */,
 				2A78784E2559733C00EE7391 /* DishTableViewCell.swift in Sources */,
@@ -1012,6 +1083,7 @@
 				2A78785F25597F6C00EE7391 /* StatusDishViewController.swift in Sources */,
 				2A78785825597A1200EE7391 /* AddDishsViewController.swift in Sources */,
 				2A340034255A757F0059418E /* DetailUserViewController.swift in Sources */,
+				2A022411256F5E6F000B093B /* CouponsCollectionViewCell.swift in Sources */,
 				2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */,
 				2A15B9772556A2A700CF0238 /* StatisticallViewController.swift in Sources */,
 				2A65D2CB256CF57600D973A8 /* ListDishTableViewCell.swift in Sources */,

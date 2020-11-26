@@ -48,6 +48,56 @@ class FirebaseManager {
         })
     }
     
+    func addToCard(uidRestaurant: String, nameDish: String, totalPrice: Int, count: Int, note: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
+            let object = ["count": count, "totalPrice": totalPrice, "note": note] as [String:Any]
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uidRestaurant)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uid)
+                .child("listDish")
+                .child(nameDish)
+                .setValue(object, withCompletionBlock: { error, ref in
+                    if error == nil {
+                        completionBlock(true, nil)
+                    } else {
+                        completionBlock(false, error)
+                    }
+                })
+        })
+    }
+    
+    func deleteDishChoosed(uidRestaurant: String, nameDish: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uidRestaurant)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uid)
+                .child("listDish")
+                .child(nameDish)
+                .removeValue() { (error, _ ) in
+                    if error == nil {
+                        completionBlock(true, error)
+                    }
+                }
+        })
+    }
+
+    
     func addCatagory(nameCatagory: String, imageLink: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         let ref = Database.database().reference().child("admin")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -91,7 +141,7 @@ class FirebaseManager {
         })
     }
     
-    func addPromo(uid: String, namePromo: String, codePromo: String, discount: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+    func addPromo(uid: String, namePromo: String, codePromo: String, discount: Int, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         let ref = Database.database().reference().child("admin")
         ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
@@ -121,6 +171,68 @@ class FirebaseManager {
                 }
             }
             completionBlock(listRestaurant)
+        })
+    }
+    
+    
+    func getInfoCard(uidRestaurant: String, completionBlock: @escaping (_ countDish: Int, _ totalPrice: Int, _ listInfoCart: [InfoCard]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
+            print(userRestaurant.typeRestaurant)
+            print(uid)
+            print(uidRestaurant)
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uidRestaurant)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uid)
+                .child("listDish")
+                .observe(DataEventType.value, with: { (usersSnapshot) in
+                    var countDish: Int = 0
+                    var totalPrice: Int = 0
+                    var listInfoCart: [InfoCard] = [InfoCard]()
+                    let userEnumerator = usersSnapshot.children
+                    while let users = userEnumerator.nextObject() as? DataSnapshot {
+                        let nameDish = users.key
+                        guard let dict = users.value as? [String: Any] else { return }
+                        let user = InfoCard(nameDish: nameDish, dictionary: dict)
+                        listInfoCart.append(user)
+                        countDish += user.count
+                        totalPrice += user.totalPrice
+                    }
+                    completionBlock(countDish, totalPrice, listInfoCart)
+                })
+        })
+    }
+    
+    func getInfoDishDetailCard(uidRestaurant: String, nameDish:String, completionBlock: @escaping (_ infoCard: InfoCard) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
+            print(userRestaurant.typeRestaurant)
+            print(uid)
+            print(uidRestaurant)
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uidRestaurant)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uid)
+                .child("listDish")
+                .child(nameDish)
+                .observe(DataEventType.value, with: { (usersSnapshot) in
+                    guard let dict = usersSnapshot.value as? [String: Any] else { return }
+                    let infoCard = InfoCard(nameDish: nameDish, dictionary: dict)
+                    completionBlock(infoCard)
+                })
         })
     }
     
@@ -269,6 +381,7 @@ class FirebaseManager {
         }
     }
     
+    
     func updateInfoUserTypeRestaurant(typeRestaurant: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void ) {
         guard let user = Auth.auth().currentUser else { return }
         let object = ["typeRestaurant": typeRestaurant] as [String:Any]
@@ -341,17 +454,17 @@ class FirebaseManager {
     
     func deletePromo(codePromo: String, typeRestaurant: String, uid: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         Database.database().reference().child("admin")
-                .child("restaurant")
-                .child(typeRestaurant)
-                .child(uid)
-                .child("allInfoRestaurant")
-                .child("sale")
-                .child("listPromo")
-                .child(codePromo).removeValue() { (error, _ ) in
-                    if error == nil {
-                        completionBlock(true, error)
+            .child("restaurant")
+            .child(typeRestaurant)
+            .child(uid)
+            .child("allInfoRestaurant")
+            .child("sale")
+            .child("listPromo")
+            .child(codePromo).removeValue() { (error, _ ) in
+                if error == nil {
+                    completionBlock(true, error)
                 }
-        }
+            }
     }
     
     func deleteCatagory(nameDish: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
@@ -489,9 +602,9 @@ extension FirebaseManager {
         })
     }
     
-    func getImageDishDetailURL(typeImage: String, nameImageCatagory: String, completionBlock: @escaping (_ urlImage: String) -> Void) {
+    func getImageDishDetailURL(typeImage: String, nameDish: String, completionBlock: @escaping (_ urlImage: String) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child(nameImageCatagory).downloadURL(completion: { url, error in
+        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child(nameDish).downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }
@@ -500,12 +613,12 @@ extension FirebaseManager {
         })
     }
     
-    func uploadImageDishDetail(imageData: Data, typeImage: String, nameImageCatagory: String, completionBlock: @escaping (_ urlImage: String, _ error: Error?) -> Void) {
+    func uploadImageDishDetail(imageData: Data, typeImage: String, nameDish: String, completionBlock: @escaping (_ urlImage: String, _ error: Error?) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child(nameImageCatagory).putData(imageData, metadata: nil, completion: { _, error in
+        Storage.storage().reference().child("imageRestaurant").child(user.uid).child(typeImage).child(nameDish).putData(imageData, metadata: nil, completion: { _, error in
             if error == nil {
                 var urlString: String?
-                self.getImageDishURL(typeImage: typeImage, nameImageCatagory: nameImageCatagory) { (url) in
+                self.getImageDishDetailURL(typeImage: typeImage, nameDish: nameDish) { (url) in
                     urlString = url
                     guard let urlString = urlString else { return }
                     completionBlock(urlString, error)

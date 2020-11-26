@@ -51,17 +51,17 @@ class AddDishsViewController: UIViewController {
     @objc func saveDishAction(sender : UITapGestureRecognizer) {
         guard let nameDishDetail = namDishDetailsTextField.text,
               let price = priceDishTextField.text,
-              let nameImageCatagory = nameImageCatagory,
+              let nameDish = nameImageCatagory,
               !nameDishDetail.isEmpty,
               !price.isEmpty,
-              !nameImageCatagory.isEmpty else {
+              !nameDish.isEmpty else {
             showAlert("Error", "Please enter your full infomation")
             return
         }
         
         guard let imageData = self.dishImageView.image?.pngData() else { return  }
         SVProgressHUD.show()
-        FirebaseManager.shared.uploadImageDishDetail(imageData: imageData, typeImage: "imageDishDetails", nameImageCatagory: nameImageCatagory ){ (url, error) in
+        FirebaseManager.shared.uploadImageDishDetail(imageData: imageData, typeImage: "imageDishDetails", nameDish: nameDishDetail ){ (url, error) in
             self.urlImage = url
             print(url)
             guard let imageUrl = self.urlImage else { return }
@@ -69,7 +69,7 @@ class AddDishsViewController: UIViewController {
             self.dishImageView.kf.setImage(with: resource)
             SVProgressHUD.dismiss()
             if error == nil {
-                FirebaseManager.shared.addDishDetail(nameDish: nameImageCatagory, imageLink: url, nameDishDetail: nameDishDetail, price: price) { (success, error) in
+                FirebaseManager.shared.addDishDetail(nameDish: nameDish, imageLink: url, nameDishDetail: nameDishDetail, price: price) { (success, error) in
                     var message: String = ""
                     if (success) {
                         message = "added successfully"

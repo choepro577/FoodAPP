@@ -19,6 +19,7 @@ class PopAddPromoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        discountTextField.keyboardType = .numberPad
         setUpUI()
     }
 
@@ -38,11 +39,10 @@ class PopAddPromoViewController: UIViewController {
         SVProgressHUD.show()
         guard let namePromo = namePromoTextField.text,
               let codePromo = codePromoTextField.text,
-              let discount = discountTextField.text,
+              let discount = Int(discountTextField.text!),
               let uid = infoRestaurant?.uid,
               !namePromo.isEmpty,
-              !codePromo.isEmpty,
-              !discount.isEmpty else {
+              !codePromo.isEmpty else {
             self.showAlert("Error", "Please enter your full infomation")
             SVProgressHUD.dismiss()
             return
