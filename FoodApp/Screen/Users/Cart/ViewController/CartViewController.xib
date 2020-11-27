@@ -16,6 +16,7 @@
                 <outlet property="couponsCollectionView" destination="1iD-YQ-oDb" id="WtM-Um-wvU"/>
                 <outlet property="discountLabel" destination="Dr0-F4-whG" id="sNU-10-fB1"/>
                 <outlet property="dishCollectionView" destination="K65-H9-775" id="9ES-ov-yIm"/>
+                <outlet property="orderView" destination="3H5-bP-qK2" id="bUZ-hT-MFa"/>
                 <outlet property="totalCountDishLabel" destination="h4w-xZ-ZbI" id="9h6-uK-Ba7"/>
                 <outlet property="totalMoneyPayLabel" destination="ZTQ-V4-vNA" id="RYR-vC-qVc"/>
                 <outlet property="totalPriceDishsLabel" destination="aZN-0m-mrn" id="bcZ-GD-9oF"/>

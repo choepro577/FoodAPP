@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
                             SVProgressHUD.dismiss()
                         }
                         if user.rule == "restaurant" {
-                            let vc = RestaurentHomeViewController()
+                            let vc = HomeRestaurantViewController()
                             self.navigationController?.pushViewController(vc, animated: true)
                             SVProgressHUD.dismiss()
                         }

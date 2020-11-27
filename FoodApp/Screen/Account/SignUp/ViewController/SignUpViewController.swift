@@ -10,6 +10,7 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var ruleTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,6 +22,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneNumberTextField.keyboardType = .numberPad
         setUpAction()
         setUpPickerView()
     }
@@ -46,7 +48,16 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func creatAccount(sender : UITapGestureRecognizer) {
-        guard let email = emailTextField.text, let password = passwordTextField.text,  let username = nameTextField.text, let rule = ruleTextField.text, !email.isEmpty, !password.isEmpty, !username.isEmpty, !rule.isEmpty else {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let username = nameTextField.text,
+              let rule = ruleTextField.text,
+              let phoneNumber = phoneNumberTextField.text,
+              !email.isEmpty,
+              !password.isEmpty,
+              !username.isEmpty,
+              !phoneNumber.isEmpty,
+              !rule.isEmpty else {
             showAlert("Error", "Please enter your full infomation")
             return
         }
@@ -59,7 +70,7 @@ class SignUpViewController: UIViewController {
                 guard let user = user else { return }
                 let uid = user.uid
                 let newUsersReference = usersReference.child(uid)
-                newUsersReference.setValue(["username": username, "email": email, "rule": rule, "typeRestaurant": rule])
+                newUsersReference.setValue(["username": username, "email": email, "rule": rule, "typeRestaurant": rule, "phoneNumber": phoneNumber])
                 message = "User was sucessfully created."
             } else {
                 guard let error = error else { return }

@@ -19,12 +19,12 @@ class DishViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpDishTableViewCell()
+        setUpDishTableView()
         setUpUI()
         getlistDishDetails()
     }
     
-    func setUpDishTableViewCell() {
+    func setUpDishTableView() {
         dishsTableView.delegate = self
         dishsTableView.dataSource = self
         dishsTableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CouponsCollectionViewCellDelegate {
-    func addPromo(discount: Int)
+    func addPromo(discount: Int, condition: Int)
 }
 
 class CouponsCollectionViewCell: UICollectionViewCell {
@@ -33,7 +33,7 @@ class CouponsCollectionViewCell: UICollectionViewCell {
     
     @objc func addCouponAction(sender : UITapGestureRecognizer) {
         guard let infoPromo = infoPromo else { return }
-        delegate?.addPromo(discount: infoPromo.discount)
+        delegate?.addPromo(discount: infoPromo.discount, condition: infoPromo.condition)
     }
     
     func setUpCell(infoPromo: InfoPromo) {

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurentHomeViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="addressRestaurantLabel" destination="1EA-hm-OSu" id="3ES-B1-oHq"/>
+                <outlet property="backImageView" destination="tsU-Do-0GS" id="Qa3-uB-6ac"/>
                 <outlet property="catagoryView" destination="360-2O-cT7" id="3QB-hl-rmF"/>
                 <outlet property="infomationRestaurantView" destination="ud7-WW-liq" id="vEz-AY-R2E"/>
                 <outlet property="nameRestaurantLabel" destination="W0a-KO-jpQ" id="GeH-8f-sXc"/>
@@ -115,6 +116,14 @@
                         <action selector="statisticalInfoActionButton:" destination="-1" eventType="touchUpInside" id="Ufm-S0-yo5"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tsU-Do-0GS">
+                    <rect key="frame" x="15" y="55" width="25" height="20"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="9AG-aN-EFF"/>
+                        <constraint firstAttribute="width" constant="25" id="uDX-rV-uIn"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="YRp-l3-mBC"/>
             <color key="backgroundColor" red="0.96078699830000003" green="0.96078425649999999" blue="0.96077615019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -126,6 +135,8 @@
                 <constraint firstItem="360-2O-cT7" firstAttribute="top" secondItem="OFb-b9-KaP" secondAttribute="bottom" constant="20" id="N6E-Ta-DWk"/>
                 <constraint firstItem="OFb-b9-KaP" firstAttribute="leading" secondItem="Z5S-q2-BcM" secondAttribute="leading" id="OIL-Xk-7Rn"/>
                 <constraint firstItem="OFb-b9-KaP" firstAttribute="trailing" secondItem="Z5S-q2-BcM" secondAttribute="trailing" id="PMv-69-Xv6"/>
+                <constraint firstItem="tsU-Do-0GS" firstAttribute="centerY" secondItem="NyO-UT-euy" secondAttribute="centerY" id="RTk-Pa-ldw"/>
+                <constraint firstItem="tsU-Do-0GS" firstAttribute="leading" secondItem="YRp-l3-mBC" secondAttribute="leading" constant="15" id="TQW-bv-gQG"/>
                 <constraint firstItem="NyO-UT-euy" firstAttribute="trailing" secondItem="EO9-br-194" secondAttribute="trailing" constant="-20" id="VOt-Ua-oGR"/>
                 <constraint firstItem="Z5S-q2-BcM" firstAttribute="top" secondItem="ud7-WW-liq" secondAttribute="bottom" constant="10" id="Zss-Hv-g1H"/>
                 <constraint firstItem="EO9-br-194" firstAttribute="trailing" secondItem="YRp-l3-mBC" secondAttribute="trailing" id="exc-Aw-Faf"/>
@@ -142,6 +153,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="comtam" width="660" height="496"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
     </resources>

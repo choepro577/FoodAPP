@@ -17,9 +17,10 @@ class RestaurentHomeViewController: UIViewController {
     @IBOutlet weak var infomationRestaurantView: UIView!
     @IBOutlet weak var restaurentCatagoryTableView: UITableView!
     @IBOutlet weak var catagoryView: UIView!
+    @IBOutlet weak var backImageView: UIImageView!
     
     var listDish: [InfoDish] = [InfoDish]()
-    var listRestaurant: InfoRestaurant?
+    var Restaurant: InfoRestaurant?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +41,26 @@ class RestaurentHomeViewController: UIViewController {
         
         let infomationRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.setUpFullInfoRestaurant))
         self.infomationRestaurantView.addGestureRecognizer(infomationRestaurantGesture)
+        
+        let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
+        backImageView.isUserInteractionEnabled = true
+        self.backImageView.addGestureRecognizer(imageDismissRestaurantGesture)
         getInfoRestaurant()
+    }
+    
+    @objc func dismissAction(sender : UITapGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func getInfoRestaurant() {
         FirebaseManager.shared.getInfoRestaurant() { (infoResutl) in
-            self.listRestaurant = infoResutl
-            guard let listRestaurant = self.listRestaurant else { return }
-            let resource = ImageResource(downloadURL: URL(string: listRestaurant.imageLink)!, cacheKey: listRestaurant.imageLink)
+            self.Restaurant = infoResutl
+            guard let Restaurant = self.Restaurant else { return }
+            let resource = ImageResource(downloadURL: URL(string: Restaurant.imageLink)!, cacheKey: Restaurant.imageLink)
             self.restaurantImageView.kf.setImage(with: resource)
-            self.nameRestaurantLabel.text = listRestaurant.name
-            self.titleRestaurantLabel.text = listRestaurant.title
-            self.addressRestaurantLabel.text = listRestaurant.address
+            self.nameRestaurantLabel.text = Restaurant.name
+            self.titleRestaurantLabel.text = Restaurant.title
+            self.addressRestaurantLabel.text = Restaurant.address
         }
         
         FirebaseManager.shared.getListDishRestaurant(){ (listDishResult) in

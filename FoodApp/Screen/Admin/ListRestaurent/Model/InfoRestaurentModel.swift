@@ -47,7 +47,7 @@ struct InfoDishDetail {
 }
 
 struct InfoPromo {
-    let condition: String
+    let condition: Int
     let codePromo: String
     let namePromo: String
     let discount: Int
@@ -56,7 +56,7 @@ struct InfoPromo {
         self.codePromo = codePromo
         self.namePromo = dictionary["namePromo"] as? String ?? ""
         self.discount = dictionary["discount"] as? Int ?? 0
-        self.condition = dictionary["condition"] as? String ?? ""
+        self.condition = dictionary["condition"] as? Int ?? 0
     }
 }
 
@@ -73,5 +73,23 @@ struct InfoCard {
         self.note = dictionary["note"] as? String ?? ""
         self.totalPrice = dictionary["totalPrice"] as? Int ?? 1
         self.status = dictionary["status"] as? String ?? ""
+    }
+}
+
+struct InfoOrderofUser {
+    let id: String
+    let status: String
+    let name: String
+    let address: String
+    let phone: String
+    let totalPrice: Int
+    
+    init(id: String, dictionary: [String: Any]) {
+        self.id = id
+        self.status = dictionary["status"] as? String ?? ""
+        self.name = dictionary["name"] as? String ?? ""
+        self.totalPrice = dictionary["totalPrice"] as? Int ?? 1
+        self.address = dictionary["address"] as? String ?? ""
+        self.phone = dictionary["phoneNumber"] as? String ?? ""
     }
 }

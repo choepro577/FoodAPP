@@ -16,6 +16,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var couponsCollectionView: UICollectionView!
     @IBOutlet weak var totalMoneyPayLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var orderView: UIView!
     
     var infoRestaurant: InfoRestaurant?
     var listInfoDistOrder: [InfoCard] = [InfoCard]()
@@ -29,6 +30,12 @@ class CartViewController: UIViewController {
         setUpCollectionView()
         getInfoCart()
         getListPromo()
+    }
+    
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     func getInfoCart() {
@@ -69,6 +76,26 @@ class CartViewController: UIViewController {
         let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
         backImageView.isUserInteractionEnabled = true
         self.backImageView.addGestureRecognizer(imageDismissRestaurantGesture)
+        
+        let cartViewRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.orderAction))
+        self.orderView.addGestureRecognizer(cartViewRestaurantGesture)
+    }
+    
+    @objc func orderAction(sender : UITapGestureRecognizer) {
+        guard let infoRestaurant = infoRestaurant  else { return }
+        guard let provisionalFee = provisionalFee else { return }
+        FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: "39 nguyen thi dieu", totalPrice: provisionalFee) { (success, error) in
+            var message: String = ""
+            if (success) {
+              let vc = DishisCommingViewController()
+                vc.infoRestaurant = infoRestaurant
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                guard let error = error else { return }
+                message = "\(error.localizedDescription)"
+                self.showAlert("Error", message)
+            }
+        }
     }
     
     @objc func dismissAction(sender : UITapGestureRecognizer) {
@@ -130,9 +157,16 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CartViewController: CouponsCollectionViewCellDelegate {
-    func addPromo(discount: Int) {
+    func addPromo(discount: Int, condition: Int) {
         guard let provisionalFee = provisionalFee else { return }
-        totalMoneyPayLabel.text = "\(provisionalFee + applyFees - (((provisionalFee + applyFees) * discount) / 100))"
-        discountLabel.text = "- \(((provisionalFee + applyFees) * discount) / 100)"
+        
+        if provisionalFee >= condition {
+            totalMoneyPayLabel.text = "\(provisionalFee + applyFees - (((provisionalFee + applyFees) * discount) / 100))"
+            discountLabel.text = "- \(((provisionalFee + applyFees) * discount) / 100)"
+        } else {
+            self.showAlert("Error", "The orders value is not enough")
+            discountLabel.text = "0"
+            totalMoneyPayLabel.text = "\(provisionalFee + applyFees)"
+        }
     }
 }
