@@ -275,9 +275,6 @@ class FirebaseManager {
         ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
-            print(userRestaurant.typeRestaurant)
-            print(uid)
-            print(uidRestaurant)
             ref.child("admin")
                 .child("restaurant")
                 .child(userRestaurant.typeRestaurant)
@@ -309,7 +306,6 @@ class FirebaseManager {
                 .child("CARD")
                 .observe(DataEventType.value, with: { (usersSnapshot) in
                     var listOrder: [InfoOrderofUser] = [InfoOrderofUser]()
-                    print(usersSnapshot)
                     let userEnumerator = usersSnapshot.children
                     while let users = userEnumerator.nextObject() as? DataSnapshot {
                         let todoEnumerator = users.childSnapshot(forPath: "status").children
@@ -321,6 +317,29 @@ class FirebaseManager {
                         }
                     }
                     completionBlock(listOrder)
+                })
+        })
+    }
+    
+    func getInfoDetailOrderToCheckOrder(uidUser: String, completionBlock: @escaping (_ infoOrder: InfoOrderofUser) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uid, dictionary: dict)
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uid)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uidUser)
+                .child("status")
+                .child(uidUser)
+                .observeSingleEvent(of: .value, with: { (usersSnapshot) in
+                    guard let dict = usersSnapshot.value as? [String: Any] else { return }
+                    let infoCart = InfoOrderofUser(id: uid, dictionary: dict)
+                    completionBlock(infoCart)
                 })
         })
     }
@@ -354,6 +373,7 @@ class FirebaseManager {
         ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
             guard let dict = snapshot.value as? [String: Any] else { return }
             let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
+            let object = ["status": "3"] as [String:Any]
             ref.child("admin")
                 .child("restaurant")
                 .child(userRestaurant.typeRestaurant)
@@ -362,10 +382,33 @@ class FirebaseManager {
                 .child("CARD")
                 .child(uid)
                 .child("status")
+                .child(uid)
+                .updateChildValues(object, withCompletionBlock: { error, ref in
+                    if error == nil {
+                        completionBlock(true, nil)
+                    } else {
+                        completionBlock(false, error)
+                    }
+                })
+        })
+    }
+    
+    func deleteOrder(uidUser: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uid, dictionary: dict)
+            ref.child("admin")
+                .child("restaurant")
+                .child(userRestaurant.typeRestaurant)
+                .child(uid)
+                .child("allInfoRestaurant")
+                .child("CARD")
+                .child(uidUser)
                 .removeValue() { (error, _ ) in
                     if error == nil {
                         print("deleted")
-                        completionBlock(true, error)
                     }
                 }
         })
@@ -409,10 +452,8 @@ class FirebaseManager {
                 while let users = userEnumerator.nextObject() as? DataSnapshot {
                     let todoEnumerator = users.childSnapshot(forPath: "catagory").children
                     while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                        print("list dish \(todoItem)")
                         let todoEnumerator = todoItem.childSnapshot(forPath: nameDish).childSnapshot(forPath: "detailDish").children
                         while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                            print("-----------\(todoItem)")
                             let nameDishDetail = todoItem.key
                             guard let dict = todoItem.value as? [String: Any] else { return }
                             let user = InfoDishDetail(nameDishDetail: nameDishDetail, dictionary: dict)
@@ -631,12 +672,8 @@ class FirebaseManager {
         let ref = Database.database().reference().child("admin")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
-            print(uid)
             guard let dict = snapshot.value as? [String: Any] else { return }
-            print(dict)
             let user = CurrentUser (uid: uid, dictionary: dict)
-            print(user.typeRestaurant)
-            print(nameDish)
             ref.child("restaurant")
                 .child(user.typeRestaurant)
                 .child(uid)
@@ -655,12 +692,8 @@ class FirebaseManager {
         let ref = Database.database().reference().child("admin")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         ref.child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
-            print(uid)
             guard let dict = snapshot.value as? [String: Any] else { return }
-            print(dict)
             let user = CurrentUser (uid: uid, dictionary: dict)
-            print(user.typeRestaurant)
-            print(nameDish)
             ref.child("restaurant")
                 .child(user.typeRestaurant)
                 .child(uid)

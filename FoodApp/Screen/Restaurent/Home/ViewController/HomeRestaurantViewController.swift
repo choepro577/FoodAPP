@@ -29,6 +29,12 @@ class HomeRestaurantViewController: UIViewController {
         setUpAction()
     }
     
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func getListOrder() {
         FirebaseManager.shared.getlistOrder() { (listOrder) in
             self.listOrder = listOrder
@@ -80,6 +86,18 @@ extension HomeRestaurantViewController: UITableViewDelegate {
         vc.infoRestaurant = Restaurant
         vc.status = listOrder[indexPath.row].status
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id) { (success, error) in
+                if (success) {
+                    self.showAlert("Notification", "Deleted")
+                } else {
+                    return
+                }
+            }
+        }
     }
 }
 

@@ -96,9 +96,8 @@ class DishisCommingViewController: UIViewController {
     }
     
     @IBAction func cancelOrderAction(_ sender: Any) {
-        print(self.infoOrder    )
+        
         guard let infoOrder = self.infoOrder else { return }
-       
         if infoOrder.status == "2" {
             let alertController = UIAlertController(title: "Notification", message: "Can't Cancel Order", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

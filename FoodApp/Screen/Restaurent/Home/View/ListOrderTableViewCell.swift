@@ -17,7 +17,6 @@ class ListOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var addressUserOrderLabel: UILabel!
     @IBOutlet weak var nameUserOrderLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,7 +29,8 @@ class ListOrderTableViewCell: UITableViewCell {
                     //
                 }
             }
-        } else {
+        }
+        if status == "2" {
             FirebaseManager.shared.updateStatusOrderOfRestaurant(status: "1", uidUser: uidUser) { (suscess, error) in
                 if (suscess) {
                    //
@@ -47,8 +47,14 @@ class ListOrderTableViewCell: UITableViewCell {
         totalPriceLabel.text = "\(infoOrder.totalPrice)"
         if infoOrder.status == "1" {
             orderView.backgroundColor = UIColor.white
-        } else {
+        }
+        if infoOrder.status == "2"
+        {
             orderView.backgroundColor = UIColor.green
+        }
+        if infoOrder.status == "3"
+        {
+            orderView.backgroundColor = UIColor.systemGray2
         }
     }
     

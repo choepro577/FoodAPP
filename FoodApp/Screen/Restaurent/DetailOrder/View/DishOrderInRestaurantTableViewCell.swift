@@ -16,14 +16,14 @@ class DishOrderInRestaurantTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
 
     func setUpCell(infoDishOrder: InfoCard) {
-        countDishLabel.text = "\(infoDishOrder.count)x"
-        nameDishLabel.text = infoDishOrder.nameDish
-        noteLabel.text = infoDishOrder.note
-        totalPriceLabel.text = "\(infoDishOrder.totalPrice)"
+            countDishLabel.text = "\(infoDishOrder.count)x"
+            nameDishLabel.text = infoDishOrder.nameDish
+            noteLabel.text = infoDishOrder.note
+            totalPriceLabel.text = "\(infoDishOrder.totalPrice)"
     }
     
 }

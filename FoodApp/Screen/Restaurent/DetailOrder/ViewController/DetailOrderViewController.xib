@@ -17,6 +17,7 @@
                 <outlet property="deliveredView" destination="AUJ-iC-7WQ" id="nY3-Fp-haL"/>
                 <outlet property="idOrderLabel" destination="LIV-sj-BB3" id="Yrh-wd-gPZ"/>
                 <outlet property="listDishOrderTableView" destination="pyf-Il-TNw" id="zaY-AK-oxg"/>
+                <outlet property="nameRestaurant" destination="VUz-Tt-JH9" id="k9i-YL-4jp"/>
                 <outlet property="nameUserLabel" destination="3il-WK-gKE" id="rmQ-TH-Fip"/>
                 <outlet property="phoneNumberLabel" destination="v0J-eh-2bo" id="ieM-AJ-meT"/>
                 <outlet property="totalMoneyLabel" destination="DFj-BZ-fiX" id="HKl-1u-6Yg"/>

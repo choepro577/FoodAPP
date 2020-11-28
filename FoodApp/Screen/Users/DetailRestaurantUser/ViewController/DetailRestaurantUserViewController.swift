@@ -33,7 +33,7 @@ class DetailRestaurantUserViewController: UIViewController {
         guard let infoRestaurant = infoRestaurant  else { return }
         FirebaseManager.shared.getInfoCard(uidRestaurant: infoRestaurant.uid) { (countDish, totalPrice, listInfoCart) in
             
-            if countDish == 0 && totalPrice == 0 {
+            if countDish == 0 {
                 DispatchQueue.main.async {
                     self.countDishLabel.text = ""
                     self.totalPriceLabel.text = ""
@@ -184,4 +184,5 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
         return 80
     }
 }
+
 

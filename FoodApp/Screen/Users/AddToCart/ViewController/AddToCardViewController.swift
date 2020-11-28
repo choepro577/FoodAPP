@@ -68,17 +68,33 @@ class AddToCardViewController: UIViewController {
     @objc func addToCardAction(sender : UITapGestureRecognizer) {
         guard let infoRestaurant = infoRestaurant,
               let dishDetail = dishDetail else { return }
-        FirebaseManager.shared.addToCard(uidRestaurant: infoRestaurant.uid, nameDish: dishDetail.nameDishDetail, totalPrice: totalPrice, count: countDish, note: noteTextField.text ?? "") { (success, error) in
-            var message: String = ""
-            if (success) {
-                message = "added successfully"
-                SVProgressHUD.dismiss()
-                self.showAlert("Notification", message)
-            } else {
-                guard let error = error else { return }
-                message = "\(error.localizedDescription)"
+                let priceDish = Int(dishDetail.price) ?? 0
+        if totalPrice == 0 {
+            FirebaseManager.shared.addToCard(uidRestaurant: infoRestaurant.uid, nameDish: dishDetail.nameDishDetail, totalPrice: priceDish, count: countDish, note: noteTextField.text ?? "") { (success, error) in
+                var message: String = ""
+                if (success) {
+                    message = "added successfully"
+                    SVProgressHUD.dismiss()
+                    self.showAlert("Notification", message)
+                } else {
+                    guard let error = error else { return }
+                    message = "\(error.localizedDescription)"
+                }
+            }
+        } else {
+            FirebaseManager.shared.addToCard(uidRestaurant: infoRestaurant.uid, nameDish: dishDetail.nameDishDetail, totalPrice: totalPrice, count: countDish, note: noteTextField.text ?? "") { (success, error) in
+                var message: String = ""
+                if (success) {
+                    message = "added successfully"
+                    SVProgressHUD.dismiss()
+                    self.showAlert("Notification", message)
+                } else {
+                    guard let error = error else { return }
+                    message = "\(error.localizedDescription)"
+                }
             }
         }
+        
         self.dismiss(animated: true)
     }
     

@@ -9,6 +9,7 @@ import UIKit
 
 class DetailOrderViewController: UIViewController {
     
+    @IBOutlet weak var nameRestaurant: UILabel!
     @IBOutlet weak var deliveredView: UIView!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var totalMoneyLabel: UILabel!
@@ -29,6 +30,7 @@ class DetailOrderViewController: UIViewController {
         getInfoCart()
         setUpTableView()
         setUpAction()
+        setUpUI()
     }
     
     func getInfoCart() {
@@ -48,6 +50,17 @@ class DetailOrderViewController: UIViewController {
         }
     }
     
+    func setUpUI() {
+        guard let infoRestaurant = infoRestaurant  else { return }
+        nameRestaurant.text = infoRestaurant.name
+    }
+    
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func setUpAction() {
         let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
         backImageView.isUserInteractionEnabled = true
@@ -64,16 +77,22 @@ class DetailOrderViewController: UIViewController {
     
     @objc func deliveredAction(sender : UITapGestureRecognizer) {
         let vc = ListOrderTableViewCell()
-        guard let listOrder = listOrder  else { return }
-       
-        if status == "1" {
-            vc.isComing(uidUser: listOrder.id, status: status ?? "")
-            status = "2"
-        } else {
-            vc.isComing(uidUser: listOrder.id, status: status ?? "")
-            status = "1"
+        guard let listOrder = self.listOrder  else { return }
+        FirebaseManager.shared.getInfoDetailOrderToCheckOrder(uidUser: listOrder.id) { (infoCart) in
+            guard let listOrder = self.listOrder  else { return }
+            if infoCart.status == "3"
+            {
+                self.showAlert("Error", "The order has been canceled")
+            } else {
+                if self.status == "1" {
+                    vc.isComing(uidUser: listOrder.id, status: self.status ?? "")
+                    self.status = "2"
+                } else {
+                    vc.isComing(uidUser: listOrder.id, status: self.status ?? "")
+                    self.status = "1"
+                }
+            }
         }
-       
     }
     
     func setUpTableView() {
@@ -89,19 +108,19 @@ extension DetailOrderViewController: UITableViewDelegate {
 }
 
 extension DetailOrderViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         listInfoDistOrder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? DishOrderInRestaurantTableViewCell else { return DishOrderInRestaurantTableViewCell() }
-        cell.setUpCell(infoDishOrder: listInfoDistOrder[indexPath.row])
+            cell.setUpCell(infoDishOrder: listInfoDistOrder[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
+
 }
