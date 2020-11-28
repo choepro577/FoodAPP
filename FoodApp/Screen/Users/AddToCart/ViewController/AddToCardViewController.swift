@@ -9,10 +9,6 @@ import UIKit
 import Kingfisher
 import SVProgressHUD
 
-protocol AddToCartViewControllerDelegate {
-    func addCard(countDish: Int, totalPrice: Int)
-}
-
 class AddToCardViewController: UIViewController {
 
     @IBOutlet weak var noteTextField: UITextField!
@@ -28,7 +24,6 @@ class AddToCardViewController: UIViewController {
     var dishDetail: InfoDishDetail?
     var countDish: Int = 1
     var totalPrice: Int = 0
-    var delegate :AddToCartViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +92,6 @@ class AddToCardViewController: UIViewController {
             countDishLabel.text = "\(countDish)"
             countDishAddedLabel.text = "\(countDish)"
             totalPriceLabel.text = "\(totalPrice)"
-            delegate?.addCard(countDish: countDish, totalPrice: totalPrice)
         }
     }
     
@@ -110,7 +104,6 @@ class AddToCardViewController: UIViewController {
         countDishLabel.text = "\(countDish)"
         countDishAddedLabel.text = "\(countDish)"
         totalPriceLabel.text = "\(totalPrice)"
-        delegate?.addCard(countDish: countDish, totalPrice: totalPrice)
     }
     
 }

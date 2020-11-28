@@ -30,12 +30,34 @@ class DishisCommingViewController: UIViewController {
         getInfoOrder()
     }
     
+    func showAlert(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+            guard let infoRestaurant = self.infoRestaurant else { return }
+            FirebaseManager.shared.deleteOrderStatus(uidRestaurant: infoRestaurant.uid) { (suscess, error) in
+                if (suscess) {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func getInfoOrder() {
         guard let infoRestaurant = infoRestaurant  else { return }
         FirebaseManager.shared.getInfoOrder(uidRestaurant: infoRestaurant.uid) { (infoOrder) in
+            
+            print(infoOrder)
+            
+            self.infoOrder = infoOrder
             if infoOrder.status == "2" {
                 self.statusRestaurant.text = "Restaurant is delivered"
                 self.statusWaitingLabel.text = "Shipper is Coming"
+                self.cookingImageView.image = UIImage.gif(name: "shipper")
+            } else {
+                self.statusRestaurant.text = "Restaurant Cooking"
+                self.statusWaitingLabel.text = "Wait for the restaurant to prepare food"
+                self.cookingImageView.image = UIImage.gif(name: "cooking")
             }
         }
     }
@@ -72,7 +94,20 @@ class DishisCommingViewController: UIViewController {
         cookingImageView.image = UIImage.gif(name: "cooking")
        // processShipperImageView.image = UIImage.gif(name: "shipper")
     }
-
+    
+    @IBAction func cancelOrderAction(_ sender: Any) {
+        print(self.infoOrder    )
+        guard let infoOrder = self.infoOrder else { return }
+       
+        if infoOrder.status == "2" {
+            let alertController = UIAlertController(title: "Notification", message: "Can't Cancel Order", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        } else {
+            self.showAlert("Notification", "Are you sure you want to cancel?")
+        }
+    }
+    
 }
 
 extension DishisCommingViewController: UITableViewDelegate {

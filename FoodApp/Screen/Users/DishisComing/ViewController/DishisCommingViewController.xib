@@ -80,20 +80,29 @@
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-ZG-hC4">
-                    <rect key="frame" x="0.0" y="712" width="414" height="150"/>
+                    <rect key="frame" x="0.0" y="603.5" width="414" height="258.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="3cj-bi-Kvz"/>
-                    </constraints>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ordred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6T-6n-OCN">
-                    <rect key="frame" x="20" y="681" width="55.5" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wait for the restaurant to prepare food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-8a-J2y">
+                    <rect key="frame" x="20" y="452" width="374" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wait for the restaurant to prepare food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-8a-J2y">
-                    <rect key="frame" x="20" y="452" width="374" height="20.5"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqn-e9-kIP">
+                    <rect key="frame" x="177" y="492.5" width="60" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="Fw2-9C-1pn"/>
+                    </constraints>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelOrderAction:" destination="-1" eventType="touchUpInside" id="qmM-nu-1tu"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ordred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6T-6n-OCN">
+                    <rect key="frame" x="20" y="572.5" width="55.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -110,9 +119,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kmw-ZG-hC4" secondAttribute="trailing" id="Dk3-Y3-lE9"/>
                 <constraint firstItem="EMq-YJ-KEd" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="EJZ-Zz-IAc"/>
                 <constraint firstItem="WpO-8a-J2y" firstAttribute="top" secondItem="EMq-YJ-KEd" secondAttribute="bottom" constant="30" id="Ebp-bC-uoy"/>
+                <constraint firstItem="h6T-6n-OCN" firstAttribute="top" secondItem="pqn-e9-kIP" secondAttribute="bottom" constant="50" id="EgX-ps-ImG"/>
                 <constraint firstItem="t3k-fx-5Uo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MEH-SF-rr0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EMq-YJ-KEd" secondAttribute="trailing" constant="20" id="SjL-vQ-X4b"/>
                 <constraint firstItem="EMq-YJ-KEd" firstAttribute="top" secondItem="igo-kw-LtZ" secondAttribute="bottom" constant="30" id="T8U-vK-Y1t"/>
+                <constraint firstItem="pqn-e9-kIP" firstAttribute="top" secondItem="WpO-8a-J2y" secondAttribute="bottom" constant="20" id="Uy3-ki-6HR"/>
                 <constraint firstItem="EMq-YJ-KEd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="X7w-eG-3sM"/>
                 <constraint firstItem="Kmw-ZG-hC4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dz0-Sp-Wbb"/>
                 <constraint firstItem="igo-kw-LtZ" firstAttribute="top" secondItem="t3k-fx-5Uo" secondAttribute="bottom" constant="30" id="eo8-Mz-nnN"/>
@@ -120,6 +131,7 @@
                 <constraint firstItem="k0t-97-JCX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="klv-JV-HNR"/>
                 <constraint firstItem="t3k-fx-5Uo" firstAttribute="top" secondItem="k0t-97-JCX" secondAttribute="bottom" constant="20" id="o2c-lV-69x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Kmw-ZG-hC4" secondAttribute="bottom" id="xHP-rz-QOA"/>
+                <constraint firstItem="pqn-e9-kIP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="xj9-Az-ICx"/>
                 <constraint firstItem="WpO-8a-J2y" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yEE-kP-RFC"/>
                 <constraint firstItem="k0t-97-JCX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zkn-Xx-0Cc"/>
             </constraints>

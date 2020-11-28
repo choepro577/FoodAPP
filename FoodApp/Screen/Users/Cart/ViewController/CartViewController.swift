@@ -84,16 +84,21 @@ class CartViewController: UIViewController {
     @objc func orderAction(sender : UITapGestureRecognizer) {
         guard let infoRestaurant = infoRestaurant  else { return }
         guard let provisionalFee = provisionalFee else { return }
-        FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: "39 nguyen thi dieu", totalPrice: provisionalFee) { (success, error) in
-            var message: String = ""
-            if (success) {
-              let vc = DishisCommingViewController()
-                vc.infoRestaurant = infoRestaurant
-                self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                guard let error = error else { return }
-                message = "\(error.localizedDescription)"
-                self.showAlert("Error", message)
+        
+        if listInfoDistOrder.isEmpty {
+            self.showAlert("Error", "You have not placed an order")
+        } else {
+            FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: "39 nguyen thi dieu", totalPrice: provisionalFee) { (success, error) in
+                var message: String = ""
+                if (success) {
+                  let vc = DishisCommingViewController()
+                    vc.infoRestaurant = infoRestaurant
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    guard let error = error else { return }
+                    message = "\(error.localizedDescription)"
+                    self.showAlert("Error", message)
+                }
             }
         }
     }
@@ -117,25 +122,21 @@ extension CartViewController: UICollectionViewDataSource {
         } else {
                 return listPromo.count
             }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == self.dishCollectionView {
-            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as? DishCollectionViewCell else { return DishCollectionViewCell() }
             cell.infoRestaurant = infoRestaurant
             cell.setUpCell(infoCart: listInfoDistOrder[indexPath.row])
             return cell
-            
         } else {
-            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as? CouponsCollectionViewCell else { return CouponsCollectionViewCell() }
             cell.setUpCell(infoPromo: listPromo[indexPath.row])
             cell.delegate = self
             return cell
-            }
+        }
     }
 
 }

@@ -32,9 +32,17 @@ class DetailRestaurantUserViewController: UIViewController {
     func getInfoCard() {
         guard let infoRestaurant = infoRestaurant  else { return }
         FirebaseManager.shared.getInfoCard(uidRestaurant: infoRestaurant.uid) { (countDish, totalPrice, listInfoCart) in
-            DispatchQueue.main.async {
-                self.countDishLabel.text = "\(countDish)"
-                self.totalPriceLabel.text = "\(totalPrice)"
+            
+            if countDish == 0 && totalPrice == 0 {
+                DispatchQueue.main.async {
+                    self.countDishLabel.text = ""
+                    self.totalPriceLabel.text = ""
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.countDishLabel.text = "\(countDish)"
+                    self.totalPriceLabel.text = "\(totalPrice)"
+                }
             }
         }
     }
@@ -167,7 +175,6 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = AddToCardViewController()
-        vc.delegate = self
         vc.infoRestaurant = infoRestaurant
         vc.dishDetail = listDishDetail[indexPath.section][indexPath.row]
         self.present(vc, animated: true, completion: nil)
@@ -178,10 +185,3 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
     }
 }
 
-extension DetailRestaurantUserViewController: AddToCartViewControllerDelegate {
-    func addCard(countDish: Int, totalPrice: Int) {
-        dishtextLabel.text = "Dish"
-        countDishLabel.text =  "\(countDish)"
-        totalPriceLabel.text = "\(totalPrice)"
-    }
-}

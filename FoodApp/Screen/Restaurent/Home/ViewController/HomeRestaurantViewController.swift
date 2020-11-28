@@ -75,8 +75,11 @@ class HomeRestaurantViewController: UIViewController {
 
 extension HomeRestaurantViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ListOrderTableViewCell()
-        vc.isComing(uidUser: listOrder[indexPath.row].id, status: listOrder[indexPath.row].status)
+        let vc = DetailOrderViewController()
+        vc.listOrder = listOrder[indexPath.row]
+        vc.infoRestaurant = Restaurant
+        vc.status = listOrder[indexPath.row].status
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

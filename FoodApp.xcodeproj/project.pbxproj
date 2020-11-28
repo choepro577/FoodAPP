@@ -90,6 +90,10 @@
 		2AA4DA68256E10CE0029EC68 /* AddToCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */; };
 		2AB3123C2564D33800A9824E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3123B2564D33800A9824E /* StringExtension.swift */; };
 		2AB43473255BBE42003D9DA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB43472255BBE42003D9DA4 /* UserModel.swift */; };
+		2AB6B1CD2571EC0D004A6B17 /* DetailOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB6B1CB2571EC0D004A6B17 /* DetailOrderViewController.swift */; };
+		2AB6B1CE2571EC0D004A6B17 /* DetailOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB6B1CC2571EC0D004A6B17 /* DetailOrderViewController.xib */; };
+		2AB6B1D52571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB6B1D32571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift */; };
+		2AB6B1D62571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB6B1D42571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.xib */; };
 		2ADA49762563C4B500AA85DA /* AddInfoRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */; };
 		2ADA49772563C4B500AA85DA /* AddInfoRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */; };
 		5C744FD04A7C29E46D5045F8 /* Pods_FoodApp_FoodAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4E73176A3B0C66FDF5BCDC /* Pods_FoodApp_FoodAppUITests.framework */; };
@@ -206,6 +210,10 @@
 		2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToCardViewController.xib; sourceTree = "<group>"; };
 		2AB3123B2564D33800A9824E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2AB43472255BBE42003D9DA4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2AB6B1CB2571EC0D004A6B17 /* DetailOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOrderViewController.swift; sourceTree = "<group>"; };
+		2AB6B1CC2571EC0D004A6B17 /* DetailOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailOrderViewController.xib; sourceTree = "<group>"; };
+		2AB6B1D32571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishOrderInRestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		2AB6B1D42571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishOrderInRestaurantTableViewCell.xib; sourceTree = "<group>"; };
 		2ADA49702563B59C00AA85DA /* FoodApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodApp.entitlements; sourceTree = "<group>"; };
 		2ADA49742563C4B500AA85DA /* AddInfoRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoRestaurantViewController.swift; sourceTree = "<group>"; };
 		2ADA49752563C4B500AA85DA /* AddInfoRestaurantViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInfoRestaurantViewController.xib; sourceTree = "<group>"; };
@@ -741,6 +749,7 @@
 		2A86E1312556456900C1647F /* Restaurent */ = {
 			isa = PBXGroup;
 			children = (
+				2AB6B1C92571EBE4004A6B17 /* DetailOrder */,
 				2A43980F2570D8BB004B51D4 /* Home */,
 				2A15B97F2556A87F00CF0238 /* Dish */,
 				2A86E1492556531900C1647F /* PopView */,
@@ -832,6 +841,33 @@
 				2AB43472255BBE42003D9DA4 /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2AB6B1C92571EBE4004A6B17 /* DetailOrder */ = {
+			isa = PBXGroup;
+			children = (
+				2AB6B1D22571F179004A6B17 /* View */,
+				2AB6B1CA2571EBEF004A6B17 /* ViewController */,
+			);
+			path = DetailOrder;
+			sourceTree = "<group>";
+		};
+		2AB6B1CA2571EBEF004A6B17 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2AB6B1CB2571EC0D004A6B17 /* DetailOrderViewController.swift */,
+				2AB6B1CC2571EC0D004A6B17 /* DetailOrderViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2AB6B1D22571F179004A6B17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AB6B1D32571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift */,
+				2AB6B1D42571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		57A0DB5F2176A9A0D1FFE541 /* Pods */ = {
@@ -975,6 +1011,7 @@
 				2A4398062570C704004B51D4 /* dishOrderedTableViewCell.xib in Resources */,
 				2A280CBB2553AE88005EDDDC /* PopAddPromoViewController.xib in Resources */,
 				2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */,
+				2AB6B1CE2571EC0D004A6B17 /* DetailOrderViewController.xib in Resources */,
 				2A280CAF2553AADE005EDDDC /* PopSaveRestaurentViewController.xib in Resources */,
 				2A340001255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib in Resources */,
 				2A43981F2570E9BA004B51D4 /* ListOrderTableViewCell.xib in Resources */,
@@ -988,6 +1025,7 @@
 				2A43980B2570CC90004B51D4 /* shipper.gif in Resources */,
 				2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */,
 				2A280CA22553A465005EDDDC /* PromosTableViewCell.xib in Resources */,
+				2AB6B1D62571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.xib in Resources */,
 				2A02240B256F5E23000B093B /* DishCollectionViewCell.xib in Resources */,
 				2AA4DA68256E10CE0029EC68 /* AddToCardViewController.xib in Resources */,
 				2A3C631F2552CF8D00996077 /* Assets.xcassets in Resources */,
@@ -1143,6 +1181,7 @@
 				2A4398132570D8F2004B51D4 /* HomeRestaurantViewController.swift in Sources */,
 				2AA4DA67256E10CE0029EC68 /* AddToCardViewController.swift in Sources */,
 				2A65D2B9256CE6D800D973A8 /* DetailRestaurantUserViewController.swift in Sources */,
+				2AB6B1D52571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift in Sources */,
 				2A43981E2570E9BA004B51D4 /* ListOrderTableViewCell.swift in Sources */,
 				2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */,
 				2A340020255A493E0059418E /* FindRestaurentDishViewController.swift in Sources */,
@@ -1153,6 +1192,7 @@
 				2A340009255A3FB10059418E /* ListRestaurentUserViewController.swift in Sources */,
 				2A280C8325539965005EDDDC /* ListRestaurentTableViewCell.swift in Sources */,
 				2A4398052570C704004B51D4 /* dishOrderedTableViewCell.swift in Sources */,
+				2AB6B1CD2571EC0D004A6B17 /* DetailOrderViewController.swift in Sources */,
 				2A3BB8FC256EA251008533A6 /* CartViewController.swift in Sources */,
 				2A340000255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift in Sources */,
 				2A3C63182552CF8C00996077 /* SceneDelegate.swift in Sources */,

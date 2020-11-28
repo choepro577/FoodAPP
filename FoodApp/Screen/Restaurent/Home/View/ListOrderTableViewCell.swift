@@ -9,6 +9,7 @@ import UIKit
 
 class ListOrderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
