@@ -46,7 +46,6 @@ class UsersHomeViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
 
 extension UsersHomeViewController: UICollectionViewDelegate {
@@ -58,21 +57,18 @@ extension UsersHomeViewController: UICollectionViewDelegate {
 }
 
 extension UsersHomeViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         typeRestaurentImage.count
-    }
+    }   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as? typeRestaurentUserCollectionViewCell else { return typeRestaurentUserCollectionViewCell() }
-        cell.setUpUI(nameImage:typeRestaurentImage[indexPath.row] )
+        cell.setUpCell(nameImage:typeRestaurentImage[indexPath.row] )
         return cell
     }
-    
 }
 
 extension UsersHomeViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spaceItem: CGFloat = 7
         let numberCellForRow: CGFloat = 3

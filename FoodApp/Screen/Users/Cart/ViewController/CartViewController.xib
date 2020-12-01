@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
+                <outlet property="AddressLocationLabel" destination="nn9-Jg-gqf" id="e1N-aK-gDI"/>
                 <outlet property="backImageView" destination="Rhv-gB-fdQ" id="WBq-FZ-SwA"/>
                 <outlet property="couponsCollectionView" destination="1iD-YQ-oDb" id="WtM-Um-wvU"/>
                 <outlet property="discountLabel" destination="Dr0-F4-whG" id="sNU-10-fB1"/>
@@ -52,15 +53,18 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhu-So-GES">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-6n-vBG">
                                                     <rect key="frame" x="324" y="0.0" width="50" height="32.333333333333336"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="cvl-gD-p9t"/>
+                                                        <constraint firstAttribute="width" constant="50" id="9Oh-zX-8UY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editPlace:" destination="-1" eventType="touchUpInside" id="Mj9-aI-ORk"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -316,8 +320,8 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTQ-V4-vNA">
-                            <rect key="frame" x="20" y="109.66666666666663" width="51" height="20.333333333333343"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20.000000000000004" y="109.66666666666663" width="55.333333333333343" height="20.333333333333343"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

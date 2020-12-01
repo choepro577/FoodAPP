@@ -27,6 +27,17 @@ class DetailRestaurantUserViewController: UIViewController {
         getListDish()
         setUpAction()
         setUpTableView()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        cartView.layer.cornerRadius = cartView.frame.width/30
+        cartView.layer.shadowRadius = 5
+        cartView.layer.shadowColor = UIColor.black.cgColor
+        cartView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        cartView.layer.shadowOpacity = 0.1
+        cartView.layer.borderWidth = 2
+        cartView.layer.borderColor = UIColor.white.cgColor
     }
     
     func getInfoCard() {
@@ -95,7 +106,7 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 250))
+            let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 280))
             header.backgroundColor = .systemGray6
             let imageView = UIImageView(image: UIImage(named: "comtam"))
             let resource = ImageResource(downloadURL: URL(string: infoRestaurant?.imageLink ?? "")!, cacheKey: infoRestaurant?.imageLink)
@@ -111,10 +122,10 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
             infoRestaurantView.layer.shadowOpacity = 0.5
             
             if let infoRestaurant = infoRestaurant {
-                let label = UILabel(frame: CGRect(x: 10, y: 0, width: 280, height: 80))
+                let label = UILabel(frame: CGRect(x: 10, y: 10, width: 280, height: 80))
                 label.text = "\(infoRestaurant.name)"
                 label.textAlignment = .center
-                label.font = .systemFont(ofSize: 22, weight: .bold)
+                label.font = .systemFont(ofSize: 24, weight: .bold)
                 label.numberOfLines = 0
                 
                 let titleLabel = UILabel(frame: CGRect(x: 10, y: 80, width: 280, height: 20))
@@ -133,8 +144,11 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
                 
                 let dishLabel = UILabel(frame: CGRect(x: 20, y: 240, width: 280, height: 20))
                 dishLabel.text = "\(listDish[section].nameDish)"
-                dishLabel.font = .systemFont(ofSize: 18, weight: .bold)
+                dishLabel.font = .systemFont(ofSize: 22, weight: .bold)
                 dishLabel.numberOfLines = 0
+                
+                let imagetagView = UIImageView(image: UIImage(named: "flag"))
+                imagetagView.frame = CGRect(x: 135, y: 0, width: 30, height: 30)
                 
                 header.addSubview(imageView)
                 header.addSubview(infoRestaurantView)
@@ -142,21 +156,28 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
                 infoRestaurantView.addSubview(label)
                 infoRestaurantView.addSubview(titleLabel)
                 infoRestaurantView.addSubview(addressLabel)
+                infoRestaurantView.addSubview(imagetagView)
                 return header
             }
+        } else {
+            let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+            header.backgroundColor = .systemGray6
+            let label = UILabel(frame: CGRect(x: 20, y: 5, width: 280, height: 30))
+            label.text = "\(listDish[section].nameDish)"
+            label.textAlignment = .left
+            label.font = .systemFont(ofSize: 22, weight: .bold)
+            label.numberOfLines = 0
+            header.addSubview(label)
+            return header
         }
         return nil
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "\(listDish[section].nameDish)"
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 270
         }
-        return 30
+        return 40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -181,7 +202,7 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 }
 

@@ -10,6 +10,7 @@ import Kingfisher
 
 class RestaurentHomeViewController: UIViewController {
     
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addressRestaurantLabel: UILabel!
     @IBOutlet weak var titleRestaurantLabel: UILabel!
     @IBOutlet weak var nameRestaurantLabel: UILabel!
@@ -26,6 +27,7 @@ class RestaurentHomeViewController: UIViewController {
         super.viewDidLoad()
         setUpTableViewCell()
         setUpUI()
+        setUpAction()
     }
     
     func setUpTableViewCell() {
@@ -35,6 +37,28 @@ class RestaurentHomeViewController: UIViewController {
     }
     
     func setUpUI() {
+        infomationRestaurantView.layer.cornerRadius = infomationRestaurantView.frame.width/20
+        infomationRestaurantView.layer.shadowRadius = 5
+        infomationRestaurantView.layer.shadowColor = UIColor.black.cgColor
+        infomationRestaurantView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        infomationRestaurantView.layer.shadowOpacity = 0.1
+        
+        catagoryView.layer.cornerRadius = catagoryView.frame.width/20
+        catagoryView.layer.shadowRadius = 5
+        catagoryView.layer.shadowColor = UIColor.black.cgColor
+        catagoryView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        catagoryView.layer.shadowOpacity = 0.1
+        
+        addButton.layer.cornerRadius = addButton.frame.width/5
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowOffset = CGSize (width: 10, height: 10)
+        addButton.layer.shadowOpacity = 0.1
+        addButton.layer.borderWidth = 2
+        addButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func setUpAction() {
         self.navigationController?.isNavigationBarHidden = true
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.addRestaurent))
         self.catagoryView.addGestureRecognizer(gesture)
@@ -134,7 +158,7 @@ extension RestaurentHomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
     
 }

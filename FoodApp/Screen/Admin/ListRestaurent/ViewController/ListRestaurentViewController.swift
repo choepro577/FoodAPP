@@ -21,6 +21,12 @@ class ListRestaurentViewController: UIViewController {
         super.viewDidLoad()
         LoadRestaurants()
         setUpRestaurentTableView()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        guard let typeRestaurant = typeRestaurant else { return }
+        self.title = typeRestaurant
     }
     
     func showAlert(_ title: String, _ message: String) {
@@ -90,7 +96,7 @@ extension ListRestaurentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 110
     }
     
 }

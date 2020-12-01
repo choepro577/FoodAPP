@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowscene.coordinateSpace.bounds)
         window?.windowScene = windowscene
-        let photoGalleryAppTableView = SignInViewController(nibName: "SignInViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: photoGalleryAppTableView)
+        let vc = SignInViewController(nibName: "SignInViewController", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: vc)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = false
         window?.rootViewController = navigationController

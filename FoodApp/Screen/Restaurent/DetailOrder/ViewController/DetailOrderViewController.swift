@@ -53,6 +53,13 @@ class DetailOrderViewController: UIViewController {
     func setUpUI() {
         guard let infoRestaurant = infoRestaurant  else { return }
         nameRestaurant.text = infoRestaurant.name
+        deliveredView.layer.cornerRadius = deliveredView.frame.width/20
+        deliveredView.layer.shadowRadius = 5
+        deliveredView.layer.shadowColor = UIColor.black.cgColor
+        deliveredView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        deliveredView.layer.shadowOpacity = 0.1
+        deliveredView.layer.borderWidth = 2
+        deliveredView.layer.borderColor = UIColor.white.cgColor
     }
     
     func showAlert(_ title: String, _ message: String) {

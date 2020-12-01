@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailRestaurentUserViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="closeImageView" destination="5xp-yK-88I" id="4UA-d2-HxK"/>
+                <outlet property="restaurantSearchBar" destination="hqd-jS-QeI" id="jfD-g7-vgQ"/>
                 <outlet property="restaurentTableview" destination="3qx-jt-jEn" id="mFH-AT-LPR"/>
                 <outlet property="typeRestaurantLabel" destination="fpL-b2-XrG" id="uT9-Qw-23C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,8 +26,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJp-5F-VJB">
                     <rect key="frame" x="0.0" y="44" width="414" height="70"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dissmiss" translatesAutoresizingMaskIntoConstraints="NO" id="5xp-yK-88I">
-                            <rect key="frame" x="20" y="20" width="30" height="30"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5xp-yK-88I">
+                            <rect key="frame" x="20" y="22.5" width="30" height="25"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="FOj-32-WgF"/>
                                 <constraint firstAttribute="width" constant="30" id="InQ-nn-8n9"/>
@@ -75,7 +77,7 @@
         </view>
     </objects>
     <resources>
-        <image name="dissmiss" width="512" height="512"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

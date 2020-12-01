@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FindRestaurentDishViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="dishAndRestaurentSearchBar" destination="5rD-q0-1wn" id="76j-zG-BQ5"/>
+                <outlet property="listRestaurantTableView" destination="Ekr-zA-5Eh" id="dbn-yU-oaZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -38,14 +39,22 @@
                         <action selector="cancelActionButton:" destination="-1" eventType="touchUpInside" id="Wkp-kX-ess"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ekr-zA-5Eh">
+                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ekr-zA-5Eh" secondAttribute="bottom" id="2y5-mp-mWr"/>
+                <constraint firstItem="Ekr-zA-5Eh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Aon-OR-ceN"/>
                 <constraint firstItem="2oe-0E-WXy" firstAttribute="leading" secondItem="5rD-q0-1wn" secondAttribute="trailing" id="D9X-8l-aR3"/>
                 <constraint firstItem="2oe-0E-WXy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-10" id="glM-ue-3hL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ekr-zA-5Eh" secondAttribute="trailing" id="iYQ-BI-iiE"/>
                 <constraint firstItem="5rD-q0-1wn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="imi-oq-KC5"/>
                 <constraint firstItem="2oe-0E-WXy" firstAttribute="centerY" secondItem="5rD-q0-1wn" secondAttribute="centerY" id="nr1-F8-xfw"/>
+                <constraint firstItem="Ekr-zA-5Eh" firstAttribute="top" secondItem="5rD-q0-1wn" secondAttribute="bottom" id="utF-8o-tEd"/>
                 <constraint firstItem="5rD-q0-1wn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zIk-aj-xCv"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>

@@ -15,6 +15,7 @@ class AdminHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTypeRestaurentCollectionView()
+        self.title = "Hi Sir !"
     }
     
     func setUpTypeRestaurentCollectionView() {
@@ -42,7 +43,7 @@ extension AdminHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as? TypeRestaurentCollectionViewCell else { return TypeRestaurentCollectionViewCell() }
-        cell.setUpUI(nameImage:typeRestaurentImage[indexPath.row] )
+        cell.setUpCell(nameImage:typeRestaurentImage[indexPath.row] )
         return cell
     }
 }

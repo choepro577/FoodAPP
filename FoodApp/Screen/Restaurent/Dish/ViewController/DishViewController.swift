@@ -9,6 +9,8 @@ import UIKit
 
 class DishViewController: UIViewController {
 
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var nameCatagoryView: UIView!
     @IBOutlet weak var nameDishLabel: UILabel!
     @IBOutlet weak var dishsTableView: UITableView!
     
@@ -43,6 +45,21 @@ class DishViewController: UIViewController {
     
     func setUpUI() {
         nameDishLabel.text = nameDish
+        nameCatagoryView.layer.cornerRadius = nameCatagoryView.frame.width/20
+        nameCatagoryView.layer.shadowRadius = 5
+        nameCatagoryView.layer.shadowColor = UIColor.black.cgColor
+        nameCatagoryView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        nameCatagoryView.layer.shadowOpacity = 0.1
+        nameCatagoryView.layer.borderWidth = 2
+        nameCatagoryView.layer.borderColor = UIColor.white.cgColor
+        
+        addButton.layer.cornerRadius = addButton.frame.width/5
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowOffset = CGSize (width: 10, height: 10)
+        addButton.layer.shadowOpacity = 0.1
+        addButton.layer.borderWidth = 2
+        addButton.layer.borderColor = UIColor.white.cgColor
     }
     
     @IBAction func addDishActionButton(_ sender: Any) {
@@ -100,7 +117,7 @@ extension DishViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
     
 }

@@ -10,6 +10,7 @@ import Kingfisher
 
 class HomeRestaurantViewController: UIViewController {
 
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var ordersTableView: UITableView!
     @IBOutlet weak var nameRestaurantLabel: UILabel!
@@ -27,6 +28,23 @@ class HomeRestaurantViewController: UIViewController {
         setUpTableView()
         getInforRestaurant()
         setUpAction()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        infomationRestaurantView.layer.cornerRadius = infomationRestaurantView.frame.width/20
+        infomationRestaurantView.layer.shadowRadius = 5
+        infomationRestaurantView.layer.shadowColor = UIColor.black.cgColor
+        infomationRestaurantView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        infomationRestaurantView.layer.shadowOpacity = 0.1
+        
+        addButton.layer.cornerRadius = addButton.frame.width/5
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowOffset = CGSize (width: 10, height: 10)
+        addButton.layer.shadowOpacity = 0.1
+        addButton.layer.borderWidth = 2
+        addButton.layer.borderColor = UIColor.white.cgColor
     }
     
     func showAlert(_ title: String, _ message: String) {

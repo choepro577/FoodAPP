@@ -13,6 +13,7 @@
                 <outlet property="catagoryImageView" destination="QSX-u1-5QI" id="SkJ-gc-BXF"/>
                 <outlet property="catagoryTextField" destination="Ix0-Uw-PpH" id="VYh-eU-Q1i"/>
                 <outlet property="dismissImageView" destination="U9S-R3-tzS" id="gjD-KQ-7Wu"/>
+                <outlet property="mainView" destination="OWq-Nx-Nox" id="ZCU-Lv-c7d"/>
                 <outlet property="saveCatagoryView" destination="63M-6S-rXz" id="1Fd-Wu-8o9"/>
                 <outlet property="view" destination="QEH-mO-yPM" id="JBb-ik-hvp"/>
             </connections>
@@ -31,7 +32,7 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-u1-5QI">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-u1-5QI">
                             <rect key="frame" x="104.5" y="20.5" width="125" height="124.5"/>
                             <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>

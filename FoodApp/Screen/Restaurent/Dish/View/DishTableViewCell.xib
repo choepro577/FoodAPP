@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,42 +18,55 @@
                 <rect key="frame" x="0.0" y="0.0" width="365" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feadtured" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h9-8Kt">
-                        <rect key="frame" x="244" y="5" width="101" height="101"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="eGV-h9-8Kt" secondAttribute="height" id="ACh-xb-q54"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="svj-Rw-Epa">
-                        <rect key="frame" x="20" y="27.5" width="214" height="56"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xe-kI-9WD">
+                        <rect key="frame" x="10" y="10" width="345" height="91"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Com op la + suon trung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYG-S0-gWa">
-                                <rect key="frame" x="0.0" y="0.0" width="188" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40.000 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKb-iL-qiv">
-                                <rect key="frame" x="0.0" y="35.5" width="101.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="svj-Rw-Epa">
+                                <rect key="frame" x="20" y="17.5" width="236" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Com op la + suon trung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYG-S0-gWa">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40.000 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKb-iL-qiv">
+                                        <rect key="frame" x="0.0" y="35.5" width="101.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feadtured" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h9-8Kt">
+                                <rect key="frame" x="264" y="10" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eGV-h9-8Kt" secondAttribute="height" id="ACh-xb-q54"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                    </stackView>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eGV-h9-8Kt" firstAttribute="top" secondItem="0Xe-kI-9WD" secondAttribute="top" constant="10" id="F9O-Wa-Zfy"/>
+                            <constraint firstItem="eGV-h9-8Kt" firstAttribute="leading" secondItem="svj-Rw-Epa" secondAttribute="trailing" constant="8" symbolic="YES" id="RDT-o0-am2"/>
+                            <constraint firstItem="svj-Rw-Epa" firstAttribute="leading" secondItem="0Xe-kI-9WD" secondAttribute="leading" constant="20" id="ZFY-bd-MJb"/>
+                            <constraint firstAttribute="bottom" secondItem="eGV-h9-8Kt" secondAttribute="bottom" constant="10" id="nWk-J2-WId"/>
+                            <constraint firstItem="svj-Rw-Epa" firstAttribute="centerY" secondItem="0Xe-kI-9WD" secondAttribute="centerY" id="rg6-Rt-4Vj"/>
+                            <constraint firstAttribute="trailing" secondItem="eGV-h9-8Kt" secondAttribute="trailing" constant="10" id="wOl-Ui-vWN"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="eGV-h9-8Kt" secondAttribute="bottom" constant="5" id="Cru-fV-vDp"/>
-                    <constraint firstItem="eGV-h9-8Kt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JWq-k1-vHA"/>
-                    <constraint firstItem="eGV-h9-8Kt" firstAttribute="leading" secondItem="svj-Rw-Epa" secondAttribute="trailing" constant="10" id="Qxy-CY-Lc7"/>
-                    <constraint firstItem="svj-Rw-Epa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="d5k-uz-Frl"/>
-                    <constraint firstItem="svj-Rw-Epa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="f6Y-hs-WdY"/>
-                    <constraint firstAttribute="trailing" secondItem="eGV-h9-8Kt" secondAttribute="trailing" constant="20" id="s81-1k-seD"/>
+                    <constraint firstAttribute="trailing" secondItem="0Xe-kI-9WD" secondAttribute="trailing" constant="10" id="FDv-dN-X0q"/>
+                    <constraint firstItem="0Xe-kI-9WD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SfI-Pd-eTu"/>
+                    <constraint firstItem="0Xe-kI-9WD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ttj-C4-Rvp"/>
+                    <constraint firstAttribute="bottom" secondItem="0Xe-kI-9WD" secondAttribute="bottom" constant="10" id="eYF-hI-vOd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dishDetailImageView" destination="eGV-h9-8Kt" id="Yuw-GM-4Fo"/>
+                <outlet property="mainView" destination="0Xe-kI-9WD" id="8JI-a1-q0B"/>
                 <outlet property="nameDishDetailLabel" destination="aYG-S0-gWa" id="C6h-jv-dOj"/>
                 <outlet property="priceDishDetailLabel" destination="AKb-iL-qiv" id="3eo-0n-9Tf"/>
             </connections>
@@ -61,5 +75,8 @@
     </objects>
     <resources>
         <image name="feadtured" width="232" height="217"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

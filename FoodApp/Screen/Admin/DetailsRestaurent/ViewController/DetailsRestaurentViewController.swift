@@ -10,6 +10,7 @@ import Kingfisher
 
 class DetailsRestaurentViewController: UIViewController {
     
+    @IBOutlet weak var infoRestaurantView: UIView!
     @IBOutlet weak var addressRestaurantLabel: UILabel!
     @IBOutlet weak var titleRestaurantLabel: UILabel!
     @IBOutlet weak var nameRestaurantLabel: UILabel!
@@ -27,6 +28,17 @@ class DetailsRestaurentViewController: UIViewController {
         setUpPromosTableView()
         setUpInfoRetaurant()
         setUpAction()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        infoRestaurantView.layer.cornerRadius = infoRestaurantView.frame.width/20
+        infoRestaurantView.layer.shadowRadius = 5
+        infoRestaurantView.layer.shadowColor = UIColor.black.cgColor
+        infoRestaurantView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        infoRestaurantView.layer.shadowOpacity = 0.1
+        infoRestaurantView.layer.borderWidth = 2
+        infoRestaurantView.layer.borderColor = UIColor.white.cgColor
     }
     
     func setUpAction() {
@@ -69,11 +81,6 @@ class DetailsRestaurentViewController: UIViewController {
         promosTableview.delegate = self
         promosTableview.dataSource = self
         promosTableview.register(UINib(nibName: "PromosTableViewCell", bundle: nil), forCellReuseIdentifier: "CellID")
-    }
-
-    @IBAction func editRestaurentActionButton(_ sender: Any) {
-        let vc = PopSaveRestaurentViewController ()
-        self.present(vc, animated: true)
     }
 }
 

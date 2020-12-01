@@ -36,6 +36,22 @@ class CouponsCollectionViewCell: UICollectionViewCell {
         delegate?.addPromo(discount: infoPromo.discount, condition: infoPromo.condition)
     }
     
+    func setUpUI() {
+//        mainView.layer.cornerRadius = mainView.frame.width/20
+//
+//        catagoryImageView.layer.cornerRadius = mainView.frame.width/20
+//
+//        saveCatagoryView.layer.cornerRadius = saveCatagoryView.frame.width/20
+//        saveCatagoryView.layer.shadowRadius = 5
+//        saveCatagoryView.layer.shadowColor = UIColor.black.cgColor
+//        saveCatagoryView.layer.shadowOffset = CGSize (width: 10, height: 10)
+//        saveCatagoryView.layer.shadowOpacity = 0.1
+//        saveCatagoryView.layer.borderWidth = 2
+//        saveCatagoryView.layer.borderColor = UIColor.white.cgColor
+        
+        
+    }
+    
     func setUpCell(infoPromo: InfoPromo) {
         self.infoPromo = infoPromo
         percentCouponLabel.text = "\(infoPromo.discount)"

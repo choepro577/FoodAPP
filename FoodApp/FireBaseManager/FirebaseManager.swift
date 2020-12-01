@@ -126,7 +126,7 @@ class FirebaseManager {
                 }
         })
     }
-
+    
     
     func addCatagory(nameCatagory: String, imageLink: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         let ref = Database.database().reference().child("admin")
@@ -204,6 +204,25 @@ class FirebaseManager {
         })
     }
     
+    func getAllRestaurant( completionBlock: @escaping (_ infoRestaurent: [InfoRestaurant]) -> Void) {
+        Database.database().reference().child("admin").observe(DataEventType .value, with: { (usersSnapshot) in
+            var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
+            let userEnumerator = usersSnapshot.childSnapshot(forPath: "restaurant").children
+            while let users = userEnumerator.nextObject() as? DataSnapshot { //freid chicken
+                let todoEnumerator = users.children
+                while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                    let uid = users.key
+                    let todoEnumerator = todoItem.childSnapshot(forPath: "allInfoRestaurant").childSnapshot(forPath: "infomation").children
+                    while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
+                        guard let dict = todoItem.value as? [String: Any] else { return }
+                        let user = InfoRestaurant(uid: uid, dictionary: dict)
+                        listRestaurant.append(user)
+                    }
+                }
+            }
+            completionBlock(listRestaurant)
+        })
+    }
     
     func getInfoCard(uidRestaurant: String, completionBlock: @escaping (_ countDish: Int, _ totalPrice: Int, _ listInfoCart: [InfoCard]) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -310,9 +329,9 @@ class FirebaseManager {
                     while let users = userEnumerator.nextObject() as? DataSnapshot {
                         let todoEnumerator = users.childSnapshot(forPath: "status").children
                         while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                                let id = todoItem.key
-                                guard let dict = todoItem.value as? [String: Any] else { return }
-                                let user = InfoOrderofUser(id: id, dictionary: dict)
+                            let id = todoItem.key
+                            guard let dict = todoItem.value as? [String: Any] else { return }
+                            let user = InfoOrderofUser(id: id, dictionary: dict)
                             listOrder.append(user)
                         }
                     }

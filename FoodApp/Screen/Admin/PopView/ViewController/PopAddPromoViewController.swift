@@ -21,11 +21,6 @@ class PopAddPromoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-            view.addGestureRecognizer(tap)
-        
         discountTextField.keyboardType = .numberPad
         conditionTextField.keyboardType = .numberPad
         setUpUI()
@@ -59,6 +54,12 @@ class PopAddPromoViewController: UIViewController {
     func setUpUI() {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.savePromoAction))
         self.addPromoView.addGestureRecognizer(gesture)
+        allView.layer.cornerRadius = allView.frame.width/20
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
     }
     
     func showAlert(_ title: String, _ message: String) {

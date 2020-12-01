@@ -11,6 +11,7 @@ import Kingfisher
 
 class AddCatagoryViewController: UIViewController {
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var catagoryImageView: UIImageView!
     @IBOutlet weak var catagoryTextField: UITextField!
@@ -20,10 +21,25 @@ class AddCatagoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpAction()
         setUpUI()
     }
     
     func setUpUI() {
+        mainView.layer.cornerRadius = mainView.frame.width/20
+        
+        catagoryImageView.layer.cornerRadius = mainView.frame.width/20
+        
+        saveCatagoryView.layer.cornerRadius = saveCatagoryView.frame.width/20
+        saveCatagoryView.layer.shadowRadius = 5
+        saveCatagoryView.layer.shadowColor = UIColor.black.cgColor
+        saveCatagoryView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        saveCatagoryView.layer.shadowOpacity = 0.1
+        saveCatagoryView.layer.borderWidth = 2
+        saveCatagoryView.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func setUpAction() {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveRestaurentAction))
         self.saveCatagoryView.addGestureRecognizer(gesture)
         

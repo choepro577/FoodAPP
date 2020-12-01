@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,37 +18,53 @@
                 <rect key="frame" x="0.0" y="0.0" width="345" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comtam" translatesAutoresizingMaskIntoConstraints="NO" id="pKz-1t-n2b">
-                        <rect key="frame" x="10" y="10" width="80" height="80"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txr-9D-wmC">
+                        <rect key="frame" x="10" y="10" width="325" height="80"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feadtured" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-GK-kug">
+                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RH3-GK-kug" secondAttribute="height" id="MTi-7L-VEK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryB-aR-RvP">
+                                <rect key="frame" x="90" y="29.5" width="44.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="pKz-1t-n2b" secondAttribute="height" id="7Q7-7y-hLJ"/>
+                            <constraint firstItem="RH3-GK-kug" firstAttribute="top" secondItem="txr-9D-wmC" secondAttribute="top" constant="10" id="Oyo-I0-9iC"/>
+                            <constraint firstItem="ryB-aR-RvP" firstAttribute="leading" secondItem="RH3-GK-kug" secondAttribute="trailing" constant="20" id="V9p-FJ-QSK"/>
+                            <constraint firstItem="ryB-aR-RvP" firstAttribute="centerY" secondItem="txr-9D-wmC" secondAttribute="centerY" id="Z39-5l-Quq"/>
+                            <constraint firstAttribute="bottom" secondItem="RH3-GK-kug" secondAttribute="bottom" constant="10" id="inY-aK-CCD"/>
+                            <constraint firstItem="RH3-GK-kug" firstAttribute="leading" secondItem="txr-9D-wmC" secondAttribute="leading" constant="10" id="mOq-sB-BkC"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Dish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-0k-3wo">
-                        <rect key="frame" x="120" y="39.5" width="114" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="pKz-1t-n2b" secondAttribute="bottom" constant="10" id="1dz-sY-Qoe"/>
-                    <constraint firstItem="pKz-1t-n2b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6Nf-Fi-OpE"/>
-                    <constraint firstItem="Dek-0k-3wo" firstAttribute="leading" secondItem="pKz-1t-n2b" secondAttribute="trailing" constant="30" id="892-Gc-kNo"/>
-                    <constraint firstItem="pKz-1t-n2b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Xve-2m-FJ3"/>
-                    <constraint firstItem="Dek-0k-3wo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ej0-vq-dpA"/>
+                    <constraint firstAttribute="trailing" secondItem="txr-9D-wmC" secondAttribute="trailing" constant="10" id="AtQ-uO-LmQ"/>
+                    <constraint firstItem="txr-9D-wmC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BPN-t2-Zt7"/>
+                    <constraint firstAttribute="bottom" secondItem="txr-9D-wmC" secondAttribute="bottom" constant="10" id="NO7-x9-iER"/>
+                    <constraint firstItem="txr-9D-wmC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="zsZ-PG-x8l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dishImageView" destination="pKz-1t-n2b" id="jHF-hR-vWD"/>
-                <outlet property="nameDishLabel" destination="Dek-0k-3wo" id="mVJ-lt-75n"/>
+                <outlet property="dishImageView" destination="RH3-GK-kug" id="RsY-zF-zZ9"/>
+                <outlet property="mainView" destination="txr-9D-wmC" id="S96-vT-D96"/>
+                <outlet property="nameDishLabel" destination="ryB-aR-RvP" id="rrW-A0-Jer"/>
             </connections>
             <point key="canvasLocation" x="-45.652173913043484" y="-67.633928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="comtam" width="660" height="496"/>
+        <image name="feadtured" width="232" height="217"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

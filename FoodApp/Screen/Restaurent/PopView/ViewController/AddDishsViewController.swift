@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class AddDishsViewController: UIViewController {
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var priceDishTextField: UITextField!
@@ -23,6 +24,21 @@ class AddDishsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpAction()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        mainView.layer.cornerRadius = mainView.frame.width/20
+        
+        dishImageView.layer.cornerRadius = mainView.frame.width/20
+        
+        saveView.layer.cornerRadius = saveView.frame.width/20
+        saveView.layer.shadowRadius = 5
+        saveView.layer.shadowColor = UIColor.black.cgColor
+        saveView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        saveView.layer.shadowOpacity = 0.1
+        saveView.layer.borderWidth = 2
+        saveView.layer.borderColor = UIColor.white.cgColor
     }
     
     func setUpAction() {
@@ -36,7 +52,35 @@ class AddDishsViewController: UIViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveDishAction))
         self.saveView.addGestureRecognizer(gesture)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let emp =  (self.view.frame.size.height - 400) / 3
+              if self.view.frame.origin.y == 0 {
+                  self.view.frame.origin.y -= (keyboardSize.height - emp)
+              }
+         }
+     }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let emp =  (self.view.frame.size.height - 400) / 3
+            if self.view.frame.origin.y != 0 {
+                  self.view.frame.origin.y += (keyboardSize.height + emp)
+              }
+         }
+     }
     
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

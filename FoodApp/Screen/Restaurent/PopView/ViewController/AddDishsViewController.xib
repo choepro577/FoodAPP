@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="dishImageView" destination="aAh-gg-szM" id="OeU-tO-qcE"/>
                 <outlet property="dismissImageView" destination="bfK-8O-xp3" id="nPY-xX-nQ7"/>
+                <outlet property="mainView" destination="cyP-hA-vCD" id="c2l-3K-6Ri"/>
                 <outlet property="namDishDetailsTextField" destination="iXG-G7-CW4" id="yGa-Xs-UYb"/>
                 <outlet property="priceDishTextField" destination="o5x-Mv-KLk" id="wNd-Tr-5on"/>
                 <outlet property="saveView" destination="lOH-QO-AgC" id="5b4-s2-lMn"/>

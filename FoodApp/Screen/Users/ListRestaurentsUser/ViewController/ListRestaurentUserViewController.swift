@@ -9,15 +9,18 @@ import UIKit
 
 class ListRestaurentUserViewController: UIViewController {
     
+    @IBOutlet weak var restaurantSearchBar: UISearchBar!
     @IBOutlet weak var typeRestaurantLabel: UILabel!
     @IBOutlet weak var closeImageView: UIImageView!
     @IBOutlet weak var restaurentTableview: UITableView!
     
     var typeRestaurant: String?
     var listRestaurant: [InfoRestaurant] = [InfoRestaurant]()
+    var filterData: [InfoRestaurant] = [InfoRestaurant]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        restaurantSearchBar.delegate = self
         LoadRestaurants()
         setUpTableView()
         setUpAction()
@@ -27,6 +30,7 @@ class ListRestaurentUserViewController: UIViewController {
         guard let typeRestaurant = typeRestaurant else { return }
         FirebaseManager.shared.getListRestaunt(typeRestaurant: typeRestaurant) { (infoRestaurant) in
             self.listRestaurant = infoRestaurant
+            self.filterData = infoRestaurant
             DispatchQueue.main.async {
                 self.typeRestaurantLabel.text = typeRestaurant
                 self.restaurentTableview.reloadData()
@@ -63,18 +67,36 @@ extension ListRestaurentUserViewController: UITableViewDelegate {
 extension ListRestaurentUserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listRestaurant.count
+        return filterData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? RestaurentsTableViewCell else { return RestaurentsTableViewCell() }
-        cell.setUpCell(infoRestaurant: listRestaurant[indexPath.row])
+        cell.setUpCell(infoRestaurant: filterData[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
     
+}
+
+extension ListRestaurentUserViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterData = []
+        
+        if searchText == "" {
+            filterData = listRestaurant
+        } else {
+            for restaurant in listRestaurant {
+                if restaurant.name.lowercased().contains(searchText.lowercased()) {
+                    filterData.append(restaurant)
+                }
+            }
+        }
+        self.restaurentTableview.reloadData()
+    }
 }
 

@@ -11,10 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
+                <outlet property="emailLabel" destination="JEN-G8-2ZH" id="ojm-wc-nGu"/>
                 <outlet property="emailTextField" destination="Wt8-R2-CSg" id="uCK-W1-u9O"/>
                 <outlet property="forgotPassWordLabel" destination="UkH-D2-3Ae" id="Mcn-pk-GQu"/>
+                <outlet property="passwordLabel" destination="h03-ng-W7i" id="NXT-tw-Agg"/>
                 <outlet property="passwordTextField" destination="9cj-Qz-lTp" id="bsL-2I-y5d"/>
                 <outlet property="signInView" destination="Zgu-fY-7Qz" id="dsB-VL-gSy"/>
+                <outlet property="signinLabel" destination="jki-4D-uL2" id="5fu-Ry-hMV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

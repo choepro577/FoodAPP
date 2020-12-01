@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class CartViewController: UIViewController {
-
+    
+    @IBOutlet weak var AddressLocationLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var totalPriceDishsLabel: UILabel!
     @IBOutlet weak var totalCountDishLabel: UILabel!
@@ -30,6 +32,17 @@ class CartViewController: UIViewController {
         setUpCollectionView()
         getInfoCart()
         getListPromo()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        orderView.layer.cornerRadius = orderView.frame.width/20
+        orderView.layer.shadowRadius = 5
+        orderView.layer.shadowColor = UIColor.black.cgColor
+        orderView.layer.shadowOffset = CGSize (width: 10, height: 10)
+        orderView.layer.shadowOpacity = 0.1
+        orderView.layer.borderWidth = 2
+        orderView.layer.borderColor = UIColor.white.cgColor
     }
     
     func showAlert(_ title: String, _ message: String) {
@@ -106,6 +119,12 @@ class CartViewController: UIViewController {
     @objc func dismissAction(sender : UITapGestureRecognizer) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func editPlace(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
 
 }
 
@@ -157,6 +176,22 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension CartViewController: GMSAutocompleteViewControllerDelegate {
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        AddressLocationLabel.text = place.formattedAddress ?? "unknown address"
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
 extension CartViewController: CouponsCollectionViewCellDelegate {
     func addPromo(discount: Int, condition: Int) {
         guard let provisionalFee = provisionalFee else { return }
@@ -171,3 +206,4 @@ extension CartViewController: CouponsCollectionViewCellDelegate {
         }
     }
 }
+
