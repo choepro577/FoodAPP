@@ -108,7 +108,7 @@ extension HomeRestaurantViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id) { (success, error) in
+            FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id, status: "4") { (success, error) in
                 if (success) {
                     self.showAlert("Notification", "Deleted")
                 } else {

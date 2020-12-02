@@ -10,7 +10,7 @@ import SwiftGifOrigin
 
 class DishisCommingViewController: UIViewController {
 
-    @IBOutlet weak var processShipperImageView: UIImageView!
+    @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var nameRestaurantLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var dishTableView: UITableView!
@@ -47,14 +47,22 @@ class DishisCommingViewController: UIViewController {
         guard let infoRestaurant = infoRestaurant  else { return }
         FirebaseManager.shared.getInfoOrder(uidRestaurant: infoRestaurant.uid) { (infoOrder) in
             
-            print(infoOrder)
+            print(infoOrder.status)
             
             self.infoOrder = infoOrder
+            if infoOrder.status == "4" {
+                self.statusRestaurant.text = "Thanks for your order"
+                self.statusWaitingLabel.text = "Enjoy your meal"
+                self.cookingImageView.image = UIImage.gif(name: "status4")
+                self.dishTableView.isHidden = true
+                self.orderLabel.isHidden = true
+            }
             if infoOrder.status == "2" {
                 self.statusRestaurant.text = "Restaurant is delivered"
                 self.statusWaitingLabel.text = "Shipper is Coming"
                 self.cookingImageView.image = UIImage.gif(name: "shipper")
-            } else {
+            }
+            if infoOrder.status == "1" {
                 self.statusRestaurant.text = "Restaurant Cooking"
                 self.statusWaitingLabel.text = "Wait for the restaurant to prepare food"
                 self.cookingImageView.image = UIImage.gif(name: "cooking")

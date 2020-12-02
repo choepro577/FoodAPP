@@ -48,6 +48,19 @@ class FirebaseManager {
         })
     }
     
+    func addAddress(address: String, subAddress: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let object = ["address": address, "subAddress": subAddress] as [String:Any]
+        Database.database().reference().child("admin").child("allUser")
+            .child(uid).updateChildValues(object, withCompletionBlock: { error, ref in
+                if error == nil {
+                    completionBlock(true, nil)
+                } else {
+                    completionBlock(false, error)
+                }
+            })
+    }
+    
     func addToCard(uidRestaurant: String, nameDish: String, totalPrice: Int, count: Int, note: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
@@ -184,6 +197,16 @@ class FirebaseManager {
                     completionBlock(false, error)
                 }
             })
+        })
+    }
+    
+    func getInfoUser(completionBlock: @escaping (_ info: CurrentUser) -> Void) {
+        let ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        ref.child("admin").child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let userRestaurant = CurrentUser (uid: uid, dictionary: dict)
+            completionBlock(userRestaurant)
         })
     }
     
@@ -412,7 +435,7 @@ class FirebaseManager {
         })
     }
     
-    func deleteOrder(uidUser: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+    func deleteOrder(uidUser: String, status: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
         ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -427,7 +450,11 @@ class FirebaseManager {
                 .child(uidUser)
                 .removeValue() { (error, _ ) in
                     if error == nil {
-                        print("deleted")
+                        self.updateStatusOrderOfRestaurant(status: status, uidUser: uidUser) { (suscess, error) in
+                            if (suscess) {
+                                print("deleted")
+                            }
+                        }
                     }
                 }
         })
@@ -577,7 +604,7 @@ class FirebaseManager {
     }
     
     
-    func updateInfoUserTypeRestaurant(typeRestaurant: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void ) {
+    func updateInfoUserTypeRestaurant(typeRestaurant: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
         let object = ["typeRestaurant": typeRestaurant] as [String:Any]
         Database.database().reference()

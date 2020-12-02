@@ -62,5 +62,7 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Please allow access to upload photos.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app need it</string>
 </dict>
 </plist>

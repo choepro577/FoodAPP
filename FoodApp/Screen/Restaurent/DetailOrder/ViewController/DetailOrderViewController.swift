@@ -94,9 +94,11 @@ class DetailOrderViewController: UIViewController {
                 if self.status == "1" {
                     vc.isComing(uidUser: listOrder.id, status: self.status ?? "")
                     self.status = "2"
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     vc.isComing(uidUser: listOrder.id, status: self.status ?? "")
                     self.status = "1"
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

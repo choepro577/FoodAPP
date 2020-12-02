@@ -10,6 +10,9 @@ import GooglePlaces
 
 class CartViewController: UIViewController {
     
+    @IBOutlet weak var subAddressLabel: UILabel!
+    @IBOutlet weak var nameRestaurantLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var AddressLocationLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var totalPriceDishsLabel: UILabel!
@@ -33,6 +36,7 @@ class CartViewController: UIViewController {
         getInfoCart()
         getListPromo()
         setUpUI()
+        getInfoUser()
     }
     
     func setUpUI() {
@@ -57,10 +61,21 @@ class CartViewController: UIViewController {
             self.listInfoDistOrder = listInfocart
             self.provisionalFee = totalPrice
             DispatchQueue.main.async {
+                self.nameRestaurantLabel.text = infoRestaurant.name
                 self.totalPriceDishsLabel.text = "\(totalPrice)"
                 self.totalCountDishLabel.text = "\(countDish)"
                 self.totalMoneyPayLabel.text = "\(totalPrice + self.applyFees)"
                 self.dishCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func getInfoUser() {
+        FirebaseManager.shared.getInfoUser() {(infoUser) in
+            DispatchQueue.main.async {
+                self.phoneNumberLabel.text = infoUser.phoneNumber
+                self.AddressLocationLabel.text = infoUser.address
+                self.subAddressLabel.text = infoUser.subAddress
             }
         }
     }
@@ -101,7 +116,7 @@ class CartViewController: UIViewController {
         if listInfoDistOrder.isEmpty {
             self.showAlert("Error", "You have not placed an order")
         } else {
-            FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: "39 nguyen thi dieu", totalPrice: provisionalFee) { (success, error) in
+            FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: self.AddressLocationLabel.text ?? "", totalPrice: provisionalFee) { (success, error) in
                 var message: String = ""
                 if (success) {
                   let vc = DishisCommingViewController()

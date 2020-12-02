@@ -48,8 +48,6 @@ class CouponsCollectionViewCell: UICollectionViewCell {
 //        saveCatagoryView.layer.shadowOpacity = 0.1
 //        saveCatagoryView.layer.borderWidth = 2
 //        saveCatagoryView.layer.borderColor = UIColor.white.cgColor
-        
-        
     }
     
     func setUpCell(infoPromo: InfoPromo) {

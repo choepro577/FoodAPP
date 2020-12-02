@@ -15,6 +15,7 @@
                 <outlet property="cookingImageView" destination="EMq-YJ-KEd" id="GGZ-hq-AlH"/>
                 <outlet property="dishTableView" destination="Kmw-ZG-hC4" id="fh6-uF-3G3"/>
                 <outlet property="nameRestaurantLabel" destination="76s-VS-fcL" id="gLb-pC-Ihi"/>
+                <outlet property="orderLabel" destination="h6T-6n-OCN" id="StT-em-ajk"/>
                 <outlet property="statusRestaurant" destination="igo-kw-LtZ" id="ZSy-2e-4fy"/>
                 <outlet property="statusWaitingLabel" destination="WpO-8a-J2y" id="Fhs-BU-hdP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

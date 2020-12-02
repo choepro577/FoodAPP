@@ -9,6 +9,8 @@ import UIKit
 
 class UsersHomeViewController: UIViewController {
 
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var infomationImageView: UIImageView!
     @IBOutlet weak var typeRestaurentColectionViewCell: UICollectionView!
@@ -18,6 +20,11 @@ class UsersHomeViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         setUpColectionViewCell()
+        getInfoUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     func setUpColectionViewCell() {
@@ -26,14 +33,30 @@ class UsersHomeViewController: UIViewController {
         typeRestaurentColectionViewCell.register(UINib(nibName: "typeRestaurentUserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CellID")
     }
     
+    func getInfoUser() {
+        FirebaseManager.shared.getInfoUser() {(infoUser) in
+            DispatchQueue.main.async {
+                self.addressLabel.text = infoUser.address
+            }
+        }
+    }
+    
     func setUpUI() {
         self.navigationController?.isNavigationBarHidden = true
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.searchAction))
         self.searchView.addGestureRecognizer(gesture)
         
+        let addressViewGesture = UITapGestureRecognizer(target: self, action:  #selector(self.searchAddressAction))
+        self.addressView.addGestureRecognizer(addressViewGesture)
+        
         let infoUsergesture = UITapGestureRecognizer(target: self, action:  #selector(self.watchInfomationUserAction))
         infomationImageView.isUserInteractionEnabled = true
         self.infomationImageView.addGestureRecognizer(infoUsergesture)
+    }
+    
+    @objc func searchAddressAction(sender : UITapGestureRecognizer) {
+        let vc = MapViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func searchAction(sender : UITapGestureRecognizer) {
