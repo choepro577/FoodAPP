@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfomationUserViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="dissmissImageView" destination="i23-rg-TVd" id="0Lf-5a-kp3"/>
+                <outlet property="historyOrderView" destination="gGT-dN-5cL" id="Su5-g0-dQd"/>
                 <outlet property="infoUserImageView" destination="LHa-V1-GeP" id="3hA-YJ-SmX"/>
+                <outlet property="signOutView" destination="Vef-4I-KSK" id="fPv-Ab-fDp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -141,21 +143,41 @@
                         <constraint firstItem="fMk-66-TJN" firstAttribute="leading" secondItem="zXN-Rx-Msf" secondAttribute="leading" constant="20" id="aET-J0-r1c"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vef-4I-KSK">
+                    <rect key="frame" x="0.0" y="404" width="414" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwZ-tg-ash">
+                            <rect key="frame" x="20" y="14.5" width="70" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.91764956710000001" green="0.91764694449999995" blue="0.91763919589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="1bg-9A-93S"/>
+                        <constraint firstItem="JwZ-tg-ash" firstAttribute="centerY" secondItem="Vef-4I-KSK" secondAttribute="centerY" id="voS-83-MTp"/>
+                        <constraint firstItem="JwZ-tg-ash" firstAttribute="leading" secondItem="Vef-4I-KSK" secondAttribute="leading" constant="20" id="xl9-lU-Eer"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gQn-Rc-bWa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5ug-LX-v1P"/>
                 <constraint firstItem="zXN-Rx-Msf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6ls-V9-tN4"/>
+                <constraint firstItem="Vef-4I-KSK" firstAttribute="top" secondItem="IkG-ST-igs" secondAttribute="bottom" id="79j-F9-2fE"/>
                 <constraint firstItem="gGT-dN-5cL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8t8-Oi-1rL"/>
                 <constraint firstItem="hhk-Q8-MnQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AjQ-4q-agc"/>
                 <constraint firstItem="gQn-Rc-bWa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BqO-0h-BxJ"/>
                 <constraint firstItem="zXN-Rx-Msf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HV1-my-So5"/>
                 <constraint firstItem="IkG-ST-igs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HiL-VR-M0A"/>
                 <constraint firstItem="hhk-Q8-MnQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ht0-Zj-5Tc"/>
+                <constraint firstItem="Vef-4I-KSK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JBJ-3Y-lIg"/>
                 <constraint firstItem="zXN-Rx-Msf" firstAttribute="top" secondItem="gGT-dN-5cL" secondAttribute="bottom" id="OrK-7O-QVL"/>
                 <constraint firstItem="gQn-Rc-bWa" firstAttribute="top" secondItem="INl-FM-hKg" secondAttribute="bottom" id="RZ2-2s-r3g"/>
                 <constraint firstItem="INl-FM-hKg" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="T1I-Qi-jMG"/>
+                <constraint firstItem="Vef-4I-KSK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="UPU-Kd-9Kq"/>
                 <constraint firstItem="gGT-dN-5cL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Y3l-f1-Zes"/>
                 <constraint firstItem="INl-FM-hKg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZSG-5t-D9j"/>
                 <constraint firstItem="gGT-dN-5cL" firstAttribute="top" secondItem="hhk-Q8-MnQ" secondAttribute="bottom" constant="40" id="ar0-aM-TjK"/>

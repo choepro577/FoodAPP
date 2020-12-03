@@ -44,7 +44,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyE-e2-My9">
                             <rect key="frame" x="0.0" y="40" width="318" height="50"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="nEJ-E8-AU7">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="nEJ-E8-AU7">
                                     <rect key="frame" x="10" y="10" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="LUY-mY-E9L"/>
@@ -85,7 +85,7 @@
                     <rect key="frame" x="0.0" y="90" width="414" height="772"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-lB-Ufy">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="750.33333333333337"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="720.33333333333337"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baemin" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-fK-I3t">
                                     <rect key="frame" x="10" y="60" width="394" height="200"/>
@@ -94,10 +94,10 @@
                                     </constraints>
                                 </imageView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="q47-mF-o2y">
-                                    <rect key="frame" x="10" y="270" width="394" height="280"/>
+                                    <rect key="frame" x="10" y="270" width="394" height="250"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="280" id="9x4-IH-gMe"/>
+                                        <constraint firstAttribute="height" constant="250" id="9x4-IH-gMe"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WsR-rX-z0C">
                                         <size key="itemSize" width="128" height="128"/>
@@ -107,7 +107,7 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEE-HO-8Cj">
-                                    <rect key="frame" x="10" y="560" width="394" height="40"/>
+                                    <rect key="frame" x="10" y="530" width="394" height="40"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" translatesAutoresizingMaskIntoConstraints="NO" id="Rf5-vx-M05">
                                             <rect key="frame" x="10" y="6" width="28" height="28"/>
@@ -148,13 +148,13 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you eat today ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1X-zB-ps2">
-                                    <rect key="frame" x="10" y="610" width="394" height="20.333333333333371"/>
+                                    <rect key="frame" x="10" y="580" width="394" height="20.333333333333371"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prv-0W-nhE" userLabel="CustomBarView">
-                                    <rect key="frame" x="10" y="640.33333333333337" width="394" height="100"/>
+                                    <rect key="frame" x="10" y="610.33333333333337" width="394" height="100"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feadtured" translatesAutoresizingMaskIntoConstraints="NO" id="lgk-vI-5jb">
                                             <rect key="frame" x="5" y="5" width="90" height="90"/>
@@ -288,7 +288,7 @@
         <image name="email" width="512" height="512"/>
         <image name="feadtured" width="232" height="217"/>
         <image name="information" width="512" height="512"/>
-        <image name="location" width="512" height="512"/>
+        <image name="map" width="512" height="512"/>
         <image name="search" width="512" height="512"/>
         <image name="ticket" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">

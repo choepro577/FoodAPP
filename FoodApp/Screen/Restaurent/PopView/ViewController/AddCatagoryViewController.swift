@@ -11,6 +11,7 @@ import Kingfisher
 
 class AddCatagoryViewController: UIViewController {
     
+    @IBOutlet weak var addCatagoryScrollView: UIScrollView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var catagoryImageView: UIImageView!
@@ -40,6 +41,12 @@ class AddCatagoryViewController: UIViewController {
     }
     
     func setUpAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveRestaurentAction))
         self.saveCatagoryView.addGestureRecognizer(gesture)
         
@@ -52,9 +59,31 @@ class AddCatagoryViewController: UIViewController {
         self.dismissImageView.addGestureRecognizer(imageDismissRestaurantGesture)
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification) {
+
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.addCatagoryScrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height - 150
+        addCatagoryScrollView.contentInset = contentInset
+    }
+
+    @objc func keyboardWillHide(notification:NSNotification) {
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        addCatagoryScrollView.contentInset = contentInset
+    }
+    
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -73,6 +102,7 @@ class AddCatagoryViewController: UIViewController {
         
         guard let imageData = self.catagoryImageView.image?.pngData() else { return  }
         SVProgressHUD.show()
+        SVProgressHUD.setDefaultMaskType(.clear)
         FirebaseManager.shared.uploadImageDish(imageData: imageData, typeImage: "imageCatagory", nameImageCatagory: name) { (url, error) in
             self.urlImage = url
             print(url)
@@ -88,6 +118,7 @@ class AddCatagoryViewController: UIViewController {
                         SVProgressHUD.dismiss()
                         self.showAlert("Notification", message)
                     } else {
+                        SVProgressHUD.dismiss()
                         guard let error = error else { return }
                         message = "\(error.localizedDescription)"
                     }

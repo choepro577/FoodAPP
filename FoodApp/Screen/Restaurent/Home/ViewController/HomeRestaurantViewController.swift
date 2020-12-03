@@ -21,6 +21,8 @@ class HomeRestaurantViewController: UIViewController {
     var listOrder: [InfoOrderofUser] = [InfoOrderofUser]()
     var Restaurant: InfoRestaurant?
     
+    var date = NSDate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -29,6 +31,10 @@ class HomeRestaurantViewController: UIViewController {
         getInforRestaurant()
         setUpAction()
         setUpUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setUpUI() {
@@ -69,7 +75,7 @@ class HomeRestaurantViewController: UIViewController {
     
     @objc func setUpFullInfoRestaurant(sender : UITapGestureRecognizer) {
         let vc = AddInfoRestaurantViewController()
-        self.present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func getInforRestaurant() {
@@ -108,11 +114,23 @@ extension HomeRestaurantViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id, status: "4") { (success, error) in
-                if (success) {
-                    self.showAlert("Notification", "Deleted")
-                } else {
-                    return
+            if listOrder[indexPath.row].status == "1" {
+                guard let infoRestaurant = self.Restaurant else { return }
+                FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id, status: "5", name: listOrder[indexPath.row].name, addressRestaurant: infoRestaurant.address, totalPrice: listOrder[indexPath.row].totalPrice, dateTime: listOrder[indexPath.row].dateTime) { (success, error) in
+                    if (success) {
+                        self.showAlert("Notification", "Deleted")
+                    } else {
+                        return
+                    }
+                }
+            } else {
+                guard let infoRestaurant = self.Restaurant else { return }
+                FirebaseManager.shared.deleteOrder(uidUser: listOrder[indexPath.row].id, status: "4", name: listOrder[indexPath.row].name, addressRestaurant: infoRestaurant.address, totalPrice: listOrder[indexPath.row].totalPrice, dateTime: listOrder[indexPath.row].dateTime) { (success, error) in
+                    if (success) {
+                        self.showAlert("Notification", "Deleted")
+                    } else {
+                        return
+                    }
                 }
             }
         }

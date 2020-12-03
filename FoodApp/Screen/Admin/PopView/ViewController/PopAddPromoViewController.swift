@@ -64,9 +64,10 @@ class PopAddPromoViewController: UIViewController {
     
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
         present(alertController, animated: true, completion: nil)
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func savePromoAction(sender : UITapGestureRecognizer) {

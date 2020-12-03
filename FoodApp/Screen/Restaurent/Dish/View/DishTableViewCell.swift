@@ -21,10 +21,20 @@ class DishTableViewCell: UITableViewCell {
     }
 
     func setUpCell(infoDishDetail: InfoDishDetail) {
-        nameDishDetailLabel.text = infoDishDetail.nameDishDetail
-        priceDishDetailLabel.text = infoDishDetail.price
-        let resource = ImageResource(downloadURL: URL(string: infoDishDetail.imageLink)!, cacheKey: infoDishDetail.imageLink)
-        dishDetailImageView.kf.setImage(with: resource)
+        if infoDishDetail.status == "still have food" {
+            mainView.backgroundColor = .white
+            nameDishDetailLabel.text = infoDishDetail.nameDishDetail
+            priceDishDetailLabel.text = infoDishDetail.price
+            let resource = ImageResource(downloadURL: URL(string: infoDishDetail.imageLink)!, cacheKey: infoDishDetail.imageLink)
+            dishDetailImageView.kf.setImage(with: resource)
+        }
+        if infoDishDetail.status == "Out of Food" {
+            mainView.backgroundColor = .systemGray3
+            nameDishDetailLabel.text = infoDishDetail.nameDishDetail
+            priceDishDetailLabel.text = infoDishDetail.price
+            let resource = ImageResource(downloadURL: URL(string: infoDishDetail.imageLink)!, cacheKey: infoDishDetail.imageLink)
+            dishDetailImageView.kf.setImage(with: resource)
+        }
     }
     
     func setUpUI() {

@@ -83,6 +83,7 @@ struct InfoOrderofUser {
     let address: String
     let phone: String
     let totalPrice: Int
+    let dateTime: String
     
     init(id: String, dictionary: [String: Any]) {
         self.id = id
@@ -91,5 +92,24 @@ struct InfoOrderofUser {
         self.totalPrice = dictionary["totalPrice"] as? Int ?? 1
         self.address = dictionary["address"] as? String ?? ""
         self.phone = dictionary["phoneNumber"] as? String ?? ""
+        self.dateTime = dictionary["dateTime"] as? String ?? ""
+    }
+}
+
+struct HistoryOrderofUser {
+    let id: String
+    let status: String
+    let name: String
+    let addressRestaurant: String
+    let dateTime: String
+    let totalPrice: Int
+    
+    init(id: String, dictionary: [String: Any]) {
+        self.id = id
+        self.status = dictionary["status"] as? String ?? ""
+        self.name = dictionary["name"] as? String ?? ""
+        self.totalPrice = dictionary["totalPrice"] as? Int ?? 1
+        self.addressRestaurant = dictionary["addressRestaurant"] as? String ?? ""
+        self.dateTime = dictionary["dateTime"] as? String ?? ""
     }
 }

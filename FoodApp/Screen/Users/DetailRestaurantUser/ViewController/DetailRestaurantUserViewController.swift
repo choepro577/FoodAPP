@@ -130,19 +130,19 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
                 
                 let titleLabel = UILabel(frame: CGRect(x: 10, y: 80, width: 280, height: 20))
                 titleLabel.text = "\(infoRestaurant.title)"
-                titleLabel.font = .systemFont(ofSize: 15, weight: .bold)
+                titleLabel.font = .systemFont(ofSize: 15, weight: .medium)
                 titleLabel.textColor = .systemGray
                 titleLabel.textAlignment = .center
                 titleLabel.numberOfLines = 0
                 
                 let addressLabel = UILabel(frame: CGRect(x: 10, y: 100, width: 280, height: 20))
                 addressLabel.text = "\(infoRestaurant.address)"
-                addressLabel.font = .systemFont(ofSize: 15, weight: .bold)
+                addressLabel.font = .systemFont(ofSize: 15, weight: .medium)
                 addressLabel.textColor = .systemGray
                 addressLabel.textAlignment = .center
                 addressLabel.numberOfLines = 0
                 
-                let dishLabel = UILabel(frame: CGRect(x: 20, y: 240, width: 280, height: 20))
+                let dishLabel = UILabel(frame: CGRect(x: 20, y: 250, width: 280, height: 20))
                 dishLabel.text = "\(listDish[section].nameDish)"
                 dishLabel.font = .systemFont(ofSize: 22, weight: .bold)
                 dishLabel.numberOfLines = 0
@@ -175,7 +175,7 @@ extension DetailRestaurantUserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 270
+            return 280
         }
         return 40
     }

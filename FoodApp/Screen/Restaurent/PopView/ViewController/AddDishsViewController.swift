@@ -28,6 +28,7 @@ class AddDishsViewController: UIViewController {
     }
     
     func setUpUI() {
+        priceDishTextField.keyboardType = .numberPad
         mainView.layer.cornerRadius = mainView.frame.width/20
         
         dishImageView.layer.cornerRadius = mainView.frame.width/20
@@ -61,7 +62,6 @@ class AddDishsViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -84,7 +84,9 @@ class AddDishsViewController: UIViewController {
     
     func showAlert(_ title: String, _ message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -105,6 +107,7 @@ class AddDishsViewController: UIViewController {
         
         guard let imageData = self.dishImageView.image?.pngData() else { return  }
         SVProgressHUD.show()
+        SVProgressHUD.setDefaultMaskType(.clear)
         FirebaseManager.shared.uploadImageDishDetail(imageData: imageData, typeImage: "imageDishDetails", nameDish: nameDishDetail ){ (url, error) in
             self.urlImage = url
             print(url)

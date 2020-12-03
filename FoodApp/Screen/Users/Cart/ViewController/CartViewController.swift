@@ -39,6 +39,10 @@ class CartViewController: UIViewController {
         getInfoUser()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     func setUpUI() {
         orderView.layer.cornerRadius = orderView.frame.width/20
         orderView.layer.shadowRadius = 5
@@ -53,6 +57,12 @@ class CartViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func generateCurrentTimeStamp() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy_MM_dd_hh_mm_ss"
+        return (formatter.string(from: Date()) as NSString) as String
     }
     
     func getInfoCart() {
@@ -116,10 +126,12 @@ class CartViewController: UIViewController {
         if listInfoDistOrder.isEmpty {
             self.showAlert("Error", "You have not placed an order")
         } else {
-            FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: self.AddressLocationLabel.text ?? "", totalPrice: provisionalFee) { (success, error) in
+            let dateTime: String = "\(generateCurrentTimeStamp())"
+            FirebaseManager.shared.orderRestaurant(uidRestaurant: infoRestaurant.uid, status: "1", address: self.AddressLocationLabel.text ?? "", totalPrice: provisionalFee, dateTime: dateTime) { (success, error) in
                 var message: String = ""
                 if (success) {
                   let vc = DishisCommingViewController()
+                    vc.dateTime = dateTime
                     vc.infoRestaurant = infoRestaurant
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
@@ -136,9 +148,8 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func editPlace(_ sender: Any) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
+       let vc = MapViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

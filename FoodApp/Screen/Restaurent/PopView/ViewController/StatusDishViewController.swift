@@ -14,7 +14,7 @@ class StatusDishViewController: UIViewController {
     @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var choseStatusDropDown: UIPickerView!
     
-    var statusChoose: String?
+    var statusChoose: String = "Out of Food"
     var nameDish: String?
     var nameDishDetail: String?
     
@@ -40,9 +40,11 @@ class StatusDishViewController: UIViewController {
         self.dismissImageView.addGestureRecognizer(imageDismissRestaurantGesture)
     }
     
-    func showAlert(_ title: String, _ message: String) {
+    func showAlert(_ title: String, _ message: String) {    
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -54,10 +56,8 @@ class StatusDishViewController: UIViewController {
         SVProgressHUD.show()
         guard let nameDish = nameDish,
               let nameDishDetail = nameDishDetail,
-              let statusChoose = statusChoose,
               !nameDish.isEmpty,
-              !nameDishDetail.isEmpty,
-              !statusChoose.isEmpty
+              !nameDishDetail.isEmpty
         else {
             self.showAlert("Error", "Plese check your connect")
             SVProgressHUD.dismiss()
@@ -70,10 +70,11 @@ class StatusDishViewController: UIViewController {
                 message = "Update successfully"
                 SVProgressHUD.dismiss()
                 self.showAlert("Notification", message)
-                
             } else {
+                self.dismiss(animated: true, completion: nil)
                 guard let error = error else { return }
                 message = "\(error.localizedDescription)"
+                self.showAlert("Notification", message)
             }
         }
     }

@@ -29,8 +29,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
         phoneNumberTextField.keyboardType = .numberPad
         setUpAction()
         setUpPickerView()
@@ -80,6 +78,9 @@ class SignUpViewController: UIViewController {
     }
     
     func setUpAction() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.creatAccount))
         self.signUpView.addGestureRecognizer(gesture)
         

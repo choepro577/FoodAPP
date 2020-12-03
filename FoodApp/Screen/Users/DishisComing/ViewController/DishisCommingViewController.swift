@@ -21,6 +21,8 @@ class DishisCommingViewController: UIViewController {
     var infoRestaurant: InfoRestaurant?
     var listInfoDistOrder: [InfoCard] = [InfoCard]()
     var infoOrder: InfoOrderofUser?
+    var dateTime: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -28,6 +30,7 @@ class DishisCommingViewController: UIViewController {
         setUpTableView()
         setUpAction()
         getInfoOrder()
+        getHistoryOrder()
     }
     
     func showAlert(_ title: String, _ message: String) {
@@ -43,20 +46,33 @@ class DishisCommingViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func getInfoOrder() {
-        guard let infoRestaurant = infoRestaurant  else { return }
-        FirebaseManager.shared.getInfoOrder(uidRestaurant: infoRestaurant.uid) { (infoOrder) in
-            
-            print(infoOrder.status)
-            
-            self.infoOrder = infoOrder
-            if infoOrder.status == "4" {
+    func getHistoryOrder() {
+        guard let dateTime = self.dateTime else { return }
+        FirebaseManager.shared.getInfoHistoryUser(dateTime: dateTime) { (historyOrder) in
+            if historyOrder.status == "4" {
                 self.statusRestaurant.text = "Thanks for your order"
                 self.statusWaitingLabel.text = "Enjoy your meal"
                 self.cookingImageView.image = UIImage.gif(name: "status4")
                 self.dishTableView.isHidden = true
                 self.orderLabel.isHidden = true
             }
+            if historyOrder.status == "5" {
+                self.statusRestaurant.text = "Sorry Restaurant has just run out of food"
+                self.statusWaitingLabel.text = "You can order something else"
+                self.cookingImageView.image = UIImage.gif(name: "sorry")
+                self.dishTableView.isHidden = true
+                self.orderLabel.isHidden = true
+            }
+        }
+    }
+    
+    
+    func getInfoOrder() {
+        guard let infoRestaurant = infoRestaurant  else { return }
+        FirebaseManager.shared.getInfoOrder(uidRestaurant: infoRestaurant.uid) { (infoOrder) in
+            print(infoOrder.status)
+            self.infoOrder = infoOrder
+        
             if infoOrder.status == "2" {
                 self.statusRestaurant.text = "Restaurant is delivered"
                 self.statusWaitingLabel.text = "Shipper is Coming"

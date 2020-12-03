@@ -78,10 +78,6 @@ class DishViewController: UIViewController {
 
 extension DishViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let nameDish = nameDish else { return }
@@ -99,7 +95,7 @@ extension DishViewController: UITableViewDelegate {
         let vc = StatusDishViewController()
         vc.nameDish = nameDish
         vc.nameDishDetail = listDishDetails[indexPath.row].nameDishDetail
-        self.present(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

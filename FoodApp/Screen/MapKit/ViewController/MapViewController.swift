@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol MapViewControllerDelegate {
+    func getAddress(address: String) 
+}
+
 class MapViewController: UIViewController {
     
     @IBOutlet weak var confirmView: UIView!
@@ -20,9 +24,11 @@ class MapViewController: UIViewController {
     var selectedPin: MKPlacemark? = nil
     var previousLocation: CLLocation?
     let locationManager = CLLocationManager()
+    var delegate :MapViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         checkLocationServices()
         setUpAction()
         setUpAction()
@@ -66,6 +72,8 @@ class MapViewController: UIViewController {
                 //
             }
         }
+        
+        delegate?.getAddress(address: "\(self.addressLabel.text ?? "")")
     }
     
     func setupLocationManager() {

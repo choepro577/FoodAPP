@@ -62,10 +62,6 @@ class RestaurentHomeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.addRestaurent))
         self.catagoryView.addGestureRecognizer(gesture)
-        
-        let infomationRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.setUpFullInfoRestaurant))
-        self.infomationRestaurantView.addGestureRecognizer(infomationRestaurantGesture)
-        
         let imageDismissRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
         backImageView.isUserInteractionEnabled = true
         self.backImageView.addGestureRecognizer(imageDismissRestaurantGesture)
@@ -99,11 +95,6 @@ class RestaurentHomeViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc func setUpFullInfoRestaurant(sender : UITapGestureRecognizer) {
-        let vc = AddInfoRestaurantViewController()
-        self.present(vc, animated: true)
     }
     
     @objc func addRestaurent(sender : UITapGestureRecognizer) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -23,11 +23,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0t-97-JCX">
-                    <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-A3-eZF">
                             <rect key="frame" x="15" y="58.000000000000007" width="25" height="19.333333333333336"/>
@@ -38,7 +38,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Restaurant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76s-VS-fcL">
-                            <rect key="frame" x="45" y="57.666666666666657" width="300" height="20"/>
+                            <rect key="frame" x="57" y="57.666666666666657" width="300" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="6A0-il-XZY"/>
                             </constraints>
@@ -57,7 +57,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has received the Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3k-fx-5Uo">
-                    <rect key="frame" x="70" y="110" width="250" height="20.666666666666657"/>
+                    <rect key="frame" x="82" y="110" width="250" height="20.666666666666657"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="yLF-4o-E5T"/>
                     </constraints>
@@ -65,8 +65,8 @@
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Cooking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igo-kw-LtZ">
-                    <rect key="frame" x="20" y="160.66666666666666" width="350" height="31.333333333333343"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Cooking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igo-kw-LtZ">
+                    <rect key="frame" x="32" y="160.66666666666666" width="350" height="31.333333333333343"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="350" id="n15-5x-3mv"/>
                     </constraints>
@@ -75,23 +75,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EMq-YJ-KEd">
-                    <rect key="frame" x="20" y="222" width="350" height="200"/>
+                    <rect key="frame" x="20" y="222" width="374" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="jEQ-d5-8Hs"/>
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-ZG-hC4">
-                    <rect key="frame" x="0.0" y="573.33333333333337" width="390" height="236.66666666666663"/>
+                    <rect key="frame" x="0.0" y="573.33333333333337" width="414" height="288.66666666666663"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wait for the restaurant to prepare food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-8a-J2y">
-                    <rect key="frame" x="20" y="452" width="350" height="20.333333333333314"/>
+                    <rect key="frame" x="20" y="452" width="374" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqn-e9-kIP">
-                    <rect key="frame" x="165" y="492.33333333333331" width="60" height="29.999999999999943"/>
+                    <rect key="frame" x="177" y="492.33333333333331" width="60" height="29.999999999999943"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Fw2-9C-1pn"/>
                     </constraints>

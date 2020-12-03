@@ -50,6 +50,22 @@ class FirebaseManager {
     
     func addAddress(address: String, subAddress: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let user = CurrentUser (uid: uid, dictionary: dict)
+            if user.rule == "user" {
+                let object = ["address": address, "subAddress": subAddress] as [String:Any]
+                Database.database().reference().child("admin").child("allUser")
+                    .child(uid).updateChildValues(object, withCompletionBlock: { error, ref in
+                        if error == nil {
+                            completionBlock(true, nil)
+                        } else {
+                            completionBlock(false, error)
+                        }
+                    })
+            }
+        })
+        
         let object = ["address": address, "subAddress": subAddress] as [String:Any]
         Database.database().reference().child("admin").child("allUser")
             .child(uid).updateChildValues(object, withCompletionBlock: { error, ref in
@@ -87,7 +103,7 @@ class FirebaseManager {
         })
     }
     
-    func orderRestaurant(uidRestaurant: String, status: String, address: String, totalPrice: Int, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+    func orderRestaurant(uidRestaurant: String, status: String, address: String, totalPrice: Int, dateTime: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
         ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -96,7 +112,7 @@ class FirebaseManager {
             ref.child("admin").child("allUser").child(uidRestaurant).observeSingleEvent(of: .value, with: {(snapshot) in
                 guard let dict = snapshot.value as? [String: Any] else { return }
                 let userRestaurant = CurrentUser (uid: uidRestaurant, dictionary: dict)
-                let object = ["status": status, "address": address, "phoneNumber": user.phoneNumber , "totalPrice": totalPrice, "name": user.name] as [String:Any]
+                let object = ["status": status, "address": address, "phoneNumber": user.phoneNumber , "totalPrice": totalPrice, "name": user.name, "dateTime": dateTime] as [String:Any]
                 ref.child("admin")
                     .child("restaurant")
                     .child(userRestaurant.typeRestaurant)
@@ -207,6 +223,16 @@ class FirebaseManager {
             guard let dict = snapshot.value as? [String: Any] else { return }
             let userRestaurant = CurrentUser (uid: uid, dictionary: dict)
             completionBlock(userRestaurant)
+        })
+    }
+    
+    func getInfoHistoryUser(dateTime: String, completionBlock: @escaping (_ historyOrder: HistoryOrderofUser) -> Void) {
+        let ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        ref.child("admin").child("allUser").child(uid).child("historyOrder").child(dateTime).observe(DataEventType.value, with: {(snapshot) in
+            guard let dict = snapshot.value as? [String: Any] else { return }
+            let historyOrder = HistoryOrderofUser (id: uid, dictionary: dict)
+            completionBlock(historyOrder)
         })
     }
     
@@ -435,7 +461,7 @@ class FirebaseManager {
         })
     }
     
-    func deleteOrder(uidUser: String, status: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+    func deleteOrder(uidUser: String, status: String, name: String, addressRestaurant: String, totalPrice: Int, dateTime: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
         ref.child("admin").child("allUser").child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -450,9 +476,9 @@ class FirebaseManager {
                 .child(uidUser)
                 .removeValue() { (error, _ ) in
                     if error == nil {
-                        self.updateStatusOrderOfRestaurant(status: status, uidUser: uidUser) { (suscess, error) in
+                        self.addHistoryOrderUserOfRestaurant(name: name, addressRestaurant: addressRestaurant, totalPrice: totalPrice, status: status, uidUser: uidUser, dateTime: dateTime) { (suscess, error) in
                             if (suscess) {
-                                print("deleted")
+                                //
                             }
                         }
                     }
@@ -534,6 +560,21 @@ class FirebaseManager {
                 }
                 completionBlock(listPromo)
             })
+        })
+    }
+    
+    func getHistoryOrder(completionBlock: @escaping (_ historyOrder: [HistoryOrderofUser]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("admin")
+        ref.child("allUser").child(uid).observe(DataEventType.value, with: {(snapshot) in
+            var historyOrder: [HistoryOrderofUser] = [HistoryOrderofUser]()
+            let userEnumerator = snapshot.childSnapshot(forPath: "historyOrder").children
+            while let users = userEnumerator.nextObject() as? DataSnapshot {
+                guard let dict = users.value as? [String: Any] else { return }
+                let user = HistoryOrderofUser(id: uid, dictionary: dict)
+                historyOrder.append(user)
+            }
+            completionBlock(historyOrder)
         })
     }
     
@@ -670,6 +711,19 @@ class FirebaseManager {
                 })
         })
     }
+    
+    func addHistoryOrderUserOfRestaurant(name: String, addressRestaurant: String, totalPrice: Int, status: String, uidUser: String, dateTime: String, completionBlock: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        let object = ["id": uidUser, "status": status, "name": name, "addressRestaurant": addressRestaurant, "totalPrice": totalPrice, "dateTime" :dateTime] as [String:Any]
+        Database.database().reference().child("admin").child("allUser").child(uidUser).child("historyOrder").child(dateTime)
+            .setValue(object, withCompletionBlock: { error, ref in
+                if error == nil {
+                    completionBlock(true, nil)
+                } else {
+                    completionBlock(false, error)
+                }
+            })
+    }
+    
     
     func autoDeletetheSameRestaurant(typeRestaurant: String, typeCheckRestaurant: String) {
         if typeRestaurant == typeCheckRestaurant {

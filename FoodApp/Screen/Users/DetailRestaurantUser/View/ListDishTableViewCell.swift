@@ -43,10 +43,22 @@ class ListDishTableViewCell: UITableViewCell {
     }
     
     func setUpCell(infoDish: InfoDishDetail) {
-        nameDishDetailLabel.text = infoDish.nameDishDetail
-        priceDishLabel.text = "\(infoDish.price) VNĐ"
-        let resource = ImageResource(downloadURL: URL(string: infoDish.imageLink)!, cacheKey: infoDish.imageLink)
-        dishImageView.kf.setImage(with: resource)
+        if infoDish.status == "still have food" {
+            self.isUserInteractionEnabled = true
+            mainView.backgroundColor = .white
+            nameDishDetailLabel.text = infoDish.nameDishDetail
+            priceDishLabel.text = "\(infoDish.price) VNĐ"
+            let resource = ImageResource(downloadURL: URL(string: infoDish.imageLink)!, cacheKey: infoDish.imageLink)
+            dishImageView.kf.setImage(with: resource)
+        }
+        if infoDish.status == "Out of Food" {
+            self.isUserInteractionEnabled = false
+            mainView.backgroundColor = .systemGray3
+            nameDishDetailLabel.text = infoDish.nameDishDetail
+            priceDishLabel.text = "\(infoDish.price) VNĐ"
+            let resource = ImageResource(downloadURL: URL(string: infoDish.imageLink)!, cacheKey: infoDish.imageLink)
+            dishImageView.kf.setImage(with: resource)
+        }
     }
     
 }

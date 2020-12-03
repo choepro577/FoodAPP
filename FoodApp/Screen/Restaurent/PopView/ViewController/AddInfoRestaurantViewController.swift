@@ -13,14 +13,15 @@ import SVProgressHUD
 
 class AddInfoRestaurantViewController: UIViewController {
     
+    @IBOutlet weak var infoRestaurantScrollView: UIScrollView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var typeRestaurantTextField: UITextField!
-    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveView: UIView!
+    @IBOutlet weak var mapImageView: UIImageView!
     
     var pickerView = UIPickerView()
     let listChooserule: [String] = ["rice restaurant", "milk tea", "noodles", "fried chicken", "healthy", "snacks"]
@@ -31,12 +32,13 @@ class AddInfoRestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         setUpAction()
         getInfoRestaurant()
         setUpPickerView()
         setUpUI()
     }
-    
+
     func setUpUI() {
         mainView.layer.cornerRadius = mainView.frame.width/20
         
@@ -51,6 +53,44 @@ class AddInfoRestaurantViewController: UIViewController {
         saveView.layer.borderColor = UIColor.white.cgColor
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        let viewController = SignInViewController()
+            let navCtrl = UINavigationController(rootViewController: viewController)
+            guard let window = UIApplication.shared.keyWindow,
+                let rootViewController = window.rootViewController
+                    else {
+                return
+            }
+
+            navCtrl.view.frame = rootViewController.view.frame
+            navCtrl.view.layoutIfNeeded()
+
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = navCtrl
+            })
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification) {
+
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.infoRestaurantScrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        infoRestaurantScrollView.contentInset = contentInset
+    }
+
+    @objc func keyboardWillHide(notification:NSNotification) {
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        infoRestaurantScrollView.contentInset = contentInset
+    }
+
     func setUpPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -61,12 +101,15 @@ class AddInfoRestaurantViewController: UIViewController {
     }
     
     func setUpAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
+
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.saveRestaurentAction))
         self.saveView.addGestureRecognizer(gesture)
         
-        let imageDismissGesture = UITapGestureRecognizer(target: self, action:  #selector(self.dismissAction))
-        dismissImageView.isUserInteractionEnabled = true
-        self.dismissImageView.addGestureRecognizer(imageDismissGesture)
+        let mapImageDismissGesture = UITapGestureRecognizer(target: self, action:  #selector(self.mapAcction))
+        mapImageView.isUserInteractionEnabled = true
+        self.mapImageView.addGestureRecognizer(mapImageDismissGesture)
         
         let imageRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.choseImage))
         restaurantImageView.isUserInteractionEnabled = true
@@ -74,35 +117,14 @@ class AddInfoRestaurantViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-            view.addGestureRecognizer(tap)
+        
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let emp =  (self.view.frame.size.height - 500) / 3
-              if self.view.frame.origin.y == 0 {
-                  self.view.frame.origin.y -= (keyboardSize.height - emp)
-              }
-         }
-     }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let emp =  (self.view.frame.size.height - 500) / 3
-            if self.view.frame.origin.y != 0 {
-                  self.view.frame.origin.y += (keyboardSize.height + emp)
-              }
-         }
-     }
-    
-    @objc func dismissAction(sender : UITapGestureRecognizer) {
-        self.dismiss(animated: true)
+    @objc func mapAcction() {
+        let vc = MapViewController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("aaaaa")
     }
     
     func getInfoRestaurant() {
@@ -198,7 +220,6 @@ extension AddInfoRestaurantViewController: UIPickerViewDataSource {
 }
 
 extension AddInfoRestaurantViewController: UIPickerViewDelegate {
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return listChooserule[row]
     }
@@ -207,5 +228,11 @@ extension AddInfoRestaurantViewController: UIPickerViewDelegate {
         typeRestaurantTextField.text = listChooserule[row]
         typeRestaurantTextField.resignFirstResponder()
     }
-    
+}
+
+extension AddInfoRestaurantViewController: MapViewControllerDelegate {
+    func getAddress(address: String) {
+        addressTextField.text = address
+        print("aaaa")
+    }
 }
