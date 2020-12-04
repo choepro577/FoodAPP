@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DishViewController" customModule="FoodApp" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="FUZ-Ai-foJ" id="MQL-n5-UAj"/>
+                <outlet property="catagoryImageView" destination="jOR-Cg-8dL" id="LMF-TW-3vN"/>
                 <outlet property="dishsTableView" destination="fw3-PN-Z5g" id="jrb-ru-fzS"/>
                 <outlet property="nameCatagoryView" destination="O7f-4b-P8U" id="3Sk-1m-gSn"/>
                 <outlet property="nameDishLabel" destination="D6z-E7-sm4" id="xcQ-lX-hlk"/>

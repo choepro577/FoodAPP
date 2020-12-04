@@ -97,10 +97,14 @@ class HomeRestaurantViewController: UIViewController {
     }
     
     @IBAction func editcatagory(_ sender: Any) {
-        let vc = RestaurentHomeViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let infoRestaurant = self.Restaurant else { return }
+        if infoRestaurant.address == "" {
+            self.showAlert("Notification", "You must setup restaurant information")
+        } else {
+            let vc = RestaurentHomeViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-    
 }
 
 extension HomeRestaurantViewController: UITableViewDelegate {

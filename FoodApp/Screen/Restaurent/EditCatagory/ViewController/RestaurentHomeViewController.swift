@@ -129,6 +129,7 @@ extension RestaurentHomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DishViewController()
         vc.nameDish = listDish[indexPath.row].nameDish
+        vc.imageLink = listDish[indexPath.row].imageLink
         self.present(vc, animated: true)
     }
     

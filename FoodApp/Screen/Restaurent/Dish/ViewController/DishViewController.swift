@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DishViewController: UIViewController {
 
+    @IBOutlet weak var catagoryImageView: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var nameCatagoryView: UIView!
     @IBOutlet weak var nameDishLabel: UILabel!
     @IBOutlet weak var dishsTableView: UITableView!
     
     var listDishDetails: [InfoDishDetail] = [InfoDishDetail]()
-    
+    var imageLink: String?
     var nameDish: String?
     
     
@@ -26,6 +28,7 @@ class DishViewController: UIViewController {
         getlistDishDetails()
     }
     
+   
     func setUpDishTableView() {
         dishsTableView.delegate = self
         dishsTableView.dataSource = self
@@ -44,6 +47,9 @@ class DishViewController: UIViewController {
     }
     
     func setUpUI() {
+        guard let imageLink = imageLink else { return }
+        let resource = ImageResource(downloadURL: URL(string: imageLink)!, cacheKey: imageLink)
+        catagoryImageView.kf.setImage(with: resource)
         nameDishLabel.text = nameDish
         nameCatagoryView.layer.cornerRadius = nameCatagoryView.frame.width/20
         nameCatagoryView.layer.shadowRadius = 5
