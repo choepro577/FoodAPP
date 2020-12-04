@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         }
         FirebaseApp.configure()
-        GMSPlacesClient.provideAPIKey("AIzaSyCeJ8ni7Rq4_Ag8tB04Sh_x1DEiRF_asYo")
         return true
     }
 

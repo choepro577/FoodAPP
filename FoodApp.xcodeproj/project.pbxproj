@@ -71,6 +71,10 @@
 		2A4398142570D8F2004B51D4 /* HomeRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4398122570D8F2004B51D4 /* HomeRestaurantViewController.xib */; };
 		2A43981E2570E9BA004B51D4 /* ListOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43981C2570E9BA004B51D4 /* ListOrderTableViewCell.swift */; };
 		2A43981F2570E9BA004B51D4 /* ListOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A43981D2570E9BA004B51D4 /* ListOrderTableViewCell.xib */; };
+		2A4890102579CDB3005EA2A9 /* DetailHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A48900E2579CDB3005EA2A9 /* DetailHistoryViewController.swift */; };
+		2A4890112579CDB3005EA2A9 /* DetailHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A48900F2579CDB3005EA2A9 /* DetailHistoryViewController.xib */; };
+		2A48901B2579D03A005EA2A9 /* DetailHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4890192579D03A005EA2A9 /* DetailHistoryTableViewCell.swift */; };
+		2A48901C2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A48901A2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib */; };
 		2A56AEED2578E02D00A16489 /* sorry.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A56AEEC2578E02D00A16489 /* sorry.gif */; };
 		2A56AF0F25794E1500A16489 /* HistoryOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56AF0D25794E1400A16489 /* HistoryOrderViewController.swift */; };
 		2A56AF1025794E1500A16489 /* HistoryOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A56AF0E25794E1400A16489 /* HistoryOrderViewController.xib */; };
@@ -209,6 +213,10 @@
 		2A4398122570D8F2004B51D4 /* HomeRestaurantViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeRestaurantViewController.xib; sourceTree = "<group>"; };
 		2A43981C2570E9BA004B51D4 /* ListOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderTableViewCell.swift; sourceTree = "<group>"; };
 		2A43981D2570E9BA004B51D4 /* ListOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOrderTableViewCell.xib; sourceTree = "<group>"; };
+		2A48900E2579CDB3005EA2A9 /* DetailHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryViewController.swift; sourceTree = "<group>"; };
+		2A48900F2579CDB3005EA2A9 /* DetailHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryViewController.xib; sourceTree = "<group>"; };
+		2A4890192579D03A005EA2A9 /* DetailHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		2A48901A2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		2A56AEEC2578E02D00A16489 /* sorry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sorry.gif; path = ../../../Downloads/sorry.gif; sourceTree = "<group>"; };
 		2A56AF0D25794E1400A16489 /* HistoryOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOrderViewController.swift; sourceTree = "<group>"; };
 		2A56AF0E25794E1400A16489 /* HistoryOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryOrderViewController.xib; sourceTree = "<group>"; };
@@ -736,6 +744,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2A48900C2579CD75005EA2A9 /* DetailHistory */ = {
+			isa = PBXGroup;
+			children = (
+				2A4890182579D022005EA2A9 /* View */,
+				2A48900D2579CD88005EA2A9 /* ViewController */,
+			);
+			path = DetailHistory;
+			sourceTree = "<group>";
+		};
+		2A48900D2579CD88005EA2A9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A48900E2579CDB3005EA2A9 /* DetailHistoryViewController.swift */,
+				2A48900F2579CDB3005EA2A9 /* DetailHistoryViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2A4890182579D022005EA2A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A4890192579D03A005EA2A9 /* DetailHistoryTableViewCell.swift */,
+				2A48901A2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2A56AF0B25794DEF00A16489 /* HistoryOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,6 +837,7 @@
 		2A78786425598CEC00EE7391 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				2A48900C2579CD75005EA2A9 /* DetailHistory */,
 				2A56AF0B25794DEF00A16489 /* HistoryOrder */,
 				2A4397C12570B284004B51D4 /* DishisComing */,
 				2A3BB8F4256EA190008533A6 /* Cart */,
@@ -1032,7 +1068,6 @@
 				2A3C630F2552CF8C00996077 /* Frameworks */,
 				2A3C63102552CF8C00996077 /* Resources */,
 				6A45B66AE1AB72EB1F03CC5E /* [CP] Embed Pods Frameworks */,
-				69F3D582094126D93976E5F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1071,7 +1106,6 @@
 				2A3C63302552CF8E00996077 /* Frameworks */,
 				2A3C63312552CF8E00996077 /* Resources */,
 				99716D802CA5FAD42333563F /* [CP] Embed Pods Frameworks */,
-				861A959FB986494253490569 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1143,9 +1177,11 @@
 				2A893ECC2577A4A500A71244 /* resultSearchMapViewController.xib in Resources */,
 				2A280CBB2553AE88005EDDDC /* PopAddPromoViewController.xib in Resources */,
 				2A86E137255645CF00C1647F /* RestaurentHomeViewController.xib in Resources */,
+				2A48901C2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib in Resources */,
 				2AB6B1CE2571EC0D004A6B17 /* DetailOrderViewController.xib in Resources */,
 				2A893EC22577929600A71244 /* addressTableViewCell.xib in Resources */,
 				2A280CAF2553AADE005EDDDC /* PopSaveRestaurentViewController.xib in Resources */,
+				2A4890112579CDB3005EA2A9 /* DetailHistoryViewController.xib in Resources */,
 				2A419E7F25734452008C9429 /* restaurantInUserTableViewCell.xib in Resources */,
 				2A893E93257754CA00A71244 /* MapViewController.xib in Resources */,
 				2A340001255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib in Resources */,
@@ -1201,23 +1237,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		69F3D582094126D93976E5F0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6A45B66AE1AB72EB1F03CC5E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1255,23 +1274,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		861A959FB986494253490569 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99716D802CA5FAD42333563F /* [CP] Embed Pods Frameworks */ = {
@@ -1356,8 +1358,10 @@
 				2AB6B1D52571F19F004A6B17 /* DishOrderInRestaurantTableViewCell.swift in Sources */,
 				2A56AF1A2579523100A16489 /* historyOrderTableViewCell.swift in Sources */,
 				2A893EA325776D1000A71244 /* myAnnotationView.swift in Sources */,
+				2A4890102579CDB3005EA2A9 /* DetailHistoryViewController.swift in Sources */,
 				2A43981E2570E9BA004B51D4 /* ListOrderTableViewCell.swift in Sources */,
 				2A419E85257395E9008C9429 /* APIPlace.swift in Sources */,
+				2A48901B2579D03A005EA2A9 /* DetailHistoryTableViewCell.swift in Sources */,
 				2A280C78255398BF005EDDDC /* ListRestaurentViewController.swift in Sources */,
 				2A893E9925775C6500A71244 /* myAnnotation.swift in Sources */,
 				2A419E7E25734452008C9429 /* restaurantInUserTableViewCell.swift in Sources */,

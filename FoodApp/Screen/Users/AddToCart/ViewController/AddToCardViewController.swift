@@ -132,7 +132,6 @@ class AddToCardViewController: UIViewController {
                 }
             }
         }
-        
         self.dismiss(animated: true)
     }
     

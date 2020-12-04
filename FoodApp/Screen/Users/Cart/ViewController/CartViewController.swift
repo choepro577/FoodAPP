@@ -6,7 +6,10 @@
 //
 
 import UIKit
-import GooglePlaces
+
+protocol CartViewControllerDelegate {
+    func getCount(count: String)
+}
 
 class CartViewController: UIViewController {
     
@@ -23,6 +26,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var orderView: UIView!
     
+    var delegate :CartViewControllerDelegate?
     var infoRestaurant: InfoRestaurant?
     var listInfoDistOrder: [InfoCard] = [InfoCard]()
     var listPromo: [InfoPromo] = [InfoPromo]()
@@ -117,6 +121,13 @@ class CartViewController: UIViewController {
         
         let cartViewRestaurantGesture = UITapGestureRecognizer(target: self, action:  #selector(self.orderAction))
         self.orderView.addGestureRecognizer(cartViewRestaurantGesture)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc func orderAction(sender : UITapGestureRecognizer) {
@@ -141,6 +152,7 @@ class CartViewController: UIViewController {
                 }
             }
         }
+        delegate?.getCount(count: self.totalCountDishLabel.text ?? "")
     }
     
     @objc func dismissAction(sender : UITapGestureRecognizer) {
@@ -200,22 +212,6 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
             return CGSize (width: widthForOneItem, height: 80)// chiều cao cell
             }
     }
-}
-
-extension CartViewController: GMSAutocompleteViewControllerDelegate {
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        AddressLocationLabel.text = place.formattedAddress ?? "unknown address"
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print("Error: ", error.localizedDescription)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 extension CartViewController: CouponsCollectionViewCellDelegate {

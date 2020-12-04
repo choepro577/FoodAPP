@@ -50,7 +50,6 @@ class HistoryOrderViewController: UIViewController {
 }
 
 extension HistoryOrderViewController: UITableViewDelegate {
-    
 }
 
 extension HistoryOrderViewController: UITableViewDataSource {
@@ -62,6 +61,10 @@ extension HistoryOrderViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as? historyOrderTableViewCell else { return historyOrderTableViewCell() }
         cell.setUpCell(infoHistoryOrder: historyOrder[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 
 }

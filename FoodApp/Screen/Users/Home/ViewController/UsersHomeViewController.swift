@@ -8,12 +8,16 @@
 import UIKit
 
 class UsersHomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var cartImageView: UIImageView!
+    @IBOutlet weak var countDishLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var infomationImageView: UIImageView!
     @IBOutlet weak var typeRestaurentColectionViewCell: UICollectionView!
+    
+    var infoRestaurant: InfoRestaurant?
     let typeRestaurentImage: [String] = ["ricerestaurant","milktea","noodles","friedchicken","healthy","snacks"]
     
     override func viewDidLoad() {
@@ -26,7 +30,7 @@ class UsersHomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
-
+    
     func setUpColectionViewCell() {
         typeRestaurentColectionViewCell.delegate = self
         typeRestaurentColectionViewCell.dataSource = self
@@ -35,8 +39,14 @@ class UsersHomeViewController: UIViewController {
     
     func getInfoUser() {
         FirebaseManager.shared.getInfoUser() {(infoUser) in
-            DispatchQueue.main.async {
-                self.addressLabel.text = infoUser.address
+            if infoUser.address == "" {
+                DispatchQueue.main.async {
+                    self.addressLabel.text = "Please choose address !"
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.addressLabel.text = infoUser.address
+                }
             }
         }
     }
@@ -52,6 +62,16 @@ class UsersHomeViewController: UIViewController {
         let infoUsergesture = UITapGestureRecognizer(target: self, action:  #selector(self.watchInfomationUserAction))
         infomationImageView.isUserInteractionEnabled = true
         self.infomationImageView.addGestureRecognizer(infoUsergesture)
+        
+        let cartgesture = UITapGestureRecognizer(target: self, action:  #selector(self.cartAction))
+        cartImageView.isUserInteractionEnabled = true
+        self.cartImageView.addGestureRecognizer(cartgesture)
+    }
+    
+    @objc func cartAction(sender : UITapGestureRecognizer) {
+        let vc = CartViewController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func searchAddressAction(sender : UITapGestureRecognizer) {
@@ -101,6 +121,12 @@ extension UsersHomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15 // khoảng cách giữa các hàng với nhau
+    }
+}
+
+extension UsersHomeViewController: CartViewControllerDelegate {
+    func getCount(count: String) {
+        countDishLabel.text = count
     }
 }
 
