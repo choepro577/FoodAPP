@@ -42,7 +42,7 @@
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aAh-gg-szM">
                             <rect key="frame" x="114.5" y="20.5" width="125" height="124.5"/>
-                            <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="125" id="PVJ-lR-dMC"/>
                                 <constraint firstAttribute="width" constant="125" id="VOj-Id-tHM"/>
@@ -68,7 +68,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="5FU-CA-oXf" firstAttribute="leading" secondItem="lOH-QO-AgC" secondAttribute="leading" id="L4f-LQ-m3n"/>
                                 <constraint firstAttribute="trailing" secondItem="5FU-CA-oXf" secondAttribute="trailing" id="QXh-p0-p3g"/>
@@ -79,7 +79,7 @@
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bfK-8O-xp3">
                             <rect key="frame" x="319" y="13" width="25" height="18.5"/>
-                            <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="Ivu-bR-RWf"/>
                                 <constraint firstAttribute="width" constant="25" id="tJp-pP-XeD"/>

@@ -103,7 +103,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUc-Y8-3tf">
                     <rect key="frame" x="364" y="50" width="30" height="30"/>
-                    <color key="backgroundColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75462147889999998" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="Smd-mD-3dA"/>
                         <constraint firstAttribute="height" constant="30" id="b5Y-P7-ixy"/>

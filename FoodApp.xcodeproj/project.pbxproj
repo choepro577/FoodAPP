@@ -27,6 +27,8 @@
 		2A280CAF2553AADE005EDDDC /* PopSaveRestaurentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A280CAD2553AADE005EDDDC /* PopSaveRestaurentViewController.xib */; };
 		2A280CBA2553AE88005EDDDC /* PopAddPromoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A280CB82553AE88005EDDDC /* PopAddPromoViewController.swift */; };
 		2A280CBB2553AE88005EDDDC /* PopAddPromoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A280CB92553AE88005EDDDC /* PopAddPromoViewController.xib */; };
+		2A28A1102591D14400399C03 /* status4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A28A10F2591D14400399C03 /* status4.gif */; };
+		2A28A1152591D14E00399C03 /* sorry.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A28A1142591D14E00399C03 /* sorry.gif */; };
 		2A340000255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A34FFFE255A3CD50059418E /* typeRestaurentUserCollectionViewCell.swift */; };
 		2A340001255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A34FFFF255A3CD50059418E /* typeRestaurentUserCollectionViewCell.xib */; };
 		2A340009255A3FB10059418E /* ListRestaurentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A340007255A3FB10059418E /* ListRestaurentUserViewController.swift */; };
@@ -75,7 +77,6 @@
 		2A4890112579CDB3005EA2A9 /* DetailHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A48900F2579CDB3005EA2A9 /* DetailHistoryViewController.xib */; };
 		2A48901B2579D03A005EA2A9 /* DetailHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4890192579D03A005EA2A9 /* DetailHistoryTableViewCell.swift */; };
 		2A48901C2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A48901A2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib */; };
-		2A56AEED2578E02D00A16489 /* sorry.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A56AEEC2578E02D00A16489 /* sorry.gif */; };
 		2A56AF0F25794E1500A16489 /* HistoryOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56AF0D25794E1400A16489 /* HistoryOrderViewController.swift */; };
 		2A56AF1025794E1500A16489 /* HistoryOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A56AF0E25794E1400A16489 /* HistoryOrderViewController.xib */; };
 		2A56AF1A2579523100A16489 /* historyOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56AF182579523100A16489 /* historyOrderTableViewCell.swift */; };
@@ -107,7 +108,6 @@
 		2A893EC22577929600A71244 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A893EC02577929600A71244 /* addressTableViewCell.xib */; };
 		2A893ECB2577A4A500A71244 /* resultSearchMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A893EC92577A4A500A71244 /* resultSearchMapViewController.swift */; };
 		2A893ECC2577A4A500A71244 /* resultSearchMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A893ECA2577A4A500A71244 /* resultSearchMapViewController.xib */; };
-		2A893F222578020500A71244 /* status4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A893F212578020400A71244 /* status4.gif */; };
 		2AA4DA67256E10CE0029EC68 /* AddToCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4DA65256E10CE0029EC68 /* AddToCardViewController.swift */; };
 		2AA4DA68256E10CE0029EC68 /* AddToCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */; };
 		2AB3123C2564D33800A9824E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3123B2564D33800A9824E /* StringExtension.swift */; };
@@ -163,6 +163,8 @@
 		2A280CAD2553AADE005EDDDC /* PopSaveRestaurentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopSaveRestaurentViewController.xib; sourceTree = "<group>"; };
 		2A280CB82553AE88005EDDDC /* PopAddPromoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAddPromoViewController.swift; sourceTree = "<group>"; };
 		2A280CB92553AE88005EDDDC /* PopAddPromoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopAddPromoViewController.xib; sourceTree = "<group>"; };
+		2A28A10F2591D14400399C03 /* status4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = status4.gif; path = ../../status4.gif; sourceTree = "<group>"; };
+		2A28A1142591D14E00399C03 /* sorry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sorry.gif; path = ../../sorry.gif; sourceTree = "<group>"; };
 		2A340007255A3FB10059418E /* ListRestaurentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRestaurentUserViewController.swift; sourceTree = "<group>"; };
 		2A340008255A3FB10059418E /* ListRestaurentUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListRestaurentUserViewController.xib; sourceTree = "<group>"; };
 		2A340012255A43560059418E /* RestaurentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -217,7 +219,6 @@
 		2A48900F2579CDB3005EA2A9 /* DetailHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryViewController.xib; sourceTree = "<group>"; };
 		2A4890192579D03A005EA2A9 /* DetailHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		2A48901A2579D03A005EA2A9 /* DetailHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryTableViewCell.xib; sourceTree = "<group>"; };
-		2A56AEEC2578E02D00A16489 /* sorry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sorry.gif; path = ../../../Downloads/sorry.gif; sourceTree = "<group>"; };
 		2A56AF0D25794E1400A16489 /* HistoryOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOrderViewController.swift; sourceTree = "<group>"; };
 		2A56AF0E25794E1400A16489 /* HistoryOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryOrderViewController.xib; sourceTree = "<group>"; };
 		2A56AF182579523100A16489 /* historyOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyOrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 		2A893EC02577929600A71244 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
 		2A893EC92577A4A500A71244 /* resultSearchMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultSearchMapViewController.swift; sourceTree = "<group>"; };
 		2A893ECA2577A4A500A71244 /* resultSearchMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = resultSearchMapViewController.xib; sourceTree = "<group>"; };
-		2A893F212578020400A71244 /* status4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = status4.gif; path = ../../../Downloads/status4.gif; sourceTree = "<group>"; };
 		2AA4DA65256E10CE0029EC68 /* AddToCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCardViewController.swift; sourceTree = "<group>"; };
 		2AA4DA66256E10CE0029EC68 /* AddToCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToCardViewController.xib; sourceTree = "<group>"; };
 		2AB3123B2564D33800A9824E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -542,8 +542,8 @@
 				2A3C634B2552CFF100996077 /* Screen */,
 				2A3C63152552CF8C00996077 /* AppDelegate.swift */,
 				2A3C63172552CF8C00996077 /* SceneDelegate.swift */,
-				2A56AEEC2578E02D00A16489 /* sorry.gif */,
-				2A893F212578020400A71244 /* status4.gif */,
+				2A28A1142591D14E00399C03 /* sorry.gif */,
+				2A28A10F2591D14400399C03 /* status4.gif */,
 				2A4397E22570BBB8004B51D4 /* cooking.gif */,
 				2A43980A2570CC90004B51D4 /* shipper.gif */,
 				2A3C631E2552CF8D00996077 /* Assets.xcassets */,
@@ -1166,7 +1166,6 @@
 			files = (
 				2A3C63222552CF8D00996077 /* LaunchScreen.storyboard in Resources */,
 				2A022412256F5E6F000B093B /* CouponsCollectionViewCell.xib in Resources */,
-				2A56AEED2578E02D00A16489 /* sorry.gif in Resources */,
 				2A3BB8FD256EA251008533A6 /* CartViewController.xib in Resources */,
 				2A56AF1B2579523100A16489 /* historyOrderTableViewCell.xib in Resources */,
 				2A78785925597A1200EE7391 /* AddDishsViewController.xib in Resources */,
@@ -1190,9 +1189,10 @@
 				2A34000A255A3FB10059418E /* ListRestaurentUserViewController.xib in Resources */,
 				2A3C63612552D81B00996077 /* SignUpViewController.xib in Resources */,
 				2A34002A255A549A0059418E /* InfomationUserViewController.xib in Resources */,
+				2A28A1152591D14E00399C03 /* sorry.gif in Resources */,
 				2A280C8425539965005EDDDC /* ListRestaurentTableViewCell.xib in Resources */,
-				2A893F222578020500A71244 /* status4.gif in Resources */,
 				2A86E14E255653A700C1647F /* AddCatagoryViewController.xib in Resources */,
+				2A28A1102591D14400399C03 /* status4.gif in Resources */,
 				2A340057255A897B0059418E /* GoogleService-Info.plist in Resources */,
 				2A43980B2570CC90004B51D4 /* shipper.gif in Resources */,
 				2A78786A25598D6600EE7391 /* UsersHomeViewController.xib in Resources */,

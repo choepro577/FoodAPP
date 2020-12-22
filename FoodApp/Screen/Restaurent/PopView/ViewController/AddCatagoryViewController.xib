@@ -38,7 +38,7 @@
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eOo-cx-NRY">
                                     <rect key="frame" x="104.5" y="20.5" width="125" height="124.5"/>
-                                    <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="tintColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="125" id="Bo3-kO-LUj"/>
                                         <constraint firstAttribute="height" constant="125" id="bzx-9H-Rqe"/>
@@ -60,7 +60,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstItem="hgZ-kd-eFn" firstAttribute="top" secondItem="3vU-I9-Trf" secondAttribute="top" id="4hP-9L-VgI"/>
                                         <constraint firstItem="hgZ-kd-eFn" firstAttribute="leading" secondItem="3vU-I9-Trf" secondAttribute="leading" id="FrK-uB-lQm"/>
@@ -71,7 +71,7 @@
                                 </view>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nJP-cz-d29">
                                     <rect key="frame" x="299" y="13" width="25" height="18.5"/>
-                                    <color key="tintColor" red="0.33033710719999998" green="0.65670561790000004" blue="0.36044397950000001" alpha="0.75492407569999997" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="tintColor" red="0.54104888439999999" green="0.79285365340000002" blue="0.82383990289999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="bP7-VT-1lg"/>
                                         <constraint firstAttribute="width" constant="25" id="jiD-l0-bbR"/>
