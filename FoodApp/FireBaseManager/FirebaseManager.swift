@@ -260,7 +260,7 @@ class FirebaseManager {
             while let users = userEnumerator.nextObject() as? DataSnapshot { //freid chicken
                 let todoEnumerator = users.children
                 while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
-                    let uid = users.key
+                    let uid = todoItem.key
                     let todoEnumerator = todoItem.childSnapshot(forPath: "allInfoRestaurant").childSnapshot(forPath: "infomation").children
                     while let todoItem = todoEnumerator.nextObject() as? DataSnapshot {
                         guard let dict = todoItem.value as? [String: Any] else { return }
